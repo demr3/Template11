@@ -1,0 +1,51 @@
+<script id="QuantityTemplate" type="text/template">
+    {% raw %}
+      <div class="js-qty">
+        <input type="text" value="{{ value }}" id="{{ key }}" name="{{ name }}" pattern="[0-9]*" data-line="{{ line }}" class="js-qty__input" aria-live="polite">
+        <button type="button" class="js-qty__adjust js-qty__adjust--minus" aria-label="{% endraw %}{{ 'cart.label.decrease_quantity' | t }}{% raw %}">
+          {% endraw %}{% include 'icon-down' %}{% raw %}
+          <span class="icon__fallback-text">−</span>
+        </button>
+        <button type="button" class="js-qty__adjust js-qty__adjust--plus" aria-label="{% endraw %}{{ 'cart.label.increase_quantity' | t }}{% raw %}">
+          {% endraw %}{% include 'icon-up' %}{% raw %}
+          <span class="icon__fallback-text">+</span>
+        </button>
+      </div>
+    {% endraw %}
+</script>
+<ul hidden>
+  <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
+</ul>
+
+{% raw %}
+<script id="x-product-grid" type="text/x-handlebars-template">
+  <div class="x-grid-item col-12 col-lg-4 js-viewed-item mb-4">
+    <div class="x-grid-wrap border p-3 rounded media d-flex">
+      <a href="{{productUrl}}" class="mr-3 col-4 p-0">
+        <img class="x-grid-image" src="{{image}}" />  
+      </a>  
+      <div class="media-body text-left">
+        <h5 class="mb-2 mt-2 x-grid-title">
+          <a href="{{productUrl}}">
+            {{productName}}
+          </a>
+        </h5>
+        {{#if priceVaries}}
+        <span class="x-grid-from">from</span>
+        {{/if}}
+
+        <span class="money x-grid-price">{{productPrice}}</span>
+
+        {{#if productComparePrice}}
+        <span class="money x-grid-compare-price">{{productComparePrice}}</span>
+        {{/if}}   
+      </div>
+    </div>
+  </div>
+</script>
+{% endraw %}
+
+
+<style>
+.x-grid-price{color:var(--g-main);font-weight: 500;}.x-grid-compare-price{font-weight:400;text-decoration:line-through}
+</style>

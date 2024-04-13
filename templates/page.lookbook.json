@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "main": {
+      "type": "lookbook-carousel",
+      "blocks": {
+        "7953648a-a40e-447d-b0b4-02278d6a415d": {
+          "type": "lookbook",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lb1.jpg",
+            "instagram": "https:\/\/instagram.com",
+            "product": "swim-pink-sand",
+            "dot_color": "#ffffff",
+            "left": 50,
+            "top": 50
+          }
+        },
+        "94f0fac6-2f52-45c2-a5da-48f35fc0188a": {
+          "type": "lookbook",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lb2.jpg",
+            "instagram": "https:\/\/instagram.com",
+            "product": "mirage-bridget-bandeau",
+            "dot_color": "#ffffff",
+            "left": 63,
+            "top": 66
+          }
+        }
+      },
+      "block_order": [
+        "7953648a-a40e-447d-b0b4-02278d6a415d",
+        "94f0fac6-2f52-45c2-a5da-48f35fc0188a"
+      ],
+      "settings": {
+        "animation": "fade",
+        "paddingsection": "0px 0px 0px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "bgsection": "#fefefe",
+        "title_top": "",
+        "title": "",
+        "des": "",
+        "setwidth": "full",
+        "background": "#ffffff",
+        "arrows": false,
+        "draggable": true,
+        "dots": true,
+        "infinite": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

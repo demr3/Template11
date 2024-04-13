@@ -1,0 +1,129 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-faqs",
+      "blocks": {
+        "f8c3d422-935d-468f-8d51-85e10562853c": {
+          "type": "faq",
+          "settings": {
+            "title": "What is Shopify?",
+            "answer": "Shopify is the world’s most powerful e-commerce platform that allows anyone to easily sell online, at a retail location, and everywhere in between."
+          }
+        },
+        "f2be25a7-87ce-4e4b-8f30-165dd2832599": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I setup my store?",
+            "answer": "When you buy this theme you get full access to our comprehensive and easy to follow instructions on setting up the theme for your store.\nIf you’re looking for more generic Shopify store setup instructions, there are plenty of resources available on Shopify’s own website."
+          }
+        },
+        "f48ff7bd-7232-488f-96e5-a8bbfa4e1ebf": {
+          "type": "faq",
+          "settings": {
+            "title": "Do I need a Designer\/Programmer for my store?",
+            "answer": "We’ve designed the theme to be as flexible and configurable as possible but also made it simple to use. You would only need a designer\/developer if you wanted to custom code something that the theme doesn’t do natively."
+          }
+        },
+        "6a6f8a98-7094-4bd8-abd3-bf7e80622244": {
+          "type": "faq",
+          "settings": {
+            "title": "Where can I buy this theme?",
+            "answer": "We only sell this theme at Themeforest, you can buy there. If you need a trial version, please contact <a href=\"mailto:apollotheme@gmail.com\">apollotheme@gmail.com<\/a>"
+          }
+        },
+        "8f1926c8-9e76-4441-b897-220977d5f1fd": {
+          "type": "faq",
+          "settings": {
+            "title": "When you purchase a theme is that a one-time fee?",
+            "answer": "Yes, unlike other themes, you get free upgrades and support for 6-months and you only pay a one-time fee, unless stated otherwise."
+          }
+        },
+        "4177bbee-3ff8-4303-b7c8-007a319b94bd": {
+          "type": "faq",
+          "settings": {
+            "title": "Can I trial a theme before buying it?",
+            "answer": "Yes, please contact us via email apollotheme@gmail.com"
+          }
+        },
+        "85ce9934-9e30-4124-9a55-2282afaf918f": {
+          "type": "faq",
+          "settings": {
+            "title": "Can I use the theme for multiple shops?",
+            "answer": "All of our themes are subject to a one-store license, so if you want to utilize the same theme in several live stores, you’ll have to purchase multiple licenses."
+          }
+        },
+        "414392f7-b457-4d39-9622-44f0aee1e51c": {
+          "type": "faq",
+          "settings": {
+            "title": "Does this theme work with all Shopify plans?",
+            "answer": "Yes, it works with all plans."
+          }
+        },
+        "ca90d3ef-ccbc-4411-9b00-ee16cedf1a6d": {
+          "type": "faq",
+          "settings": {
+            "title": "Is it necessary to pay for the service to setup the store?",
+            "answer": "No, we’ve designed the theme to be as intuitive to use as possible and we have also provided step-by-step instructions inside our theme description."
+          }
+        },
+        "9a845622-78eb-409f-ad35-deed79f69002": {
+          "type": "faq",
+          "settings": {
+            "title": "What is the scope of your support?",
+            "answer": "Our support includes general inquiries regarding theme functionality; help with customizing the theme settings and any observed defect or theme issues. It doesn’t cover issues, such as errors due to third- party plugins or as an after effect of changes made to the theme code. For the full details on the extent of our support, please visit our Support Policy page."
+          }
+        },
+        "bc271406-2af1-41e5-98b2-ff2fa4ebca33": {
+          "type": "faq",
+          "settings": {
+            "title": "What if I need help with Shopify issues?",
+            "answer": "General shop inquiries, such as uploading products, creating collections, adding discount codes, managing domains, etc. can be best addressed by reaching Shopify Support specifically and\/or by checking on their broad documentation accessible in the Shopify Manual."
+          }
+        },
+        "59cb46b2-092a-4b79-9d3f-e2d6247db73e": {
+          "type": "faq",
+          "settings": {
+            "title": "How fast do you respond to support inquiries?",
+            "answer": "We aim to give feedback to all requests within 24 hours, but please allow 1-2 business days for the response. Our support team is primarily based in the UTC +7 and is available during standard business hours. We have a weekend staff to answer basic queries too."
+          }
+        },
+        "edacfc18-33f6-4623-a33a-6a6bebdc3e04": {
+          "type": "faq",
+          "settings": {
+            "title": "Do you provide phone support? What about Skype?",
+            "answer": "We don’t offer telephone or video call support as of now. <br>\nPlease contact with us via:<br>\nEmail: shopifytemplate@gmail.com<br>\nSkype: hoanganhover<br>\nSupport skype: nvchien91"
+          }
+        }
+      },
+      "block_order": [
+        "f8c3d422-935d-468f-8d51-85e10562853c",
+        "f2be25a7-87ce-4e4b-8f30-165dd2832599",
+        "f48ff7bd-7232-488f-96e5-a8bbfa4e1ebf",
+        "6a6f8a98-7094-4bd8-abd3-bf7e80622244",
+        "8f1926c8-9e76-4441-b897-220977d5f1fd",
+        "4177bbee-3ff8-4303-b7c8-007a319b94bd",
+        "85ce9934-9e30-4124-9a55-2282afaf918f",
+        "414392f7-b457-4d39-9622-44f0aee1e51c",
+        "ca90d3ef-ccbc-4411-9b00-ee16cedf1a6d",
+        "9a845622-78eb-409f-ad35-deed79f69002",
+        "bc271406-2af1-41e5-98b2-ff2fa4ebca33",
+        "59cb46b2-092a-4b79-9d3f-e2d6247db73e",
+        "edacfc18-33f6-4623-a33a-6a6bebdc3e04"
+      ],
+      "settings": {
+        "paddingsection": "0px 0px 0px 0px",
+        "paddingmobile": "0px 0px 0px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "setwidth": "container",
+        "heading": "Frequently Asked Questions",
+        "subheading": "<p>Below FAQ are some common concerns of our clients before purchasing the theme, if you have other questions, <br>please just send it to <a href=\"mailto:shopifytemplate@gmail.com\">shopifytemplate@gmail.com<\/a>\n<\/p>",
+        "heading_faqs": "Ask Your Questions",
+        "layout": "layout-2"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

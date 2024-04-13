@@ -1,0 +1,150 @@
+{
+  "sections": {
+    "main": {
+      "type": "s_team_member",
+      "blocks": {
+        "102e8dd9-5d4c-4d1c-80ff-63219f63c3f8": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team1.jpg",
+            "name": "Danielle Kim",
+            "position": "Senior Producer",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": "https:\/\/www.linkedin.com\/"
+          }
+        },
+        "b8e5f5d8-83d3-41f7-bdb6-d4e2269b0401": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team2.jpg",
+            "name": "Ian Watt",
+            "position": "Director of Motion & Visual Effects",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": "https:\/\/www.linkedin.com\/"
+          }
+        },
+        "47679e11-56dc-418e-8219-184a7a1dc9e3": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team3.jpg",
+            "name": "Alex Sturtevant",
+            "position": "Global Director of Brand",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": ""
+          }
+        },
+        "4c6d9005-36fb-4c5b-b4be-cf49bcab4ec2": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team7.jpg",
+            "name": "Jon Lawton",
+            "position": "UX Designer",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": ""
+          }
+        },
+        "5849dd27-1b62-4ace-af27-4e4d87010501": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team4.jpg",
+            "name": "Arpad Ray",
+            "position": "Arpad Ray",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": ""
+          }
+        },
+        "aa11be23-cb6c-4c1a-90e4-4c52707c95d8": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team8.jpg",
+            "name": "Arpad Ray",
+            "position": "Executive Technical Director",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": ""
+          }
+        },
+        "2215007a-3a92-4952-8058-99706d9ebce2": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team6.jpg",
+            "name": "Katie Sharrow-Reabe",
+            "position": "Social Strategist",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": ""
+          }
+        },
+        "d297877c-9014-4de7-b694-9e4e5c695f94": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team5.jpg",
+            "name": "Tim Blount",
+            "position": "Technical Director",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": ""
+          }
+        },
+        "f74ced5d-f46d-45f4-a279-6db5ad530f75": {
+          "type": "member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/team9.jpg",
+            "name": "Mick Coelho",
+            "position": "Sr. Creative Developer",
+            "twitter": "https:\/\/twitter.com\/",
+            "google": "https:\/\/plus.google.com",
+            "facebook": "https:\/\/www.facebook.com\/",
+            "linkedin": ""
+          }
+        }
+      },
+      "block_order": [
+        "102e8dd9-5d4c-4d1c-80ff-63219f63c3f8",
+        "b8e5f5d8-83d3-41f7-bdb6-d4e2269b0401",
+        "47679e11-56dc-418e-8219-184a7a1dc9e3",
+        "4c6d9005-36fb-4c5b-b4be-cf49bcab4ec2",
+        "5849dd27-1b62-4ace-af27-4e4d87010501",
+        "aa11be23-cb6c-4c1a-90e4-4c52707c95d8",
+        "2215007a-3a92-4952-8058-99706d9ebce2",
+        "d297877c-9014-4de7-b694-9e4e5c695f94",
+        "f74ced5d-f46d-45f4-a279-6db5ad530f75"
+      ],
+      "settings": {
+        "animation": "",
+        "paddingsection": "0px 0px 0px 0px",
+        "paddingmobile": "0px 0px 0px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "title_top": "agencies",
+        "title": "Meet Our Team",
+        "des": "Our team brings a wealth of experience from some of the world’s most formidable production studios,<br>\nagencies and startups.",
+        "setwidth": "container",
+        "items": "3",
+        "layout": "2",
+        "bgsection": "",
+        "bg_attachment": false,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

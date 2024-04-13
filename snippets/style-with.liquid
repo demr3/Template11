@@ -1,0 +1,22 @@
+<style>
+    #productstylewith .product-card--style4 .product-card__overlaybottom .btn{
+        letter-spacing: 0;
+    }
+    #productstylewith  .product-card__swatch{
+        display: none;
+    }
+</style>
+<div id="productstylewith"  class="{{block.settings.setwidthcontent}}">
+    	{% if product.metafields.info.stylewith != blank and block.settings.titlestyle != blank %}
+    		<h4 class="mb-5 {% if block.settings.enable_center %} text-center {% endif %}">{{block.settings.titlestyle}}</h4>
+    	{% endif %}
+    	{% assign p_style = product.metafields.info.stylewith | replace: "," , "|" %}
+    	{% assign p_handle  = p_style | split: "|" %}
+    	<div class="row {% if block.settings.enable_center_product %} justify-content-center{% endif %}">
+    	{% for product in p_handle %}
+    		<div class="col-lg-2 col-6">
+    		{%- include 'product-card', product: all_products[product] -%}
+    		</div>
+    	{% endfor %}
+    	</div>
+  </div>

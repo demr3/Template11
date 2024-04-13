@@ -1,0 +1,67 @@
+<style>.page-title{margin-bottom:40px;}.main-content{padding:0;}</style>
+<div class="customstyle{{ section.id }}">
+  {%- include 'style-section' -%}
+  <div class="{{ section.settings.setwidth }}">
+    <!-- <h1 class="text-center page-title">{{ page.title }}</h1> -->
+    <div class="content-block--page">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": " Page content Section",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings":[
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "paddingmobile",
+      "label": "Padding Section Mobile",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginsection",
+      "label": "Margin Section",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "text",
+      "id": "marginmobile",
+      "label": "Margin Mobile",
+      "default": "0px 0px 0px 0px",
+      "info": "Margin: Top Right Bottom Left"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container Fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

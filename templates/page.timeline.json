@@ -1,0 +1,163 @@
+{
+  "sections": {
+    "main": {
+      "type": "s_timeline",
+      "blocks": {
+        "c72af6af-da73-4fbd-8a02-8175224f68c1": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Start developing",
+            "description": "Wishlist function smart and fast, with just one click",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "830beeb4-260f-464d-ac1f-f410269299e4": {
+          "type": "time",
+          "settings": {
+            "bg": "#404969",
+            "title": "Wishlist function",
+            "description": "Wishlist function smart and fast, with just one click",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "ffd44b47-1578-4c6b-8466-4d06f6b3e477": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Compare function",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie mauris ac neque feugiat vestibulum placerat ut ligula. Pellentesque vehicula gravida eros dictum dapibus",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "c5a785bd-ab74-48b5-b899-9cf4153f17f2": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Shortcode",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie mauris ac neque feugiat vestibulum placerat ut ligula. Pellentesque vehicula gravida eros dictum dapibus",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "a4fb1d73-eded-4da6-b2f8-f27d5b7e7c85": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Boostraps 4.0",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie mauris ac neque feugiat vestibulum placerat ut ligula. Pellentesque vehicula gravida eros dictum dapibus",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "4838bd8b-6653-4a25-9645-37f97d707214": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Deploy in Github",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie mauris ac neque feugiat vestibulum placerat ut ligula. Pellentesque vehicula gravida eros dictum dapibus",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "85a90a22-ad6c-41f2-88ad-d3e0f57dabfb": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Newsletter, Countdown added",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie mauris ac neque feugiat vestibulum placerat ut ligula. Pellentesque vehicula gravida eros dictum dapibus",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "500b281d-c229-4edd-8e9b-3881d54e4133": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Product Related featured",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie mauris ac neque feugiat vestibulum placerat ut ligula. Pellentesque vehicula gravida eros dictum dapibus",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "f4aff4ee-bd83-4d3b-a88a-5c1629e71fae": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Megamenu featured",
+            "description": "Megamenu with 4 blocks are built-in, with high customization ability",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "10882b2f-4fbc-4b4c-a54a-d685478baa3e": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "Filter function",
+            "description": "Filter function",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "1c387a92-7086-403e-8576-befc159cd851": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "BIG UPDATE",
+            "description": "Change the organization of files in the theme to support multi-layout (header, footer,..) and multi-template (product page, collection page,..). The number of layouts and templates are unlimited",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "fb8f1f66-5dde-493d-9109-c7d99f52f978": {
+          "type": "time",
+          "settings": {
+            "bg": "#75ce66",
+            "title": "To be continued...",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie mauris ac neque feugiat vestibulum placerat ut ligula. Pellentesque vehicula gravida eros dictum dapibus",
+            "time": "Jan 04",
+            "link": "shopify:\/\/collections\/all"
+          }
+        }
+      },
+      "block_order": [
+        "c72af6af-da73-4fbd-8a02-8175224f68c1",
+        "830beeb4-260f-464d-ac1f-f410269299e4",
+        "ffd44b47-1578-4c6b-8466-4d06f6b3e477",
+        "c5a785bd-ab74-48b5-b899-9cf4153f17f2",
+        "a4fb1d73-eded-4da6-b2f8-f27d5b7e7c85",
+        "4838bd8b-6653-4a25-9645-37f97d707214",
+        "85a90a22-ad6c-41f2-88ad-d3e0f57dabfb",
+        "500b281d-c229-4edd-8e9b-3881d54e4133",
+        "f4aff4ee-bd83-4d3b-a88a-5c1629e71fae",
+        "10882b2f-4fbc-4b4c-a54a-d685478baa3e",
+        "1c387a92-7086-403e-8576-befc159cd851",
+        "fb8f1f66-5dde-493d-9109-c7d99f52f978"
+      ],
+      "settings": {
+        "border": "#f4f1eb",
+        "caption-bg": "#f4efe9",
+        "des_color": "#666666",
+        "button-text": "View Now",
+        "bg_color": "#ffffff",
+        "bg_attachment": false,
+        "max_width": 1390,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "title": "Our Journey",
+        "title_cl": "#3d4246",
+        "subtitle": "Follow us here",
+        "subtitle_cl": "#3d4246"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
