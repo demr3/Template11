@@ -1,6 +1,6 @@
 {
   "current": {
-    "header": "header-5",
+    "header": "header-3",
     "slideshow": "slideshow-4",
     "footer": "footer-1",
     "pnewsletter": "pnewsletter-1",
@@ -16,22 +16,22 @@
     "loading_color": "#6c757d",
     "container": 1300,
     "gutter": 30,
-    "logo": "shopify:\/\/shop_images\/logo_2.png",
+    "logo": "assets/TheOrigamiWay-logo.png",
     "logo_white": "shopify:\/\/shop_images\/logo_2_white.png",
     "logo_max_width": 150,
     "favicon": "shopify:\/\/shop_images\/ico.png",
     "safe_checkout_pcart": "",
     "safe_checkout_detail": "",
     "safe_checkout_cart": "",
-    "color_primary": "#b96f4a",
-    "color_secondary": "#b96f4a",
-    "color_cta": "#b96f4a",
+    "color_primary": "#fb1e1e",
+    "color_secondary": "#fb1e1e",
+    "color_cta": "#fb1e1e",
     "color_body_bg": "#ffffff",
     "color_content_bg": "#ffffff",
     "color_body_headings": "#222222",
-    "color_sub": "#b96f4a",
+    "color_sub": "#fb1e1e",
     "color_body_text": "#423f3f",
-    "color_button_bg": "#e69e6c",
+    "color_button_bg": "#fd6c6c",
     "color_button_text": "#ffffff",
     "alert_text": "#404969",
     "alert_bg": "#d6e4ff",
@@ -168,7 +168,7 @@
     "apmenuitem_ihtml_5": "",
     "apmenuitem_chtml_5": "",
     "color_breadcrumbs": "#6c757d",
-    "color_breadcrumbs_active": "#b96f4a",
+    "color_breadcrumbs_active": "#fb1e1e",
     "bg_breadcrumb": "#f7f1f0",
     "limit_ranger": 0,
     "show_title_breadcumbs": false,
@@ -494,9 +494,9 @@
           "background": "#ffffff",
           "textcolor": "#193a43",
           "linkcolor": "#193a43",
-          "linkhover": "#416e7a",
+          "linkhover": "#fb1e1e",
           "menutext": "#193a43",
-          "menutexthover": "#416e7a",
+          "menutexthover": "#fb1e1e",
           "menudroptexttitle": "#193a43",
           "menudroptext": "#193a43",
           "menudropbg": "#ffffff",
@@ -529,7 +529,7 @@
             "settings": {
               "widthlogofooter": 0,
               "title": "",
-              "text": "<div class=\"mt-0 mb-5\">\n        <img class=\"lybn-lazyload lazyload\" alt=\"logo\" data-src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0031\/3072\/0369\/files\/logo_2_white.png?v=1622352543\" width=\"130\">\n      <\/div>\n<p class=\"pr-lg-5\">Combining comfort and style for conscious women living an active lifestyle.<\/p>",
+              "text": "<div class=\"mt-0 mb-5\">\n        <img class=\"lybn-lazyload lazyload\" alt=\"logo\" data-src=\"https:\/\/f0c1ec-6b.myshopify.com\/cdn\/shop\/t\/7\/assets\/TheOrigamiWay-logo-dark.png\" width=\"130\">\n      <\/div>\n<p class=\"pr-lg-5\">Combining comfort and style for conscious women living an active lifestyle.<\/p>",
               "width": "33%"
             }
           },
@@ -629,7 +629,7 @@
               "bg_box": "#ffffff",
               "opacity_bgbox": 0.7,
               "title": "",
-              "title_color": "#416e7a",
+              "title_color": "#fb1e1e",
               "subtext": "<div class=\"text-center\">\n<h2>\nNew Style <br> Pieces<\/h2>\n<\/div>",
               "subtitle_color": "#6c757d",
               "button": "discover now",
@@ -689,7 +689,7 @@
           "mix_1": "#3e3e3e",
           "mix_2": "#ffffff",
           "text_cl": "#ffffff",
-          "cart_bg": "#b96f4a",
+          "cart_bg": "#fb1e1e",
           "cart_cl": "#ffffff"
         }
       },
@@ -713,8 +713,8 @@
               "button_link": "shopify:\/\/products\/circus-pouf-small",
               "stylebtn": true,
               "bg_button": "#fff1e6",
-              "color_button": "#b96f4a",
-              "bg_button_hover": "#b96f4a",
+              "color_button": "#fb1e1e",
+              "bg_button_hover": "#fb1e1e",
               "color_button_hover": "#ffffff"
             }
           },
@@ -724,7 +724,7 @@
               "image": "shopify:\/\/shop_images\/s10.jpg",
               "alignment": "center center",
               "text_alignment": "center center",
-              "bgwrap": "#b96f4a",
+              "bgwrap": "#fb1e1e",
               "slide_toptitle": "blossom",
               "slide_toptitle_color": "#ffffff",
               "slide_title": "On-Trend & Textured",
@@ -735,8 +735,8 @@
               "button_link": "shopify:\/\/collections\/all",
               "stylebtn": true,
               "bg_button": "#fff1e6",
-              "color_button": "#b96f4a",
-              "bg_button_hover": "#b96f4a",
+              "color_button": "#fb1e1e",
+              "bg_button_hover": "#fb1e1e",
               "color_button_hover": "#ffffff"
             }
           }
@@ -783,9 +783,9 @@
           "background": "#ffffff",
           "textcolor": "#193a43",
           "linkcolor": "#193a43",
-          "linkhover": "#416e7a",
+          "linkhover": "#fb1e1e",
           "menutext": "#193a43",
-          "menutexthover": "#416e7a",
+          "menutexthover": "#fb1e1e",
           "menudroptext": "#193a43",
           "menudropbg": "#ffffff"
         }
@@ -1177,7 +1177,7 @@
           "1585068264841": {
             "type": "html",
             "settings": {
-              "text_head": "Summer sale discount off 50%! <a href=\"#\" class=\"text-primary\">Shop Now<\/a>",
+              "text_head": "<a href=\"#\" class=\"text-primary-announcemnt\">Summer sale discount off 50%! Shop Now<\/a>",
               "align_head": "center",
               "width": "50%"
             }
@@ -1206,10 +1206,10 @@
           "textcolor-top": "#193a43",
           "background": "#ffffff",
           "textcolor": "#193a43",
-          "linkcolor": "#193a43",
-          "linkhover": "#416e7a",
+          "linkcolor": "#416e7a",
+          "linkhover": "#fb1e1e",
           "menutext": "#193a43",
-          "menutexthover": "#416e7a",
+          "menutexthover": "#fb1e1e",
           "menudroptexttitle": "#193a43",
           "menudroptext": "#193a43",
           "menudropbg": "#ffffff",
@@ -1490,13 +1490,13 @@
           "topbarbg": "#f8bb8b",
           "topborderbg": "rgba(0,0,0,0)",
           "textcolor-top": "#333333",
-          "textcolor-tophover": "#b96f4a",
+          "textcolor-tophover": "#fb1e1e",
           "background": "#ffffff",
           "textcolor": "#423f3f",
           "linkcolor": "#423f3f",
-          "linkhover": "#b96f4a",
+          "linkhover": "#fb1e1e",
           "menutext": "#423f3f",
-          "menutexthover": "#b96f4a",
+          "menutexthover": "#fb1e1e",
           "menudroptexttitle": "#423f3f",
           "menudroptext": "#666666",
           "menudropbg": "#ffffff",
@@ -2068,7 +2068,7 @@
         "settings": {
           "enable": false,
           "background": "#eae9e7",
-          "text": "#b96f4a",
+          "text": "#fb1e1e",
           "icon": "",
           "announcement": "<div class=\"py-1\" style=\"font-size:14px;\">\n<span style=\"letter-spacing:1px;\">FREE SHIPPING on all orders over $100<\/span>\n <a class=\"ml-1\" href=\"\/collections\/all\">SHOP NOW<\/a>\n<\/div>"
         }
@@ -2382,9 +2382,9 @@
           "background": "#ffffff",
           "textcolor": "#423f3f",
           "linkcolor": "#423f3f",
-          "linkhover": "#b96f4a",
+          "linkhover": "#fb1e1e",
           "menutext": "#423f3f",
-          "menutexthover": "#b96f4a",
+          "menutexthover": "#fb1e1e",
           "menudroptexttitle": "#423f3f",
           "menudroptext": "#423f3f",
           "menudropbg": "#ffffff",
@@ -2477,7 +2477,7 @@
           "autorotate_speed": 5,
           "color_arrow": "#262613",
           "color_dot_nav": "#262613",
-          "color_dot_active": "#d48114"
+          "color_dot_active": "#cf3636"
         }
       },
       "slideshow-3": {
