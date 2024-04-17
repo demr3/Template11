@@ -16,8 +16,8 @@
     "loading_color": "#6c757d",
     "container": 1300,
     "gutter": 30,
-    "logo": "assets/TheOrigamiWay-logo.png",
-    "logo_white": "shopify:\/\/shop_images\/logo_2_white.png",
+    "logo": "shopify:\/\/shop_images\/TheOrigamiWayLight.svg",
+    "logo_white": "shopify:\/\/shop_images\/TheOrigamiWayLight.svg",
     "logo_max_width": 150,
     "favicon": "shopify:\/\/shop_images\/ico.png",
     "safe_checkout_pcart": "",
@@ -1179,7 +1179,7 @@
             "settings": {
               "text_head": "<a href=\"#\" class=\"text-primary-announcemnt\">Summer sale discount off 50%! Shop Now<\/a>",
               "align_head": "center",
-              "width": "50%"
+              "width": "100%"
             }
           },
           "1585067191261": {
@@ -1191,9 +1191,7 @@
           }
         },
         "block_order": [
-          "1585067174364",
-          "1585068264841",
-          "1585067191261"
+          "1585068264841"
         ],
         "settings": {
           "enable_transparent": false,
@@ -1202,7 +1200,7 @@
           "enable_sticky": false,
           "animation_logo": false,
           "currencies": true,
-          "background-top": "#e4ece6",
+          "background-top": "#fb1e1e",
           "textcolor-top": "#193a43",
           "background": "#ffffff",
           "textcolor": "#193a43",
@@ -2419,7 +2417,7 @@
           "footermidbg": "#df0000",
           "footermidtext": "#262613",
           "footermidlink": "#c99a5c",
-          "logo": "shopify:\/\/shop_images\/newsletter1.jpg",
+          "logo": "shopify:\/\/shop_images\/TheOrigamiWayLight.svg",
           "logo_max_width": 150,
           "social_enable": true
         }
@@ -4702,7 +4700,7 @@
       "enable_rtl": false,
       "container": 1200,
       "gutter": 30,
-      "logo": "shopify:\/\/shop_images\/d30bb62a-f8d4-404d-ab26-b506a3519ec0_200x200_78b588c5-8150-4e3f-9dd1-59abf351502c.png",
+      "logo": "shopify:\/\/shop_images\/TheOrigamiWayLight.svg",
       "logo_max_width": 140,
       "favicon": "shopify:\/\/shop_images\/shopify-128.png",
       "safe_checkout_pcart": "shopify:\/\/shop_images\/safe-checkout.png",
