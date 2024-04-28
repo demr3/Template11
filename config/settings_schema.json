@@ -3076,6 +3076,12 @@
       },
       {
         "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok",
+        "info": "https://www.tiktok.com/"
+      },
+      {
+        "type": "text",
         "id": "social_snapchat_link",
         "label": "Snapchat",
         "info": "https:\/\/www.snapchat.com\/add\/shopify"

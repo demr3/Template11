@@ -15,9 +15,16 @@
 
     {% if settings.share_twitter %}
     <a target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" data-tooltip="true" class="social-sharing__link share-twitter" title="{{ 'general.social.alt_text.share_on_twitter' | t }}">
-      {% include 'icon-twitter' %}
+      {% include 'icon-x' %}
       <span class="share-title visually-hidden">{{ 'general.social.alt_text.share_on_twitter' | t }}</span>
     </a>
+    {% endif %}
+
+    {% if settings.share_tiktok %}
+      <a target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" data-tooltip="true" class="social-sharing__link share-twitter" title="{{ 'general.social.alt_text.share_on_twitter' | t }}">
+        {% include 'icon-tiktok' %}
+        <span class="share-title visually-hidden">{{ 'general.social.alt_text.share_on_tiktok' | t }}</span>
+      </a>
     {% endif %}
 
     {% if settings.share_pinterest %}

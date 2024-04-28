@@ -9,7 +9,7 @@
             {%- if settings.social_twitter_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
-                {%- include 'icon-twitter' -%}
+                {%- include 'icon-x' -%}
                 <span class="icon__fallback-text">Tw</span>
               </a>
             </li>
@@ -29,6 +29,14 @@
                 <span class="icon__fallback-text">Ins</span>
               </a>
             </li>
+            {%- endif -%}
+            {%- if settings.social_tiktok_link != blank -%}
+              <li class="list-inline-item">
+                <a href="{{ settings.social_tiktok_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'TikTok' }}">
+                  {%- include 'icon-tiktok' -%}
+                  <span class="icon__fallback-text">Tik</span>
+                </a>
+              </li>
             {%- endif -%}
             {%- if settings.social_tumblr_link != blank -%}
             <li class="list-inline-item">

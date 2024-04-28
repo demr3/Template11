@@ -11,8 +11,8 @@
       {%- if settings.social_twitter_link != blank -%}
       <li class="list-inline-item">
         <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
-          {%- include 'icon-twitter' -%}
-          <span >Tw</span>
+          {%- include 'icon-x' -%}
+          <span >X</span>
         </a>
       </li>
       {%- endif -%}
@@ -31,6 +31,14 @@
           <span >Ins</span>
         </a>
       </li>
+      {%- endif -%}
+      {%- if settings.social_tiktok_link != blank -%}
+        <li class="list-inline-item">
+          <a href="{{ settings.social_tiktok_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'tiktok' }}">
+            {%- include 'icon-tiktok' -%}
+            <span >Tik</span>
+          </a>
+        </li>
       {%- endif -%}
       {%- if settings.social_tumblr_link != blank -%}
       <li class="list-inline-item">

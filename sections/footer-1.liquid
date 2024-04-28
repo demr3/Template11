@@ -84,7 +84,7 @@
         {%- when 'social' -%}
         <div class="site-footer__section">
           {%- if block.settings.title != blank -%}
-          <h4 class="h4 site-footer__section-title text-{{ block.settings.align }}">{{ block.settings.title | escape }}</h4>
+          <h5 class="h5 site-footer__section-title text-{{ block.settings.align }}">{{ block.settings.title | escape }}</h5>
           {%- endif -%}
           <ul class="list-inline social-icons text-{{ block.settings.align }}">
             {%- include 'footer-socical' -%}
@@ -95,7 +95,7 @@
         {%- if linklists[block.settings.link_list].links.size > 0 -%}
         <div class="site-footer__section">
           {%- if linklists[block.settings.link_list].title != blank -%}
-          <h4 class="h4 site-footer__section-title">{{ linklists[block.settings.link_list].title }}</h4>
+          <h5 class="h5 site-footer__section-title">{{ linklists[block.settings.link_list].title }}</h5>
           {%- endif -%}
           <ul class="site-footer__list">
             {%- for link in linklists[block.settings.link_list].links -%}
@@ -108,7 +108,7 @@
         {%- when 'text' -%}
         <div class="site-footer__section">
           {%- if block.settings.title != blank -%}
-          <h4 class="h4 site-footer__section-title">{{ block.settings.title | escape }}</h4>
+          <h5 class="h5 site-footer__section-title">{{ block.settings.title | escape }}</h5>
           {%- endif -%}
           {%- if block.settings.logofooter != blank -%}
           {%- assign logo = block.settings.logofooter -%}
@@ -172,8 +172,8 @@
             {%- if settings.social_twitter_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
-                {%- include 'icon-twitter' -%}
-                <span >Tw</span>
+                {%- include 'icon-x' -%}
+                <span >X</span>
               </a>
             </li>
             {%- endif -%}
@@ -184,6 +184,14 @@
                 <span>Pin</span>
               </a>
             </li>
+            {%- endif -%}
+            {%- if settings.social_tiktok_link != blank -%}
+              <li class="list-inline-item">
+                <a href="{{ settings.social_tiktok_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'TikTok' }}">
+                  {%- include 'icon-tiktok' -%}
+                  <span>Tik</span>
+                </a>
+              </li>
             {%- endif -%}
             {%- if settings.social_instagram_link != blank -%}
             <li class="list-inline-item">
@@ -245,7 +253,7 @@
         {%- endif -%}
         <div class="{% if section.settings.ef_social == false %}col-lg-6 text-left{% else %}col-lg-4 text-center{% endif %} ">
           {%- if section.settings.copyright -%}
-          <span>&copy; {{ 'now' | date: "%Y" }}, <b class="text-capitalize">{{ shop.name | link_to: '/' }}</b>. {{ powered_by_link }}</span>
+          <span>&copy; {{ 'now' | date: "%Y" }}, <b class="text-capitalize">{{ shop.name | link_to: '/' }}</b>.</span>
           {%- else -%}
             <div>{{section.settings.customcopyright}}</div>
           {%- endif -%}
