@@ -20,11 +20,11 @@
     {%- else -%}
     {%- assign shop_name_length = shop.name.size -%}
     {% comment %} <a href="/" itemprop="url" {% if shop_name_length > 10 %} class="site-header__shop-name--small"{% endif %}>{{ shop.name }}</a> {% endcomment %}
-    <a href="/" itemprop="url" class="site-header__logo-link">
+    {% comment %} <a href="/" itemprop="url" class="site-header__logo-link">
       <img height="2000%" width="2000%" class="logo-dark" src="{{ "TheOrigamiWay-logo-light.png" | asset_url  }}"
         srcset="{{ "TheOrigamiWay-logo-light.png" | image_url: image_size  }} 1x, {{ "TheOrigamiWay-logo-light.png" | image_url: image_size, scale: 2 }} 2x"
         itemprop="logo">
-    </a>
+    </a> {% endcomment %}
     {%- endif -%}
     {%- if template.name != 'index' -%}
   </div>

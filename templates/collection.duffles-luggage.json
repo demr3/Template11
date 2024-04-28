@@ -1,7 +1,7 @@
 {
   "sections": {
     "product-grid": {
-      "type": "collection-template-3",
+      "type": "collection-template-1",
       "settings": {
         "collection_width": "container",
         "collection_perpage": 24,

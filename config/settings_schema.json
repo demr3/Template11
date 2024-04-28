@@ -529,13 +529,13 @@
         "type": "color",
         "id": "color_button_ud_text",
         "label": "Color Btn Underline",
-        "default": "#b96f4a"
+        "default": "#fb1e1e"
       },
       {
         "type": "color",
         "id": "color_button_ud_texthover",
         "label": "Color Hover Btn Underline",
-        "default": "#cb8664"
+        "default": "#ff5f6d"
       },
       {
         "type": "header",
