@@ -61,7 +61,7 @@
 
 <footer class="site-footer" role="contentinfo">
   <div class="{{ section.settings.setwidth }}">
-    <div class="row pb-5">
+    <div class="row pb-5 d-flex justify-content-between">
       {%- for block in section.blocks -%}
       {%- case block.settings.width -%}
       {%- when '16%' -%}
@@ -78,8 +78,10 @@
       {%- assign block_width = 'col-lg-9 col-md-12' -%}
       {%- when '100%' -%}
       {%- assign block_width = 'col-12' -%}
+      {% else %}
+      {%- assign block_width = block.settings.width -%}
       {%- endcase -%}
-      <div class="{{block_width}} " {{ block.shopify_attributes }}>
+      <div class="{{block_width}} {{block.settings.display}}" {{ block.shopify_attributes }}>
         {%- case block.type -%}
         {%- when 'social' -%}
         <div class="site-footer__section">
@@ -128,6 +130,21 @@
           {%- endif -%}
           <div class="rte-setting">{{ block.settings.text }}</div>
         </div>
+
+        {%- when 'accordion' -%}
+          {%- if linklists[block.settings.link_list].links.size > 0 -%}
+            <details class="site-footer footer__section pl-3 pr-3">
+              <summary class="row pb-1 pt-1 d-flex justify-content-between">
+                <h6 class="h6 site-footer__section-title">{{ linklists[block.settings.link_list].title }}</h6>
+                <span>{%- include 'icon-down' -%}</span>
+              </summary>
+              <ul class="site-footer__list">
+                {%- for link in linklists[block.settings.link_list].links -%}
+                <li class="site-footer__list-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            </details>
+          {%- endif -%}
 
         {%- when 'newsletter' -%}
         <div class="site-footer__section section-footer-email">
@@ -485,40 +502,18 @@
           "info": "This menu won't show dropdown items"
         },
         {
-          "type": "select",
+          "type": "text",
           "id": "width",
           "label": "Container width",
-          "default": "25%",
-          "options": [
-            {
-              "value": "16%",
-              "label": "16%"
-            },
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
+          "info": "Set the boot strap col-<size>-<num>",
+          "default": "col-lg-2"
+        },
+        {
+          "type": "text",
+          "id": "display",
+          "label": "Container Display Property",
+          "info": "Set the bootstrap display d-<size>-<view>",
+          "default": "d-block"
         }
       ]
     },
@@ -592,6 +587,33 @@
       ]
     },
     {
+      "type": "accordion",
+      "name": "Accordion Drop Down Title",
+      "settings": [
+        {
+          "id": "link_list",
+          "type": "link_list",
+          "label": "Menu",
+          "default": "footer",
+          "info": "This menu won't show dropdown items"
+        },
+        {
+          "type": "text",
+          "id": "width",
+          "label": "Container width",
+          "info": "Set the boot strap col-<size>-<num>",
+          "default": "col-lg-2"
+        },
+        {
+          "type": "text",
+          "id": "display",
+          "label": "Container width",
+          "info": "Set the bootstrap display d-<size>-<view>",
+          "default": "d-block"
+        }
+      ]
+    },
+    {
       "type": "newsletter",
       "name": "Newsletter",
       "limit": 1,
@@ -615,40 +637,9 @@
           "default": true
         },
         {
-          "type": "select",
+          "type": "text",
           "id": "width",
-          "label": "Container width",
-          "default": "25%",
-          "options": [
-            {
-              "value": "16%",
-              "label": "16%"
-            },
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
+          "label": "Container width"
         }
       ]
     }

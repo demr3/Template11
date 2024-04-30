@@ -545,39 +545,63 @@
               "width": "50%"
             }
           },
-          "text_HqKhAr": {
-            "type": "text",
+          "accordion_WmhfbX": {
+            "type": "accordion",
             "settings": {
-              "widthlogofooter": 130,
-              "title": "Company",
-              "text": "<div>\n<a href=\"#\">About Us<\/a>\n<\/div>\n<div>\n<a href=\"#\">Careers<\/a>\n<\/div>\n<div>\n<a href=\"#\">Track My Order<\/a>\n<div>\n<div>\n<a href=\"#\">Give 10%, Get 10%<\/a>\n<\/div>\n<\/div>\n<\/div>",
-              "width": "16%"
+              "link_list": "my-account",
+              "width": "col-lg-2",
+              "display": "d-lg-none"
             }
           },
-          "71f9ea60-c2de-4f37-91f9-1ba23dd7b985": {
-            "type": "text",
+          "accordion_4jg6LH": {
+            "type": "accordion",
             "settings": {
-              "widthlogofooter": 130,
-              "title": "My account",
-              "text": "<div>\n<a href=\"#\">Create Account<\/a>\n<\/div>\n<div>\n<a href=\"#\">Accounts<\/a>\n<\/div>\n<div>\n<a href=\"#\">Track My Order<\/a>\n<div>\n<div>\n<a href=\"#\">Give 10%, Get 10%<\/a>\n<\/div>\n<\/div>\n<\/div>",
-              "width": "16%"
+              "link_list": "my-account",
+              "width": "col-lg-2",
+              "display": "d-lg-none"
             }
           },
-          "655703c7-72ee-48c1-aea6-61c3f611d088": {
-            "type": "text",
+          "accordion_j9AEhp": {
+            "type": "accordion",
             "settings": {
-              "widthlogofooter": 130,
-              "title": "Customer Service",
-              "text": "<p>Sustainability<\/p>",
-              "width": "16%"
+              "link_list": "my-account",
+              "width": "col-lg-2",
+              "display": "d-lg-none"
+            }
+          },
+          "menu_wJ7rNc": {
+            "type": "menu",
+            "settings": {
+              "link_list": "my-account",
+              "width": "col-lg-2",
+              "display": "d-none d-lg-block"
+            }
+          },
+          "menu_wYkXTR": {
+            "type": "menu",
+            "settings": {
+              "link_list": "my-account",
+              "width": "col-lg-2",
+              "display": "d-none d-lg-block"
+            }
+          },
+          "menu_mgNBYk": {
+            "type": "menu",
+            "settings": {
+              "link_list": "my-account",
+              "width": "col-lg-2",
+              "display": "d-none d-lg-block"
             }
           }
         },
         "block_order": [
           "ff93e06a-30be-40b3-a91d-eda48ab56fb9",
-          "text_HqKhAr",
-          "71f9ea60-c2de-4f37-91f9-1ba23dd7b985",
-          "655703c7-72ee-48c1-aea6-61c3f611d088"
+          "accordion_WmhfbX",
+          "accordion_4jg6LH",
+          "accordion_j9AEhp",
+          "menu_wJ7rNc",
+          "menu_wYkXTR",
+          "menu_mgNBYk"
         ],
         "settings": {
           "setwidth": "container",
