@@ -60,8 +60,8 @@
 </style>
 
 <footer class="site-footer" role="contentinfo">
-  <div class="{{ section.settings.setwidth }}">
-    <div class="row pb-5 d-flex justify-content-between">
+  <div class="{{ section.settings.setwidth }} ">
+    <div class="row pb-3">
       {%- for block in section.blocks -%}
       {%- case block.settings.width -%}
       {%- when '16%' -%}
@@ -133,10 +133,11 @@
 
         {%- when 'accordion' -%}
           {%- if linklists[block.settings.link_list].links.size > 0 -%}
-            <details class="site-footer footer__section pl-3 pr-3">
-              <summary class="row pb-1 pt-1 d-flex justify-content-between">
-                <h6 class="h6 site-footer__section-title">{{ linklists[block.settings.link_list].title }}</h6>
-                <span>{%- include 'icon-down' -%}</span>
+            <details class="d-flex mt-3 mb-3 pl-3 pr-3 align-items-center" onclick="dropdown(this)">
+              <summary class="row d-flex justify-content-between align-items-center">
+                <h6 class="h5 site-footer__section-title">{{ linklists[block.settings.link_list].title }}</h6>
+                <span class="footer-icon-down" style="display: block">{%- include 'icon-down' -%}</span>
+                <span class="footer-icon-up" style="display: none">{%- include 'icon-up' -%}</span>
               </summary>
               <ul class="site-footer__list">
                 {%- for link in linklists[block.settings.link_list].links -%}
@@ -306,6 +307,22 @@
     </div>
   </div>
 </footer>
+<script>
+  function dropdown(accordion) {
+    var up = accordion.querySelector('span.footer-icon-up');
+    var down = accordion.querySelector("span.footer-icon-down");
+    if (up.style.display === "none") {
+      up.style.display = "block";
+    } else {
+      up.style.display = "none";
+    }
+    if (down.style.display === "none") {
+      down.style.display = "block";
+    } else {
+      down.style.display = "none";
+    }
+  }
+</script>
 {% schema %}
 {
   "name": "Footer 1",
