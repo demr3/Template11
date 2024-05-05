@@ -384,7 +384,7 @@
     right: auto;
     min-width: 280px;
     color: var(--header-menudroptext);
-    font-family: var(--g-font-2);
+    font-family: var(--g-font-4);
   }
   
   .site-nav__item .meganav li a {
@@ -416,7 +416,7 @@
     margin: 10px 0 15px;
     text-transform: uppercase;
     color: var(--header-menudroptexttitle);
-    font-family: var({{settings.font_family_menu}});
+    font-family: var(--g-font-4);
   }
   .site-nav__item-mega .menu-title a{
     color: var(--header-menudroptexttitle);
@@ -737,7 +737,7 @@
     color: var(--header-text);
     font-weight: 500;
     font-size: 16px;
-    font-family: var(--g-font-1);
+    font-family: var(--g-font-4);
     text-transform: uppercase;
   }
   
@@ -1229,7 +1229,7 @@
 .humbergerbar .site-head__list li{
   font-size: {{settings.font_sizemenu}};
   font-weight: {{settings.font_weight}};
-  font-family: var({{settings.font_family_menu}});
+  font-family: var(--g-font-4);
   border:none;
   padding-left: 0;
 }
@@ -1558,7 +1558,7 @@
                     </div>
                     {% else %}
                     {% if template != 'customers/login' %} {% comment DOES NOT APPEAR ON LOGIN PAGE - AVOID CONFLICT %} {% endcomment %}
-                    <div class="header--acount d-none d-lg-inline-block font-family-1">
+                    <div class="header--acount d-none d-lg-inline-block font-family-4">
                       <a href="javascript:void(0)" data-toggle="modal" data-target="#jsLogin" class="site-header__link site-account js-open-login pr-3">
                         
                         <span class="account-text">{{'customer.login.sign_in' | t}}</span>

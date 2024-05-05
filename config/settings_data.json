@@ -53,7 +53,7 @@
     "base_size_sup": 13,
     "font_weight_button": "500",
     "main_linklist": "main-menu",
-    "font_family_menu": "--g-font-1",
+    "font_family_menu": "--g-font-4",
     "font_sizemenu": "15px",
     "font_weight": "500",
     "type_menu": "uppercase",
@@ -410,46 +410,6 @@
       "product-suggest": {
         "type": "product-suggest",
         "blocks": {
-          "1560580908623": {
-            "type": "product",
-            "settings": {
-              "product": "aruba-top",
-              "local": "in Blumenau, Brazil",
-              "time": "About 50 minutes ago"
-            }
-          },
-          "1560581969631": {
-            "type": "product",
-            "settings": {
-              "product": "b-swim-river",
-              "local": "in Bauru, Brazil",
-              "time": "about 35 minutes ago"
-            }
-          },
-          "1560582020821": {
-            "type": "product",
-            "settings": {
-              "product": "bailey-bandeau",
-              "local": "in Blackburn, UK",
-              "time": "about 21 minutes ago"
-            }
-          },
-          "1590318690573": {
-            "type": "product",
-            "settings": {
-              "product": "bengal-mariposa-top",
-              "local": "in Blackburn, UK",
-              "time": "about 21 minutes ago"
-            }
-          },
-          "1597367617767": {
-            "type": "product",
-            "settings": {
-              "product": "swim-monte-carlo",
-              "local": "in Blackburn, UK",
-              "time": "about 21 minutes ago"
-            }
-          },
           "product_wJYk3N": {
             "type": "product",
             "settings": {
@@ -457,15 +417,19 @@
               "local": "in Blackburn, UK",
               "time": "about 21 minutes ago"
             }
+          },
+          "product_d8Rn6p": {
+            "type": "product",
+            "settings": {
+              "product": "genuine-leather-man-business-travel-bag-folding-suit-travel-duffel-with-shoe-pocket-cowhide-luggage-duffel-bag-for-suits",
+              "local": "in Houston, Tx",
+              "time": "about 2 minutes ago"
+            }
           }
         },
         "block_order": [
-          "1560580908623",
-          "1560581969631",
-          "1560582020821",
-          "1590318690573",
-          "1597367617767",
-          "product_wJYk3N"
+          "product_wJYk3N",
+          "product_d8Rn6p"
         ],
         "settings": {
           "enable": true,
@@ -3863,6 +3827,41 @@
           "scrollbar": false
         }
       },
+      "162266004920c5a7b3": {
+        "type": "advanced-content",
+        "blocks": {
+          "247d6711-35d9-4278-b492-1491815fce2d": {
+            "type": "html",
+            "settings": {
+              "fullhtml": false,
+              "code": "<h3 class=\"anim-loop-left white-space text-uppercase\">JElle - Les Echos - The Sunday Times - British Vogue - Eurowoman - Financial Times - The New York Times - WWD - Business of Fashion - Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - Financial Times - The New York Times - WWD - Business of Fashion - Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - Financial Times - The New York Times - WWD - Business of Fashion - WWD - Business of Fashion<\/h3>",
+              "width": "100%",
+              "align": "center"
+            }
+          }
+        },
+        "block_order": [
+          "247d6711-35d9-4278-b492-1491815fce2d"
+        ],
+        "settings": {
+          "animation": "fade-up",
+          "paddingsection": "88px 0px 88px 0px",
+          "paddingmobile": "32px 0px 32px 0px",
+          "marginsection": "0px 0px 0px 0px",
+          "marginmobile": "0px 0px 0px 0px",
+          "zindex": "0",
+          "bgsection": "#fefefe",
+          "rangebg": 0,
+          "bgbefore": "rgba(0,0,0,0)",
+          "e_size": "cover",
+          "e_repeat": "no-repeat",
+          "title_top": "",
+          "title": "",
+          "des": "",
+          "setwidth": "full",
+          "padding": true
+        }
+      },
       "16227412644167f80e": {
         "type": "backgroundvideo",
         "disabled": true,
@@ -3940,10 +3939,10 @@
           "title": "",
           "des": "",
           "setwidth": "container",
-          "arrows": true,
+          "arrows": false,
           "draggable": true,
           "dots": true,
-          "infinite": false
+          "infinite": true
         }
       },
       "1654361006e7ffcb15": {
@@ -3952,7 +3951,7 @@
           "1654361006e7ffcb15-0": {
             "type": "banner",
             "settings": {
-              "image": "shopify:\/\/shop_images\/7a1ad63ac23c845e06d99148d45170f9.jpg",
+              "image": "shopify:\/\/shop_images\/OZUKO-Men-Expandable-Backpack-Multifunctional-15-6-inch-Laptop-Backpacks-Multi-layer-Male-USB-Waterproof-School_821263e6-f8ca-4ad1-aaac-c1831d60c53c.webp",
               "width": "6",
               "description": "<h2 class=\"my-2\">Light Traverl <\/h2><p>A smooth leather.<\/p>",
               "bg_color": "#fefefe",
@@ -4062,7 +4061,7 @@
             "type": "html",
             "settings": {
               "fullhtml": false,
-              "code": "<div class=\" pr-md-5 mr-md-5 pt-5\">\n<span class=\"subtop\"> limited edition<\/span>\n<h2 class=\"mt-3 mb-5\">New ! Supper<br> Summer Sale<\/h2>\n<a href=\"\/collections\/new-arrivals\" class=\"btn btn-theme\">Shop now<\/a>\n\n<\/div>",
+              "code": "<div class=\" pr-md-5 mr-md-5 pt-5\">\n<span class=\"subtop\"> limited edition<\/span>\n<h2 class=\"mt-3 mb-5\">New ! Supper<br> Summer Sale<\/h2>\n<a href=\"\/collections\/new-arrivals\" class=\"btn btn-theme\">Shop now<\/a>\n<div class=\"mt-lg-5 pt-5 pl-lg-5 text-right\">\n<\/div>\n<\/div>",
               "width": "50%",
               "align": "auto"
             }
@@ -4314,7 +4313,7 @@
             "settings": {
               "pos_image": 72,
               "e_image": "right",
-              "image": "shopify:\/\/shop_images\/086d2dc79afb0ce4d6d83438a58eb2b1.jpg"
+              "image": "shopify:\/\/shop_images\/314a1f2408fca6b79da52a173c9225bb.jpg"
             }
           },
           "165666881930c22f5f-1": {
@@ -4322,7 +4321,7 @@
             "settings": {
               "bgtext": "#fefefe",
               "title": "",
-              "text": "<div class=\"pl-lg-5 ml-lg-5\">\n<span class=\"subtop\">Woman collection<\/span>\n<h2 class=\"mt-2 mb-4\">Hyper wearable Fashion <\/h2>\n<p>Elevate your everyday ensemble with our stylish and versatile women's bags, blending fashion-forward designs with practical functionality.<\/p>\n<a href=\"#\" class=\"mt-5 btn btn-theme\"> Shop now<\/a>\n<\/div>",
+              "text": "<div class=\"pl-lg-5 ml-lg-5\">\n<span class=\"subtop\">MATCH COLORS<\/span>\n<h2 class=\"mt-2 mb-4\">Hyper wearable Fashion <\/h2>\n<p>Discover the art of style at The Origami Way, where fashion meets finesse with our curated selection of clothing and handbags, folding elegance into every outfit.<\/p>\n<a href=\"#\" class=\"mt-5 btn btn-theme\"> Shop now<\/a>\n<\/div>",
               "align": "left"
             }
           }
@@ -4556,33 +4555,6 @@
           "padding": true
         }
       },
-      "1656905606471f0922": {
-        "type": "featured-articles",
-        "disabled": true,
-        "settings": {
-          "animation": "fade-up",
-          "paddingsection": "120px 0px 60px 0px",
-          "paddingmobile": "60px 0px 60px 0px",
-          "marginsection": "0px 0px 0px 0px",
-          "marginmobile": "0px 0px 0px 0px",
-          "zindex": "0",
-          "bgsection": "#ffffff",
-          "rangebg": 0,
-          "bgbefore": "#e3c9b8",
-          "title_top": "the journal",
-          "title": "Blog posts",
-          "des": "",
-          "blog": "news",
-          "setwidth": "container",
-          "arrows": true,
-          "draggable": true,
-          "dots": true,
-          "infinite": true,
-          "rows": "1",
-          "limit": 3,
-          "show": 3
-        }
-      },
       "165690588456226989": {
         "type": "newsletter",
         "settings": {
@@ -4625,6 +4597,7 @@
     },
     "content_for_index": [
       "1654361006e7ffcb15",
+      "162266004920c5a7b3",
       "1622833097e2ca621b",
       "16558932809b8bdcd6",
       "1656870916c9656b37",
@@ -4640,7 +4613,6 @@
       "165669679912ad3d9d",
       "1656666152b14fbfbe",
       "16225699042bd07c44",
-      "1656905606471f0922",
       "162237804441268bd5",
       "165690588456226989",
       "165591926672fd6044"
