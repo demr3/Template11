@@ -10,16 +10,18 @@
     <ul id="ul_list_categories" class=" mt-4 collapse list-unstyled {% if settings.categories_block_collapse %}show{% endif %}">
       {%- if settings.categories_block_items == blank -%}
       {%- for category in collections limit:settings.categories_block_number -%}
-      <li {% if collection.handle == category.handle %} class="active" {% endif %}>
-        <a class="justify-content-between d-flex" href="{{ category.url }}" title="{{ category.title }}">
-          {{ category.title }}
-          {%- if settings.categories_block_productcount -%}
-          {%- if category.all_products_count > 0 -%}
-          <span id="apolloQty{{ category.id }}" class="apolloQty pull-right">({{ category.all_products_count }})</span>
-          {%- endif -%}
-          {%- endif -%}
-        </a>
-      </li>
+        {% if category.all_products_count > 0 %}
+          <li {% if collection.handle == category.handle %} class="active" {% endif %}>
+            <a class="justify-content-between d-flex" href="{{ category.url }}" title="{{ category.title }}">
+              {{ category.title }}
+              {%- if settings.categories_block_productcount -%}
+              {%- if category.all_products_count > 0 -%}
+              <span id="apolloQty{{ category.id }}" class="apolloQty pull-right">({{ category.all_products_count }})</span>
+              {%- endif -%}
+              {%- endif -%}
+            </a>
+          </li>
+        {%- endif -%}
       {%- endfor -%}
       {%- else -%}
       {%- assign category_items = settings.categories_block_items | split:"," -%}

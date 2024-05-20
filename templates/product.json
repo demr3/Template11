@@ -68,7 +68,7 @@
         "waitlist": true,
         "product_selector": "radio",
         "sizeguide_enable": true,
-        "sizeguide_title": "Size guide",
+        "sizeguide_title": "Size Guide",
         "sizeguide_page": "sizeguide",
         "fake_view_enable": true,
         "fake_view_min": 12,

@@ -267,7 +267,12 @@
           {% unless product.has_only_default_variant %}
           {% for option in product.options_with_values %}
           <div class="selector-wrapper js product-form__item">
-            <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+            <div class="d-flex justify-content-between">
+              <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+              {% if option.name == "Size" %}
+                {%- include 'productSizeGuide' -%}
+              {% endif %}
+            </div>
             {% include 'productOption' %}
           </div>
           {% endfor %}
@@ -325,8 +330,8 @@
           </div>
           {% endif %}
           <div class="gr-btnjs py-4 mt-4 border-top">
-            <div class="d-flex align-items-center">
-              <div>
+            <div class="d-flex align-items-start flex-column">
+              {% comment %} <div> {% endcomment %}
                 {% if settings.enable_compare %}
                 <span class="btn js-btn-compare mr-4" data-tooltip="true" title="{{ 'products.product.compare_text' | t }}" data-handle="{{product.handle}}">
                   {%- include 'icon-exchange' -%}
@@ -337,13 +342,18 @@
                 {% if settings.enable_wishlsit %}
                 <span data-tooltip="true" class="js-btn-wishlist mr-4" title="{{ 'products.product.wishlist_text' | t }}" data-handle="{{product.handle}}">
                   {%- include 'icon-heart' -%}
-                  < class="wishlist-text">{{ 'products.product.wishlist_text' | t }}</<span>
+                  <div class="wishlist-text">{{ 'products.product.wishlist_text' | t }}</div>
                 </span>
                 {% endif %}
-              </div>
-              <div>
-                {%- include 'productSizeGuide' -%}
-              </div>
+                                
+                {% if section.settings.positiontab == "right" %}
+                  {% if section.settings.enable_tabvertical %}
+                    {%- include 'product-information-vertical' -%}
+                  {% else %}
+                    {%- include 'product-information' -%}
+                  {% endif %}
+                {% endif%}
+              {% comment %} </div> {% endcomment %}
             </div>
            
             {% if section.settings.social_sharing_products %}
@@ -385,14 +395,6 @@
         {% if settings.enable_countdown_page %}
         {% include 'product-countdown' %}
         {% endif %}
-        
-        {% if section.settings.positiontab == "right" %}
-          {% if section.settings.enable_tabvertical %}
-            {%- include 'product-information-vertical' -%}
-          {% else %}
-          {%- include 'product-information' -%}
-          {% endif %}
-        {% endif%}
       </div>
     </div>
   </div>
@@ -429,7 +431,6 @@
   {%- include 'next-prev-product' -%}
   {%- include 'photoswipe' -%}
   {%- include 'sticky-cart' -%}
-  </script>
 </div>
 
 {% schema %}
