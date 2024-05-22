@@ -4826,10 +4826,10 @@ a:hover, .link-accent-color:hover, a:focus, .link-accent-color:focus {
 }
 
 .product-form__item--quantity {
-	-webkit-flex: 0 0 100px;
-	-moz-flex: 0 0 100px;
-	-ms-flex: 0 0 100px;
-	flex: 0 0 100px;
+	-webkit-flex: 0 0 56px;
+	-moz-flex: 0 0 56px;
+	-ms-flex: 0 0 56px;
+	flex: 0 0 56px;
 }
 
 .product-form__buynow {
@@ -4838,7 +4838,6 @@ a:hover, .link-accent-color:hover, a:focus, .link-accent-color:focus {
 	-moz-flex-basis: 50%;
 	flex-basis: 50%;
 	display: flex;
-	margin-left: 20px;
 }
 
 .product-form__buynow .shopify-payment-button {
@@ -4850,15 +4849,14 @@ a:hover, .link-accent-color:hover, a:focus, .link-accent-color:focus {
 }
 
 .product-form__item--submit {
-	-ms-flex-preferred-size: 50%;
-	-webkit-flex-basis: 50%;
-	-moz-flex-basis: 50%;
-	flex-basis: 50%;
+	-ms-flex-preferred-size: auto;
+	-webkit-flex-basis: auto;
+	-moz-flex-basis: auto;
+	flex-basis: auto;
 	display: flex;
 	-webkit-flex-direction: column;
 	flex-direction: column;
 	margin-top: 0px;
-	margin-left: 20px !important;
 }
 
 .product-form__item--submit.btn-disablebuynow {
@@ -4869,10 +4867,11 @@ a:hover, .link-accent-color:hover, a:focus, .link-accent-color:focus {
 }
 
 .product-form--payment-button .product-form__item--submit {
-	-ms-flex-preferred-size: 50%;
-	-webkit-flex-basis: 50%;
-	-moz-flex-basis: 50%;
-	flex-basis: 50%;
+	-ms-flex-preferred-size: auto;
+	-webkit-flex-basis: auto;
+	-moz-flex-basis: auto;
+	flex-basis: auto;
+	width: 100%;
 }
 
 .product-form__item--submit.product-form__onboarding {
@@ -6364,8 +6363,12 @@ a:hover, .link-accent-color:hover, a:focus, .link-accent-color:focus {
 }
 
 .product-form__item .js-qty__input {
-	border-bottom: 2px solid #ddd;
+	/* border-bottom: 2px solid #ddd; */
+	border-style: solid;
+    border-width: 2px;
+    border-color: grey;
 	background: #fff;
+	padding-left: 4px;
 	height: 50px;
 }
 
