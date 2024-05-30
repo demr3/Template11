@@ -1393,32 +1393,32 @@ input[type=search]::-webkit-search-cancel-button {
           {%- include 'block-menu' -%}
         </div>
         <div class="ml-auto header-bottom__right col-md col-3">
-            {%- if shop.customer_accounts_optional or shop.customer_accounts_enabled -%}
-              {%- if customer -%}
-              <div class="header--acount d-none d-lg-inline-block">
+          {%- if shop.customer_accounts_optional or shop.customer_accounts_enabled -%}
+            {%- if customer -%}
+            <div class="header--acount d-none d-lg-inline-block">
               <a href="/account" class="site-header__link site-account pr-2">
                 <span class="account-text">{{'customer.account.title' | t}}</span>
               </a>|
               <a href="/account/logout" class="site-header__link site-logout mr-3 pl-2">
                 <span class="logout-text">{{'layout.customer.log_out' | t}}</span>
               </a>
-              </div>
-              {%- else -%}
-              <div class="header--acount d-none d-lg-inline-block" >
-                <a href="/account" class="site-header__link site-account pr-3">
-                  <span class="account-text">{{'customer.login.sign_in' | t}}</span>
-                </a>
-                {%-comment-%}
-                <a href="/account/register" class="site-header__link site-register mr-3">
-                  <span class="register-text">{{'customer.register.title' | t}}</span>
-                </a>
-                {%- endcomment-%}
-              </div>
-              {%- endif -%}
-            {%- endif -%}
-            <div class="mr-4 d-none d-lg-block">
-              {%- include 'block-currencies' -%}
             </div>
+            {%- else -%}
+            <div class="header--acount d-none d-lg-inline-block" >
+              <a href="/account" class="site-header__link site-account pr-3">
+                <span class="account-text">{{'customer.login.sign_in' | t}}</span>
+              </a>
+              {%-comment-%}
+              <a href="/account/register" class="site-header__link site-register mr-3">
+                <span class="register-text">{{'customer.register.title' | t}}</span>
+              </a>
+              {%- endcomment-%}
+            </div>
+            {%- endif -%}
+          {%- endif -%}
+          <div class="mr-4 d-none d-lg-block">
+            {%- include 'block-currencies' -%}
+          </div>
           <div class="site-header__search-wrap">
             <div class="overlay" onclick="toggleClassSearch()"></div>
             <form id="form-search-header" action="/search" method="get" class="site-header__search js-ajaxsearch" role="search">
@@ -1454,7 +1454,6 @@ input[type=search]::-webkit-search-cancel-button {
           {%- if section.settings.enablesidebar -%}
           {%- include 'sidebar-option' -%}
           {%- endif -%}
-        </div>
         </div>
       </div>
     </div>
