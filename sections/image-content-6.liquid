@@ -85,10 +85,10 @@
                                   alt="{{ block.settings.image2.alt | escape }}">
                               </div>
                             </div>
-                            {%- else -%}
+                            {% comment %} {%- else -%}
                             <div class="image-content__image">
                             {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-                            </div>
+                            </div> {% endcomment %}
                         {%- endif -%}
                         </div>
                     </div>
