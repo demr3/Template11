@@ -520,7 +520,7 @@
           "accordion_4jg6LH": {
             "type": "accordion",
             "settings": {
-              "link_list": "my-account",
+              "link_list": "customer-service",
               "width": "col-lg-2",
               "display": "d-lg-none"
             }
@@ -528,7 +528,7 @@
           "accordion_j9AEhp": {
             "type": "accordion",
             "settings": {
-              "link_list": "my-account",
+              "link_list": "company",
               "width": "col-lg-2",
               "display": "d-lg-none"
             }
@@ -544,7 +544,7 @@
           "menu_wYkXTR": {
             "type": "menu",
             "settings": {
-              "link_list": "my-account",
+              "link_list": "customer-service",
               "width": "col-lg-2",
               "display": "d-none d-lg-block"
             }
@@ -552,7 +552,7 @@
           "menu_mgNBYk": {
             "type": "menu",
             "settings": {
-              "link_list": "my-account",
+              "link_list": "company",
               "width": "col-lg-2",
               "display": "d-none d-lg-block"
             }
