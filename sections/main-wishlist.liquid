@@ -1,7 +1,113 @@
 <div class="container container--wishlist">
-    <h1 class="text-center h3 mb-3 text-capitalize">{{ page.title }}</h1>
-    <div class="content-block">
+  <div class="content-block left-cart-wishlist-section">
+    <div class="js-cart-header-total">
+      <h4>My cart</h4>
+      <div class="subtotal-text">
+        <p id="left-cart-subtotal">Subtotal:</p>
+        <p class="js-cart-total"></p>
+      </div>
+      {% comment %} {% render 'cart-items' %} {% endcomment %}
+    </div>
+    <div class="cart-wishlist">
       <div class="row js-wishlist-content">
       </div>
     </div>
   </div>
+  {% comment %} right cart section - contains checkout box ect {% endcomment %}
+  <div class="conent-block right-cart-section">
+    <div class="promo-codes-section">
+      <h5 id="right-text-header">Apply Discount Code</h5>
+      <div class="discount-text-input-section" action="/action_page.php">
+        <input class="discount-text-input" placeholder="Offer Code" type="text"  id="discount-code" name="dicount-code-text" tabindex="1">
+        {% comment %} <input class="btn btn--full btn-theme discount-submit-btn" type="submit" value="Submit"> {% endcomment %}
+        <button type="submit" name="apply" id="apply-discount-btn" class="btn btn--full btn-theme discount-submit-btn">
+          Submit
+        </button>
+        <p id="discount-message"></p>
+      </div>
+      <div id="applied-discounts">
+      </div>
+    </div>
+    
+    
+    <div class="order-summaray-section">
+      <h5 id="right-text-header">Order Summary</h5>
+      <div class="row order-summary-row">
+        <div class="col-8">
+            <p>Subtotal:</p>
+        </div>
+        <div class="col-4">
+            <p class="js-cart-total"></p>
+        </div>
+      </div>
+      <div class="row order-summary-row">
+        <div class="col-8">
+            <p>Shipping:</p>
+        </div>
+        <div class="col-4">
+            <p class="js-cart-total"></p>
+        </div>
+      </div>
+      <div class="row order-summary-row">
+        <div class="col-8">
+            <p>Estimated Tax:</p>
+        </div>
+        <div class="col-4">
+            <p class="js-cart-total"></p>
+        </div>
+      </div>
+      <hr class="cart-break-line">
+      <div class="mini-cart-btns mt-4 right-cart">
+        <a class="btn gradient-theme js-cart-btn-checkout btn-theme w-100 {% if cart.item_count == 0 %} disabled{% endif %}" href="/checkout">{{'cart.general.checkout' | t }}</a>
+      </div>
+    </div>
+    
+    
+    <div class="acepted-payments-section">
+      <h5 id="right-text-header">Acepted Payments</h5>
+      <ul id="right-payment-methods" class="list-inline payment-icons text-lg-right">
+        <li class="list-inline-item"> 
+        <img class="payment-icon"  src='{{ 'PayPal.svg' | asset_url }}' width="38" height="24"alt="Description of SVG">              
+        </li> 
+        <li class="list-inline-item"> 
+        <img class="payment-icon" src='{{ 'MasterCard.svg' | asset_url }}' width="38" height="24"alt="Description of SVG">              
+        </li>
+        <li class="list-inline-item"> 
+        <img class="payment-icon" src='{{ 'AMEX.svg' | asset_url }}' width="38" height="24"alt="Description of SVG">              
+        </li>
+        <li class="list-inline-item"> 
+        <img class="payment-icon" src='{{ 'Discover.png' | asset_img_url }}' width="38" height="24"alt="Description of SVG">              
+        </li>
+        
+        <li class="list-inline-item">  
+        <svg class="payment-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" aria-labelledby="pi-shopify_pay"><title id="pi-shopify_pay">Shop Pay</title><rect x=".5" y=".5" width="37" height="23" rx="2" fill="#5A31F4" stroke="#3F22AB"></rect><path d="M21.382 9.713c0 1.668-1.177 2.858-2.821 2.858h-1.549a.133.133 0 00-.092.038.128.128 0 00-.038.091v2.192a.129.129 0 01-.08.119.13.13 0 01-.05.01h-1.084a.13.13 0 01-.12-.08.127.127 0 01-.01-.05V6.986a.129.129 0 01.13-.13h2.9c1.637 0 2.814 1.19 2.814 2.858zm-1.352 0c0-.958-.658-1.658-1.55-1.658h-1.468a.13.13 0 00-.13.13v3.05a.129.129 0 00.13.13h1.468c.892.005 1.55-.695 1.55-1.652zM21.704 13.504a1.527 1.527 0 01.647-1.317c.423-.316 1.084-.48 2.055-.514l1.033-.036v-.303c0-.607-.41-.863-1.068-.863-.658 0-1.075.231-1.17.61a.127.127 0 01-.125.09h-1.022a.13.13 0 01-.126-.092.126.126 0 01-.004-.055c.152-.898.904-1.58 2.494-1.58 1.692 0 2.303.783 2.303 2.276v3.172a.13.13 0 01-.132.129h-1.03a.13.13 0 01-.13-.13v-.236a.096.096 0 00-.061-.091.099.099 0 00-.107.022c-.31.334-.808.575-1.607.575-1.175 0-1.95-.607-1.95-1.657zm3.735-.687v-.246l-1.339.07c-.705.036-1.115.326-1.115.816 0 .444.376.69 1.034.69.893 0 1.42-.48 1.42-1.33zM27.755 17.417v-.919a.131.131 0 01.157-.127c.158.029.318.044.479.044a1.229 1.229 0 001.245-.876l.067-.211a.133.133 0 000-.088l-2.145-5.471a.13.13 0 01.122-.18h1.04a.132.132 0 01.123.085l1.456 3.859a.131.131 0 00.125.088.133.133 0 00.125-.088l1.265-3.848a.13.13 0 01.126-.09h1.076a.134.134 0 01.132.116.133.133 0 01-.008.063l-2.295 6.076c-.528 1.413-1.433 1.773-2.43 1.773a1.96 1.96 0 01-.561-.066.132.132 0 01-.1-.14zM8.57 6.4a5.363 5.363 0 00-3.683 1.427.231.231 0 00-.029.31l.618.839a.236.236 0 00.276.084.237.237 0 00.086-.056 3.823 3.823 0 012.738-1.11c2.12 0 3.227 1.584 3.227 3.15 0 1.7-1.163 2.898-2.835 2.921-1.292 0-2.266-.85-2.266-1.974a1.908 1.908 0 01.713-1.48.231.231 0 00.033-.324l-.65-.815a.236.236 0 00-.339-.034c-.399.32-.72.724-.942 1.183a3.39 3.39 0 00-.337 1.47c0 1.935 1.655 3.452 3.775 3.464h.03c2.517-.032 4.337-1.884 4.337-4.415 0-2.247-1.667-4.64-4.752-4.64z" fill="#fff"></path></svg>
+        </li>
+        <li class="list-inline-item">  
+        <svg class="payment-icon" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" width="38" height="24" aria-labelledby="pi-visa"><title id="pi-visa">Visa</title><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"></path><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path><path d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z" fill="#142688"></path></svg>
+        </li>
+    </ul>
+    </div>
+    <div class="shipping-returns-section">
+      <div class="free-shipping free-shipping-top">
+        <h5 id="right-text-header">FREE SHIPPING</h5>
+        <p>Delivery within 2–7 Business Days</p>
+      </div>
+      <div class="free-shipping">
+        <h5 id="right-text-header">FREE RETURNS</h5>
+        <p class="m-0">30-day Returns Guarantee</p>
+      </div>
+    </div>
+    <div class="origami-help-section">
+      <h5 id="right-text-header">CAN WE HELP?</h5>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Wishlist",
+  "settings": [
+
+  ]
+}
+{% endschema %}

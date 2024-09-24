@@ -270,7 +270,7 @@
     "e_linkline": true,
     "cookie_enable": true,
     "cookie_message": "This website uses cookies to ensure you get the best experience on our website.",
-    "cookie_url": "shopify:\/\/policies\/privacy-policy",
+    "cookie_url": "shopify:\/\/pages\/html-template",
     "cookie_url_text": "Learn More",
     "cookie_ok": "Got it!",
     "show_multiple_currencies": false,
@@ -578,7 +578,7 @@
           "text_copy": "#f7f5f0",
           "type_text_title": false,
           "payment_info": "svg",
-          "ef_social": false,
+          "ef_social": true,
           "copyright": true,
           "customcopyright": ""
         }
