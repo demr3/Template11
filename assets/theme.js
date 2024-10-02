@@ -2639,7 +2639,7 @@ theme.Instagrams = (function() {
       after			: afterInstagram
     });
 
-    feed.run();
+    // feed.run();
   }
 
   Instagrams.prototype = _.assignIn({}, Instagrams.prototype, {
@@ -3945,6 +3945,9 @@ theme.miniCart = (function(){
       cartCount = '.js-cart-count',
       cartContent = '.js-mini-cart-content',
       cartTotal = '.js-cart-total',
+      cartSubotal = '.js-cart-subtotal',
+      cartDiscount = '.js-cart-discount',
+      cartTax = '.js-cart-tax',
       $btnCheckout = $('.js-cart-btn-checkout'),
       numberDisplayed = 5,
   emptyCartHTML = `<div class="alert">${theme.strings.cartEmpty}</div>`;
@@ -3963,6 +3966,9 @@ theme.miniCart = (function(){
       }
       $(cartCount).text(cart.item_count);
       $(cartTotal).html(theme.Currency.formatMoney(cart.total_price, theme.moneyFormat));
+      $(cartSubotal).html(theme.Currency.formatMoney(cart.items_subtotal_price, theme.moneyFormat));
+      $(cartDiscount).html(theme.Currency.formatMoney(cart.total_discount, theme.moneyFormat));
+      $(cartTax).html(theme.Currency.formatMoney(0.00, theme.moneyFormat));
       theme.freeShipping.load(cart);
       theme.updateCurrencies();
     })
@@ -4032,6 +4038,10 @@ theme.miniCart = (function(){
         
       });
       $(cartTotal).html(theme.Currency.formatMoney(cart.total_price, theme.moneyFormat));
+      $(cartSubotal).html(theme.Currency.formatMoney(cart.original_total_price, theme.moneyFormat));
+      $(cartDiscount).html(theme.Currency.formatMoney(cart.total_discount, theme.moneyFormat));
+      $(cartTax).html(theme.Currency.formatMoney('0.00', theme.moneyFormat));
+      console.log("cart is", cart)
       theme.updateCurrencies();
       
       $(".change-minicart").change(function(){
@@ -4199,6 +4209,11 @@ theme.wishlist = (function (){
       $wishlistContainer = $('.js-wishlist-content'),
       wishlistObject = JSON.parse(localStorage.getItem('localWishlist')) || [],
       wishlistPageUrl = $('.js-wishlist-link').attr('href'),
+      applydiscount = '#apply-discount-btn',
+      cartSubotal = '.js-cart-subtotal',
+      cartDiscount = '.js-cart-discount',
+      cartTotal = '.js-cart-total',
+      cartTax = '.js-cart-tax';
       loadNoResult = function (){
     $wishlistContainer.html(`<div class="col text-center"><div class="alert alert-warning d-inline-block">${theme.strings.wishlistNoResult}</div></div>`);
       };
@@ -4288,6 +4303,225 @@ theme.wishlist = (function (){
     }
   });
 
+  async function getCartId() {
+    const cartData = await fetch(window.Shopify.routes.root + 'cart.js');
+    const cartContents = await cartData.json();
+    console.log(cartContents);
+
+    const cartId = `gid://shopify/Cart/${cartContents.token}`;
+
+    return cartId;
+  }
+
+  async function getCartIdt(token) {
+    const cartId = `gid://shopify/Cart/${token}`;
+
+    return cartId;
+  }
+
+  function displayDiscountCodes(code) {
+    const appliedDiscountsSection = document.getElementById('applied-discounts');
+    const newDiv = document.createElement("div");
+    newDiv.setAttribute("id", `discount-code--${code}`);
+    newDiv.setAttribute("class", `discount-code-box`);  
+    newDiv.innerHTML = `<p>${code}</p>
+                        <button class="btn js-remove-discount" id=${code}>×</button>`;
+    appliedDiscountsSection.appendChild(newDiv);
+    console.log(`Creating div tag for ${code}`)
+  }
+
+  async function runGraphQLQuery(query, variables) {
+    try {
+      const response = await fetch('/api/2021-07/graphql.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Storefront-Access-Token': '0c9636ea61f07258d2c3a7669dc60155' 
+        },
+        body: JSON.stringify({
+          query: query,
+          variables: variables
+        })
+      });
+
+      // Parse the JSON response
+      const responseData = await response.json();
+
+      // Return the parsed data
+      return responseData;
+    } catch (error) {
+      console.error('GraphQL Query Error:', error);
+      throw new Error('An error occurred while fetching the GraphQL data.');
+    }
+  }
+
+  async function findAppliedDiscounts(cartId) {
+    let discountList = [];
+    // Get current discounts
+    const cart = `
+      query getCart($cartId: ID!) {
+        cart(id: $cartId) {
+          discountCodes {
+            applicable
+            code
+          }
+        }
+      }
+    `;
+    const variable = {
+      cartId: cartId
+    };
+    console.log("Info: requesting cart discounts",cartId);
+    const cartResult = await runGraphQLQuery(cart, variable);
+    console.log("tried", cartResult);
+    if (cartResult.data.cart !== null) {
+      if (cartResult.data.cart.discountCodes !== null) {
+        const codeObj = cartResult.data.cart.discountCodes;
+        codeObj.forEach(Code => {
+          if (Code.applicable) {
+            discountList.push(Code.code);
+            console.log(`Pusing discount code ${Code.code}`);
+          }
+        });
+        console.log('Found the data:', cartResult.data);
+      }
+    } else {
+      console.log('No discount codes applied.');
+    }
+    console.log("discountList = ",discountList);
+    return discountList;
+  }
+  
+  async function applyDiscounts(cartId, discountList) {
+    // const updateCartDiscount = async (cartId, discountCode) => {
+    const query = `
+      mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]) {
+        cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
+          cart {
+            cost {
+              totalTaxAmount {
+                amount
+              }
+            }
+            discountCodes {
+              applicable
+              code
+            }
+          }
+          userErrors {
+            code
+            field
+            message
+          }
+        }
+      }
+    `;
+    const variables = {
+      cartId: cartId,
+      discountCodes: discountList  // You can pass multiple discount codes if needed
+    };
+    console.log("second request");
+    const response = await runGraphQLQuery(query, variables)
+    
+    // Update discounts
+    var taxes = response.data.cartDiscountCodesUpdate.cart.cost.totalTaxAmount || 0.00;
+    Shopify.getCart( function(cart){
+      var totaldiscounts = 0.00;
+      totaldiscounts = cart.total_discount;
+      $(cartDiscount).html(theme.Currency.formatMoney(totaldiscounts, theme.moneyFormat));
+      $(cartSubotal).html(theme.Currency.formatMoney(cart.original_total_price, theme.moneyFormat));
+      $(cartTax).html(theme.Currency.formatMoney(taxes, theme.moneyFormat));
+      $(cartTotal).html(theme.Currency.formatMoney(cart.total_price, theme.moneyFormat));
+      console.log("updated subtotal",totaldiscounts,"", subtotal, response);
+    });
+    return response;
+  }
+
+  $(document).on('click', applydiscount, async function() {
+    var discountMessage = document.getElementById('discount-message');
+    var discount_input = document.getElementById('discount-code');
+    var discountCode = discount_input.value;
+    discount_input.value = '';
+    displayDiscountCodes(discountCode);
+    if (discountCode) {
+      try {
+        const cartId = await getCartId();
+        const discountList = await findAppliedDiscounts(cartId);
+        discountList.push(discountCode);
+        
+        let response = await applyDiscounts(cartId, discountList);
+        console.log("this is the response",response);
+        
+        // $(cartDiscount).html(theme.Currency.formatMoney(cart.total_discount, theme.moneyFormat));
+        
+        // Check for errors in the response
+        // if (responseData.data || responseData.data.cartDiscountCodesUpdate.userErrors.length > 0) {
+        //   const errorMessages = responseData.data.cartDiscountCodesUpdate.userErrors.map(err => err.message).join(', ');
+        //   console.error('Error applying discount:', errorMessages);
+
+        //   // Display error message in the p tag
+        //   discountMessage.textContent = 'Failed to apply discount: ' + errorMessages;
+        //   discountMessage.style.color = 'red'; // Optional: Change text color to red for errors
+        // } else {
+        //   console.log('Discount applied successfully.');
+
+        //   // Display success message in the p tag
+        //   discountMessage.textContent = 'Discount applied successfully!';
+        //   discountMessage.style.color = 'green'; // Optional: Change text color to green for success
+        // }
+      } catch (error) {
+        // Handle network or unexpected errors
+        console.error('Error:', error);
+
+        // Display error message in the p tag
+        discountMessage.textContent = 'An error occurred while applying the discount. Please try again.';
+        discountMessage.style.color = 'red'; // Optional: Change text color to red for errors
+      }
+    } else {
+      // Display message to enter a discount code
+      discountMessage.textContent = 'Please enter a discount code.';
+      discountMessage.style.color = 'orange'; // Optional: Change text color to orange for missing code
+    }
+  });
+
+  $(document).on('click','.js-remove-discount', async function() {
+    const id = this.id;
+    const element = document.getElementById(`discount-code--${this.id}`);
+    element.remove();
+    let newDiscounts = [];
+    Shopify.getCart( async function(cart){
+      console.log("the cart is",cart);
+      const cartId = await getCartIdt(cart.token);
+      let discountList = await findAppliedDiscounts(cartId);
+      
+      discountList.forEach(code => {
+        if (code !== id) {
+          newDiscounts.push(code);
+          console.log(code, "not equal to", id);
+        } 
+      });
+      applyDiscounts(cartId, newDiscounts);
+      console.log("after applying discounts",cart);
+    });
+  });
+  async function loaddiscountcodes() {
+    try {
+      const cartId = await getCartId();
+      let discountList = await findAppliedDiscounts(cartId);
+
+      discountList.forEach(code => {
+        displayDiscountCodes(code);
+      });
+      
+    } catch (error) {
+      // Handle network or unexpected errors
+      console.error('Error:', error);
+    }
+    
+    console.log("page is fully loaded");
+  }
+  loaddiscountcodes();
+  $(document).on('shopify:section:load', loaddiscountcodes);
   loadWishlist();
   $(document).on('shopify:section:load', loadWishlist);
   return{
@@ -5760,183 +5994,7 @@ theme.ajaxFilter = (function() {
   
 })();
 
-function displayDiscountCodes(code) {
-  const appliedDiscountsSection = document.getElementById('applied-discounts');
-  const newDiv = document.createElement("div");
-  newDiv.setAttribute("id", `discount-code--${code}`);
-  newDiv.setAttribute("class", `discount-code-box`);
-  newDiv.innerHTML = `<p>${code}</p>`;
-  appliedDiscountsSection.appendChild(newDiv);
-  console.log(`Creating div tag for ${code}`)
-}
-
-function removeDiscountCode() {
-
-}
-
-async function runGraphQLQuery(query, variables) {
-  try {
-    const response = await fetch('/api/2021-07/graphql.json', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': '0c9636ea61f07258d2c3a7669dc60155' 
-      },
-      body: JSON.stringify({
-        query: query,
-        variables: variables
-      })
-    });
-
-    // Parse the JSON response
-    const responseData = await response.json();
-
-    // Return the parsed data
-    return responseData;
-  } catch (error) {
-    console.error('GraphQL Query Error:', error);
-    throw new Error('An error occurred while fetching the GraphQL data.');
-  }
-}
-
-document.getElementById('apply-discount-btn').addEventListener('click', async function() {
-  var discountCode = document.getElementById('discount-code').value;
-  var discountMessage = document.getElementById('discount-message');
+theme.wishlist = (function (){
   
-  if (discountCode) {
-    try {
-      const cartData = await fetch(window.Shopify.routes.root + 'cart.js');
-      const cartContents = await cartData.json();
-      console.log(cartContents);
-      
-      const cartId = `gid://shopify/Cart/${cartContents.token}`;
-    
-      // Get current discounts
-      const cart = `
-        query getCart($cartId: ID!) {
-          cart(id: $cartId) {
-            discountCodes {
-              applicable
-              code
-            }
-          }
-        }
-      `;
-      const variable = {
-        cartId: cartId
-      };
-      console.log("first request");
-      const cartResult = await runGraphQLQuery(cart, variable);
-      console.log(cartResult);
-      const discountCodesApplied = cartResult.data.cart.discountCodes;
-      let discountList = [discountCode];
-      discountCodesApplied.forEach(Code => {
-        if (discountCode.toUpperCase() === Code.code.toUpperCase()) {
-          // Do nothing
-        } else {
-          if (Code.applicable) {
-            discountList.push(Code.code);
-            console.log(`Pusing discount code ${Code.code}; applicalbe and not equal not equal ${discountCode.toUpperCase()} === ${Code.code.toUpperCase()}`);
-          }
-        }
-      });
-
-
-      
-  
-      // const updateCartDiscount = async (cartId, discountCode) => {
-      const query = `
-        mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]) {
-          cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
-            cart {
-              discountCodes {
-                applicable
-                code
-              }
-            }
-            userErrors {
-              code
-              field
-              message
-            }
-          }
-        }
-      `;
-      const variables = {
-        cartId: cartId,
-        discountCodes: discountList  // You can pass multiple discount codes if needed
-      };
-      console.log("second request");
-      console.log(await runGraphQLQuery(query, variables));
-
-      // Check for errors in the response
-      // if (responseData.data || responseData.data.cartDiscountCodesUpdate.userErrors.length > 0) {
-      //   const errorMessages = responseData.data.cartDiscountCodesUpdate.userErrors.map(err => err.message).join(', ');
-      //   console.error('Error applying discount:', errorMessages);
-
-      //   // Display error message in the p tag
-      //   discountMessage.textContent = 'Failed to apply discount: ' + errorMessages;
-      //   discountMessage.style.color = 'red'; // Optional: Change text color to red for errors
-      // } else {
-      //   console.log('Discount applied successfully.');
-
-      //   // Display success message in the p tag
-      //   discountMessage.textContent = 'Discount applied successfully!';
-      //   discountMessage.style.color = 'green'; // Optional: Change text color to green for success
-      // }
-    } catch (error) {
-      // Handle network or unexpected errors
-      console.error('Error:', error);
-
-      // Display error message in the p tag
-      discountMessage.textContent = 'An error occurred while applying the discount. Please try again.';
-      discountMessage.style.color = 'red'; // Optional: Change text color to red for errors
-    }
-  } else {
-    // Display message to enter a discount code
-    discountMessage.textContent = 'Please enter a discount code.';
-    discountMessage.style.color = 'orange'; // Optional: Change text color to orange for missing code
-  }
-});
-
-window.addEventListener("load", async function() {
-  try {
-    const cartData = await fetch(window.Shopify.routes.root + 'cart.js');
-    const cartContents = await cartData.json();
-    const cartId = `gid://shopify/Cart/${cartContents.token}`;
-  
-    // Get current discounts
-    const cart = `
-      query getCart($cartId: ID!) {
-        cart(id: $cartId) {
-          discountCodes {
-            applicable
-            code
-          }
-        }
-      }
-    `;
-    const variable = {
-      cartId: cartId
-    };
-    const cartResult = await runGraphQLQuery(cart, variable);
-    const discountCodesApplied = cartResult.data.cart.discountCodes;
-    discountCodesApplied.forEach(Code => {
-      if (Code.applicable) {
-        displayDiscountCodes(Code.code);
-      }
-    });
-
-
-    
-
-    
-  } catch (error) {
-    // Handle network or unexpected errors
-    console.error('Error:', error);
-  }
-  
-  console.log("page is fully loaded");
-});
-
+})()
 $(theme.init);

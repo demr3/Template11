@@ -6,10 +6,20 @@
         <p id="left-cart-subtotal">Subtotal:</p>
         <p class="js-cart-total"></p>
       </div>
-      {% comment %} {% render 'cart-items' %} {% endcomment %}
     </div>
-    <div class="cart-wishlist">
-      <div class="row js-wishlist-content">
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'main-wishlist-bag')" id="defaultOpen">Shopping Bag</button>
+      <button class="tablinks" onclick="openCity(event, 'main-wishlist-favorites')">My Favorites</button>
+    </div>
+    
+    <div id="main-wishlist-bag" class="tabcontent">
+      {% render 'cart-items' %}
+    </div>
+    
+    <div id="main-wishlist-favorites" class="tabcontent">
+      <div class="cart-wishlist">
+        <div class="row js-wishlist-content">
+        </div>
       </div>
     </div>
   </div>
@@ -20,7 +30,7 @@
       <div class="discount-text-input-section" action="/action_page.php">
         <input class="discount-text-input" placeholder="Offer Code" type="text"  id="discount-code" name="dicount-code-text" tabindex="1">
         {% comment %} <input class="btn btn--full btn-theme discount-submit-btn" type="submit" value="Submit"> {% endcomment %}
-        <button type="submit" name="apply" id="apply-discount-btn" class="btn btn--full btn-theme discount-submit-btn">
+        <button type="submit" name="apply" id="apply-discount-btn" class="btn btn--full btn-theme discount-submit-btn" >
           Submit
         </button>
         <p id="discount-message"></p>
@@ -31,32 +41,39 @@
     
     
     <div class="order-summaray-section">
-      <h5 id="right-text-header">Order Summary</h5>
-      <div class="row order-summary-row">
-        <div class="col-8">
+      <h5 id="right-text-header" class="order-summary-block">Order Summary</h5>
+      <div class="order-summary-row">
+        <div>
             <p>Subtotal:</p>
         </div>
-        <div class="col-4">
-            <p class="js-cart-total"></p>
+        <div>
+            <p class="js-cart-subtotal"></p>
         </div>
       </div>
-      <div class="row order-summary-row">
-        <div class="col-8">
-            <p>Shipping:</p>
+      <div class="order-summary-row">
+        <div>
+            <p>Discount:</p>
         </div>
-        <div class="col-4">
-            <p class="js-cart-total"></p>
+        <div>
+            <p class="js-cart-discount"></p>
         </div>
       </div>
-      <div class="row order-summary-row">
-        <div class="col-8">
+      <div class="order-summary-row">
+        <div>
             <p>Estimated Tax:</p>
         </div>
-        <div class="col-4">
+        <div>
+            <p class="js-cart-tax"></p>
+        </div>
+      </div>
+      <div class="order-summary-row">
+        <div>
+            <p>Order Total: </p>
+        </div>
+        <div>
             <p class="js-cart-total"></p>
         </div>
       </div>
-      <hr class="cart-break-line">
       <div class="mini-cart-btns mt-4 right-cart">
         <a class="btn gradient-theme js-cart-btn-checkout btn-theme w-100 {% if cart.item_count == 0 %} disabled{% endif %}" href="/checkout">{{'cart.general.checkout' | t }}</a>
       </div>
@@ -99,10 +116,88 @@
     </div>
     <div class="origami-help-section">
       <h5 id="right-text-header">CAN WE HELP?</h5>
+      <div class="accordion text-left">
+      <div class="accordion-item position-relative">
+        <div class="cs-title">
+          <button aria-controls="collapseOne" aria-expanded="false" class="title btn text-left btn-block mouseFocusUnActive collapsed" data-target="#collapseOne" data-toggle="collapse">
+            {%  render 'icon-phone-alt' %} 
+            <span style="margin-left: 9px;">Customer Service</span>
+          </button>
+        </div>
+        <div aria-labelledby="collapseOne" class="collapse" id="collapseOne" style="">
+          <ul class="cs-list">
+            <li class="position-relative">
+              <span aria-hidden="true">For assistance, email us at:</span>
+              <span aria-hidden="true">support@theorigamiway.com</span>
+            </li>
+            <li class="position-relative">
+              <span aria-hidden="true">We aim to respond within 24-48 hours.</span>
+              <span aria-hidden="true">Our hours of operation are:</span>
+              <ul>
+                <li class="inner-position-relative">Mon-Fri: 9 AM – 9 PM EST</li>
+                <li class="inner-position-relative">Sat-Sun: 10 AM – 6 PM EST</li>
+              </ul>
+            </li>
+            <li class="position-relative">We appreciate your patience and look forward to helping you!</li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="accordion-item position-relative">
+        <div class="cs-title">
+          <button aria-controls="collapseTwo" aria-expanded="false" class="title btn text-left btn-block mouseFocusUnActive collapsed" data-target="#collapseTwo" data-toggle="collapse">
+            {% render "icon-send" %} <span style="margin-left: 10px;">Chat with us</span>
+          </button>
+        </div>
+        <div aria-labelledby="collapseTwo" class="collapse" id="collapseTwo" style="">
+          <ul class="chat-list" id="collapsible-chatus">
+            <li class="position-relative">
+              <span aria-hidden="true">We aim to respond within 24-48 hours.</span>
+              <span aria-hidden="true">Our hours of operation are:</span>
+              <ul>
+                <li class="inner-position-relative">Mon-Fri: 9 AM – 9 PM EST</li>
+                <li class="inner-position-relative">Sat-Sun: 10 AM – 6 PM EST</li>
+              </ul>
+            </li>
+            <li class="position-relative">
+              <button class="chat btn-primary border-0 mouseFocusUnActive" id="triggerChatButton">CHAT NOW</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+	</div>
     </div>
   </div>
 </div>
 
+<script>
+  document.getElementById("triggerChatButton").addEventListener("click", function() {
+    // Find the existing chat toggle button by its class or data attribute
+    var chatToggleButton = document.querySelector("#ShopifyChat").shadowRoot.querySelector("div > button");
+    console.log(chatToggleButton);
+    
+    // Simulate a click on the chat toggle button if it exists
+    if (chatToggleButton) {
+      chatToggleButton.click();
+    }
+  });
+
+  document.getElementById("defaultOpen").click();
+
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script>
 {% schema %}
 {
   "name": "Cart Wishlist",
