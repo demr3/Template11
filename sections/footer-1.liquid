@@ -121,7 +121,7 @@
           <h5 class="h5 site-footer__section-title text-{{ block.settings.align }}">{{ block.settings.title | escape }}</h5>
           {%- endif -%}
           <ul class="list-inline social-icons text-{{ block.settings.align }}">
-            {%- render 'footer-socical' -%}
+            {%- include 'footer-socical' -%}
           </ul>
         </div>
 
@@ -155,7 +155,7 @@
               data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
               data-aspectratio="{{ logo.aspect_ratio }}"
               data-sizes="auto"
-              src="{%- render 'srcBlank' -%}"  />
+              src="{%- include 'srcBlank' -%}"  />
             </a>
             
           </div>
@@ -169,8 +169,8 @@
               <summary class="row">
                 <div class="justify-content-between">
                   <h6 class="h5 site-footer__section-title">{{ linklists[block.settings.link_list].title }}</h6>
-                  <span class="footer-icon" id="footer-plus" style="display: flex">{%- render 'icon-plus' -%}</span>
-                  <span class="footer-icon" id="footer-minus" style="display: none">{%- render 'icon-minus' -%}</span>
+                  <span class="footer-icon" id="footer-plus" style="display: flex">{%- include 'icon-plus' -%}</span>
+                  <span class="footer-icon" id="footer-minus" style="display: none">{%- include 'icon-minus' -%}</span>
                 </div>
               </summary>
               <ul class="site-footer__list">
@@ -216,7 +216,7 @@
             {%- if settings.social_facebook_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
-                {%- render 'icon-facebook' -%}
+                {%- include 'icon-facebook' -%}
                 <span >Fb</span>
               </a>
             </li>
@@ -224,7 +224,7 @@
             {%- if settings.social_twitter_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
-                {%- render 'icon-x' -%}
+                {%- include 'icon-x' -%}
                 <span >X</span>
               </a>
             </li>
@@ -232,7 +232,7 @@
             {%- if settings.social_pinterest_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
-                {%- render 'icon-pinterest' -%}
+                {%- include 'icon-pinterest' -%}
                 <span>Pin</span>
               </a>
             </li>
@@ -240,7 +240,7 @@
             {%- if settings.social_tiktok_link != blank -%}
               <li class="list-inline-item">
                 <a href="{{ settings.social_tiktok_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'TikTok' }}">
-                  {%- render 'icon-tiktok' -%}
+                  {%- include 'icon-tiktok' -%}
                   <span>Tik</span>
                 </a>
               </li>
@@ -248,7 +248,7 @@
             {%- if settings.social_instagram_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
-                {%- render 'icon-instagram' -%}
+                {%- include 'icon-instagram' -%}
                 <span >Ins</span>
               </a>
             </li>
@@ -256,7 +256,7 @@
             {%- if settings.social_tumblr_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
-                {%- render 'icon-tumblr' -%}
+                {%- include 'icon-tumblr' -%}
                 <span >Tum</span>
               </a>
             </li>
@@ -264,7 +264,7 @@
             {%- if settings.social_snapchat_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
-                {%- render 'icon-snapchat' -%}
+                {%- include 'icon-snapchat' -%}
                 <span >Snap</span>
               </a>
             </li>
@@ -272,7 +272,7 @@
             {%- if settings.social_youtube_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
-                {%- render 'icon-youtube' -%}
+                {%- include 'icon-youtube' -%}
                 <span class="icon__fallback-text">You</span>
               </a>
             </li>
@@ -280,7 +280,7 @@
             {%- if settings.social_vimeo_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
-                {%- render 'icon-vimeo' -%}
+                {%- include 'icon-vimeo' -%}
                 <span >Vim</span>
               </a>
             </li>
@@ -299,7 +299,7 @@
         {%- if section.settings.ef_social -%}
         <div class="col-lg-4">
           <ul class="list-inline social-icons text-center text-md-left">
-            {%- render 'footer-socical' -%}
+            {%- include 'footer-socical' -%}
           </ul>
         </div>
         {%- endif -%}
@@ -332,7 +332,7 @@
             </ul>
           {%- else -%}
             {%- if section.settings.imgpayment != blank -%}
-              <img class="lazyload" src="{%- render 'srcBlank' -%}" data-src="{{section.settings.imgpayment | img_url : '400x'}}" />
+              <img class="lazyload" src="{%- include 'srcBlank' -%}" data-src="{{section.settings.imgpayment | img_url : '400x'}}" />
             {%- endif -%}
           {%- endif -%}
         </div>

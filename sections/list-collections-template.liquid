@@ -50,14 +50,14 @@
           {%- assign featured_collection = collection -%}
           {% unless collection.handle == 'frontpage' %}
             {% if section.settings.layout == 'list' %}
-              {% render 'collection-list-item' %}
+              {% include 'collection-list-item' %}
             {% elsif section.settings.layout == 'grid2'%}
-              {% render 'collection-grid-item-2' with height: height %}
+              {% include 'collection-grid-item-2' with height: height %}
             {% elsif section.settings.layout == 'grid'%}
               {% if collection_count > 4 and forloop.index > 3 %}
                 {% assign row_number = forloop.index | divided_by: 3.0 | ceil %}
               {% endif %}
-              {% render 'collection-grid-item' with height: height %}
+              {% include 'collection-grid-item' with height: height %}
             {% endif %}
           {% endunless %}
         {% endfor %}
@@ -69,14 +69,14 @@
           {%- assign featured_collection = collection -%}
           {% unless collection.handle == 'frontpage' %}
             {% if section.settings.layout == 'list' %}
-              {% render 'collection-list-item' %}
+              {% include 'collection-list-item' %}
             {% elsif section.settings.layout == 'grid2'%}
-              {% render 'collection-grid-item-2' with height: height %}
+              {% include 'collection-grid-item-2' with height: height %}
             {% elsif section.settings.layout == 'grid'%}
               {% if collection_count > 4 and forloop.index > 3 %}
                 {% assign row_number = forloop.index | divided_by: 3.0 | ceil %}
               {% endif %}
-              {% render 'collection-grid-item' with height: height %}
+              {% include 'collection-grid-item' with height: height %}
             {% endif %}
           {% endunless %}
         {% endfor %}
@@ -88,14 +88,14 @@
       {% for block in section.blocks %}
         {%- assign featured_collection = collections[block.settings.collection] -%}
         {% if section.settings.layout == 'list' %}
-          {% render 'collection-list-item' %}
+          {% include 'collection-list-item' %}
         {% elsif section.settings.layout == 'grid2'%}
-            {% render 'collection-grid-item-2' with height: height %}
+            {% include 'collection-grid-item-2' with height: height %}
         {% elsif section.settings.layout == 'grid'%}
           {% if collection_count > 4 and forloop.index > 3 %}
             {% assign row_number = forloop.index | divided_by: 3.0 | ceil %}
           {% endif %}
-          {% render 'collection-grid-item' with height: height %}
+          {% include 'collection-grid-item' with height: height %}
         {% endif %}
       {% endfor %}
     </div>

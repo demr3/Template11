@@ -129,13 +129,13 @@
           </div>
           <ul class="person__social list-unstyled">
             {%- if section.settings[settingFacebook] != blank -%}
-            <li><a class="person__social-fb" href="{{section.settings[settingFacebook]}}">{%- render 'icon-facebook' -%}</a></li>
+            <li><a class="person__social-fb" href="{{section.settings[settingFacebook]}}">{%- include 'icon-facebook' -%}</a></li>
             {%- endif -%}
             {%- if section.settings[settingTwitter] != blank -%}
-            <li><a class="person__social-tw" href="{{section.settings[settingTwitter]}}">{%- render 'icon-x' -%}</a></li>
+            <li><a class="person__social-tw" href="{{section.settings[settingTwitter]}}">{%- include 'icon-x' -%}</a></li>
             {%- endif -%}
             {%- if section.settings[settingLinkedin] != blank -%}
-            <li><a class="person__social-lk" href="{{section.settings[settingLinkedin]}}">{%- render 'icon-linkedin-in' -%}</a></li>
+            <li><a class="person__social-lk" href="{{section.settings[settingLinkedin]}}">{%- include 'icon-linkedin-in' -%}</a></li>
             {%- endif -%}
           </ul>
         </div>

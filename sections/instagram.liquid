@@ -7,10 +7,10 @@
   {% endif %}
 </style>
 <div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}">
-  {%- render 'style-section' -%}
+  {%- include 'style-section' -%}
 <div class="{{ section.settings.setwidth }}">
   <div class="section-block">
-    {%- render 'section-heading' -%}
+    {%- include 'section-heading' -%}
     <div class="instagram row mx-n2 mb-0 dots-negative" id="Instagram-{{ section.id }}"
          data-style="{{section.settings.style}}"
          data-accesstoken="{{section.settings.accesstoken}}"

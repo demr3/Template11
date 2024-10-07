@@ -1,9 +1,9 @@
 <!-- featured-products.liquid -->
 <div class="customstyle{{ section.id }}" >
-  {%- render 'style-section' -%}
+  {%- include 'style-section' -%}
   <div class="{{ section.settings.setwidth }}">
     <div class="section-block">
-      {%- render 'section-heading' -%}
+      {%- include 'section-heading' -%}
       {%- assign collection = collections[section.settings.collection] -%}
       {%- assign rows = section.settings.rows -%}
       {%- if collection != blank -%}
@@ -11,7 +11,7 @@
       <div class="row" data-aos="{{section.settings.animation}}">
         {%- for product in collection.products limit: product_limit -%}
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-6">
-          {%- render 'product-card', product: product, collection: collection -%}
+          {%- include 'product-card', product: product, collection: collection -%}
         </div>
         {%- endfor -%}
       </div>
@@ -30,7 +30,7 @@
         {%- assign index = i -%}
         {%- endcase -%}
         <div class="col-md-3 col-sm-6 col-xs-6 ">
-          {%- render 'product-grid-blank' -%}
+          {%- include 'product-grid-blank' -%}
         </div>
         {%- endfor -%}
       </div>

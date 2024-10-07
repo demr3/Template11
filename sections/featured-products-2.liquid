@@ -31,7 +31,7 @@
     }
 </style>
 <div class="customstyle{{ section.id }} f-product2" data-aos="{{section.settings.animation}}">
-    {%- render 'style-section' -%}
+    {%- include 'style-section' -%}
     <div class="{{ section.settings.setwidth }}">
       <div class="section-block">
         {%- assign collection = collections[section.settings.collection] -%}
@@ -41,11 +41,11 @@
         <div class="row js-masonry" data-section-id="{{ section.id }}" data-section-type="masonries" style="opacity:0">
             <div class="grid-sizer"></div>
             <div class="grid-item col-lg-3 col-md-6 col-sm-6 col-xs-6 col-6 grid-heading d-flex align-items-center">
-                {%- render 'section-heading' -%}
+                {%- include 'section-heading' -%}
             </div>
           {%- for product in collection.products limit: product_limit -%}
           <div class="grid-item {% if forloop.index == 2 %} col-lg-6 {% else %} col-lg-3 {% endif %}col-md-6 col-sm-6 col-xs-6 col-6 {% if forloop.index > 4 %}small--hide{% endif %}">
-            {%- render 'product-card', product: product, collection: collection -%}
+            {%- include 'product-card', product: product, collection: collection -%}
           </div>
           {%- endfor -%}
         </div>
@@ -64,7 +64,7 @@
           {%- assign index = i -%}
           {%- endcase -%}
           <div class="col-md-3 col-sm-6 col-xs-6 {% if forloop.index > 4 %}small--hide{% endif %}">
-            {%- render 'product-grid-blank' -%}
+            {%- include 'product-grid-blank' -%}
           </div>
           {%- endfor -%}
         </div>

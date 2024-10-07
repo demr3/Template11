@@ -1,10 +1,10 @@
 <!-- brand-list.liquid -->
 {%- if section.settings.enablesection -%}
 <div class="customstyle{{ section.id }} " data-aos="{{section.settings.animation}}" >
-    {%- render 'style-section' -%}
+    {%- include 'style-section' -%}
     <div class="{{ section.settings.setwidth }}">
       <div class="section-block">
-        {%- render 'section-heading' -%}
+        {%- include 'section-heading' -%}
         <div class=" row">
           {%- for block in section.blocks -%}
           <div class=" col-6 col-md-{{section.settings.width}} d-flex justify-content-center align-items-center my-4" {{ block.shopify_attributes }}>
@@ -26,7 +26,7 @@
         </div>
   
         {%- if section.blocks.size == 0 -%}
-        {%- render 'no-blocks' -%}
+        {%- include 'no-blocks' -%}
         {%- endif -%}
       </div>
     </div>

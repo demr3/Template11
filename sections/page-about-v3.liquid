@@ -1,10 +1,10 @@
 <!-- advanced-content.liquid -->
 {%- if section.settings.enablesection -%}
 <div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" >
-    {%- render 'style-section' -%}
+    {%- include 'style-section' -%}
   <div class="{{ section.settings.setwidth }}">
     <div class="section-block">
-      {%- render 'section-heading' -%}
+      {%- include 'section-heading' -%}
       <div class="row">
         {%- for block in section.blocks -%}
         {%- case block.settings.width -%}
@@ -66,7 +66,7 @@
                   <div class="video-wrapper">
                     <button class="video-section__player-close">
                       <span class="visually-hidden">{{ 'video.close' | t }}</span>
-                      {%- render 'icon-close' -%}
+                      {%- include 'icon-close' -%}
                     </button>
                     <div class="video-section__player"></div>
                   </div>
@@ -98,7 +98,7 @@
             {%- when 'image' -%}
               {%- if block.settings.image != blank -%}
               <a href="{{block.settings.image_link | default:'#'}}" class="hv-image-brightness-n">
-                <img src="{%- render 'srcBlank' -%}" class="lazyload transition" data-src="{{block.settings.image | img_url : '1920x'}}" />
+                <img src="{%- include 'srcBlank' -%}" class="lazyload transition" data-src="{{block.settings.image | img_url : '1920x'}}" />
               </a>
               {%- else -%}
               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}

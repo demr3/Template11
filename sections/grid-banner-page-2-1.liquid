@@ -1,10 +1,10 @@
 <!-- grid-banner.liquid -->
 {%- if section.settings.enablesection -%}
 <div class="customstyle{{ section.id }} " data-aos="{{section.settings.animation}}" >
-    {%- render 'style-section' -%}
+    {%- include 'style-section' -%}
   <div class="{{ section.settings.setwidth }}">
     <div class="section-block">
-      {%- render 'section-heading' -%}
+      {%- include 'section-heading' -%}
       <div class="row {% if section.settings.no_gutter %}no-gutters{% endif %}">
         {%- for block in section.blocks -%}
         <style>
@@ -22,7 +22,7 @@
         <div class="col-md-{{block.settings.width}}" {{ block.shopify_attributes }}>
           <figure class="banner-theme hv-image-saturate banner-theme-{{block.settings.vertical}} banner-theme-{{block.settings.horizontal}} text-{{block.settings.text_align}} {% if section.settings.no_gutter %}m-0{% endif %} banner-theme-{{block.id}}">
             {%- if block.settings.image != blank -%}
-            <img src="{% render 'srcBlank' %}" class="lazyload transition" data-src="{{block.settings.image | img_url:'1920x'}}">
+            <img src="{% include 'srcBlank' %}" class="lazyload transition" data-src="{{block.settings.image | img_url:'1920x'}}">
             {%- else -%}
             {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
             {%- endif -%}

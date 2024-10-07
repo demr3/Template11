@@ -40,7 +40,7 @@
           <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
             {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
             <img class="lazyload"
-                 src="{%- render 'srcBlank' -%}"
+                 src="{%- include 'srcBlank' -%}"
                  data-src="{{ img_url }}"
                  data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
                  data-aspectratio="{{ article.image.aspect_ratio }}"
@@ -62,7 +62,7 @@
             {% endfor %}
             </ul>
             {%- if section.settings.social_sharing_blog -%}
-              {%- render 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image -%}
+              {%- include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image -%}
             {%- endif -%}
           </div>
         </div>
@@ -163,7 +163,7 @@
             {%- if new_comment -%}
             {%- unless paginate.current_page > 1 -%}
             <li id="{{ comment.id }}" class="comment py-4 mb-0">
-              {%- render 'comment' -%}
+              {%- include 'comment' -%}
             </li>
             {%- endunless -%}
             {%- endif -%}
@@ -171,7 +171,7 @@
             {%- for comment in article.comments -%}
             {%- unless comment.id == new_comment_id -%}
             <li id="{{ comment.id }}" class="comment border-bottom py-4 mb-0">
-              {%- render 'comment' -%}
+              {%- include 'comment' -%}
             </li>
             {%- endunless -%}
             {%- endfor -%}
@@ -231,13 +231,13 @@
 
       <div class="full-width full-width--return-link">
         <a href="{{ blog.url }}" class="h1 return-link">
-          {%- render 'icon-arrow-thin-left' -%}
+          {%- include 'icon-arrow-thin-left' -%}
           {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
         </a>
       </div>
     </div>
     {%- if section.settings.sidebar_enable -%}
-    {%- render 'blogSidebar' -%}
+    {%- include 'blogSidebar' -%}
     {%- endif -%}
   </article>
 </div>

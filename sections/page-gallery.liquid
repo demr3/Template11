@@ -20,7 +20,7 @@
       <div class="grid-item col-lg-3 col-md-4 col-sm-6 col-12" data-aos="{{section.settings.animation}}">
         {%- if block.settings.image != bank -%}
         <a href="{{block.settings.link | default: '#'}}" class="gallery-item mb-3">
-          <img src="{%- render 'srcBlank' -%}" class="lazyload gallery-item__image" data-src="{{block.settings.image | img_url: '800x'}}" />
+          <img src="{%- include 'srcBlank' -%}" class="lazyload gallery-item__image" data-src="{{block.settings.image | img_url: '800x'}}" />
           <div class="gallery-item__title">
             {{block.settings.title}}
           </div>

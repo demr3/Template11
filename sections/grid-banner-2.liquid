@@ -1,9 +1,9 @@
 <!-- grid-banner-2.liquid -->
 <div class="customstyle{{ section.id }} banner-theme-text" data-aos="{{section.settings.animation}}" >
-    {%- render 'style-section' -%}
+    {%- include 'style-section' -%}
   <div class="{{ section.settings.setwidth }}">
     <div class="section-block">
-      {%- render 'section-heading' -%}
+      {%- include 'section-heading' -%}
       <div class="row {% if section.settings.no_gutter %}no-gutters{% endif %}">
         {%- for block in section.blocks -%}
         <style>
@@ -13,7 +13,7 @@
           <figure class="hv-image-saturate text-{{block.settings.text_align}} {% if section.settings.no_gutter %}m-0{% endif %} d-flex {{block.settings.reverse}}">
             {%- if block.settings.image != blank -%}
             {%- if block.settings.button_link != blank -%}<a href="{{block.settings.button_link}}"> {%- endif -%}
-            <img src="{% render 'srcBlank' %}" class="lazyload transition" data-src="{{block.settings.image | img_url:'1920x'}}">
+            <img src="{% include 'srcBlank' %}" class="lazyload transition" data-src="{{block.settings.image | img_url:'1920x'}}">
             {%- if block.settings.button_link != blank -%}</a> {%- endif -%}
             {%- else -%}
             {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}

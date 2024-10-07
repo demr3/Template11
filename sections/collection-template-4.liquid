@@ -107,10 +107,10 @@
   <div class="js-grid">
     {%- for product in collection.products -%}
     <div class="pb-4 {{section.settings.item_width}} grid-item {% for tag in product.tags %}{{ tag | camelcase }} {% endfor %}">
-      {%- render 'product-card', product: product -%}
+      {%- include 'product-card', product: product -%}
     </div>
     {%- else -%}
-    {%- render 'collection-blank' -%}
+    {%- include 'collection-blank' -%}
     {%- endfor -%}
   </div>
   {%- if paginate.pages > 1 -%}
@@ -118,7 +118,7 @@
     {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
   </div>
   {%- endif -%}
-  {%- render 'coupon_code' -%}
+  {%- include 'coupon_code' -%}
 </div>
 {%- endpaginate -%}
 

@@ -1,7 +1,7 @@
 <!-- html-v3.liquid -->
 {%- if section.settings.enablesection -%}
 <div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" >
-    {%- render 'style-section' -%}
+    {%- include 'style-section' -%}
     <div class="{{ section.settings.setwidth }}">
         {%- if section.settings.code != blank -%}
         <div class="row">

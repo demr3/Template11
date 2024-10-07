@@ -98,7 +98,7 @@
                             <div class="rte-setting">{{ section.settings.text_des2 }}</div>
                             {%- if section.settings.enablesocial -%}
                                 <ul class="list--inline social-icons d-inline-block pt-4">
-                                    {%- render 'footer-socical' -%}
+                                    {%- include 'footer-socical' -%}
                                 </ul>
                             {%- endif -%}
                         </div>
@@ -139,7 +139,7 @@
             </ul>
           {%- else -%}
             {%- if section.settings.imgpayment != blank -%}
-              <img class="lazyload" src="{%- render 'srcBlank' -%}" data-src="{{section.settings.imgpayment | img_url : '400x'}}" />
+              <img class="lazyload" src="{%- include 'srcBlank' -%}" data-src="{{section.settings.imgpayment | img_url : '400x'}}" />
             {%- endif -%}
           {%- endif -%}
           </div>

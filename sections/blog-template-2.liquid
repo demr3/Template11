@@ -30,7 +30,7 @@
     {{ blog.title }}
     {%- endif -%}
     <a href="{{ shop.url }}{{ blog.url }}.atom" class="blog__rss-link link-accent-color">
-      {%- render 'icon-rss' -%}
+      {%- include 'icon-rss' -%}
       <span class="icon__fallback-text">RSS</span>
     </a>
   </h1> -->
@@ -41,7 +41,7 @@
         {%- paginate blog.articles by 8 -%}
         {%- for article in blog.articles -%}
         <div class="col-12 col-md-4 {% if forloop.index == 3 %}col--last{% endif %}">
-          {%- render 'blog-card' -%}
+          {%- include 'blog-card' -%}
         </div>
         {%- endfor -%}
         <div class="js-pagination">
@@ -53,7 +53,7 @@
       </div>
     </div>
     {%- if section.settings.sidebar_enable -%}
-    {%- render 'blogSidebar' -%}
+    {%- include 'blogSidebar' -%}
     {%- endif -%}
   </div>
 </div>
