@@ -3,7 +3,7 @@
       {%- if settings.social_facebook_link != blank -%}
       <li class="list-inline-item">
         <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
-          {%- include 'icon-facebook' -%}
+          {%- render 'icon-facebook' -%}
           <span >Fb</span>
         </a>
       </li>
@@ -11,7 +11,7 @@
       {%- if settings.social_twitter_link != blank -%}
       <li class="list-inline-item">
         <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
-          {%- include 'icon-x' -%}
+          {%- render 'icon-x' -%}
           <span >X</span>
         </a>
       </li>
@@ -19,7 +19,7 @@
       {%- if settings.social_pinterest_link != blank -%}
       <li class="list-inline-item">
         <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
-          {%- include 'icon-pinterest' -%}
+          {%- render 'icon-pinterest' -%}
           <span>Pin</span>
         </a>
       </li>
@@ -27,7 +27,7 @@
       {%- if settings.social_instagram_link != blank -%}
       <li class="list-inline-item">
         <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
-          {%- include 'icon-instagram' -%}
+          {%- render 'icon-instagram' -%}
           <span >Ins</span>
         </a>
       </li>
@@ -35,7 +35,7 @@
       {%- if settings.social_tiktok_link != blank -%}
         <li class="list-inline-item">
           <a href="{{ settings.social_tiktok_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'tiktok' }}">
-            {%- include 'icon-tiktok' -%}
+            {%- render 'icon-tiktok' -%}
             <span >Tik</span>
           </a>
         </li>
@@ -43,7 +43,7 @@
       {%- if settings.social_tumblr_link != blank -%}
       <li class="list-inline-item">
         <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
-          {%- include 'icon-tumblr' -%}
+          {%- render 'icon-tumblr' -%}
           <span >Tum</span>
         </a>
       </li>
@@ -51,7 +51,7 @@
       {%- if settings.social_snapchat_link != blank -%}
       <li class="list-inline-item">
         <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
-          {%- include 'icon-snapchat' -%}
+          {%- render 'icon-snapchat' -%}
           <span >Snap</span>
         </a>
       </li>
@@ -59,7 +59,7 @@
       {%- if settings.social_youtube_link != blank -%}
       <li class="list-inline-item">
         <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
-          {%- include 'icon-youtube' -%}
+          {%- render 'icon-youtube' -%}
           <span class="icon__fallback-text">You</span>
         </a>
       </li>
@@ -67,7 +67,7 @@
       {%- if settings.social_vimeo_link != blank -%}
       <li class="list-inline-item">
         <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
-          {%- include 'icon-vimeo' -%}
+          {%- render 'icon-vimeo' -%}
           <span >Vim</span>
         </a>
       </li>

@@ -1,10 +1,10 @@
-{% capture class %}{% include 'shortcode-render' render:'class' default:'hr-default' %}{% endcapture %}
-{% capture idPage %}{% include 'shortcode-render' render:'idPage' default:'' %}{% endcapture %}
-{% capture height %}{% include 'shortcode-render' render:'height' default:'' %}{% endcapture %}
-{% capture width %}{% include 'shortcode-render' render:'width' default:'' %}{% endcapture %}
-{% capture showFace %}{% include 'shortcode-render' render:'showFace' default:'true' %}{% endcapture %}
-{% capture stream %}{% include 'shortcode-render' render:'stream' default:'' %}{% endcapture %}
-{% capture showBorder %}{% include 'shortcode-render' render:'showBorder' default:'true' %}{% endcapture %}
+{% capture class %}{% render 'shortcode-render' render:'class' default:'hr-default' %}{% endcapture %}
+{% capture idPage %}{% render 'shortcode-render' render:'idPage' default:'' %}{% endcapture %}
+{% capture height %}{% render 'shortcode-render' render:'height' default:'' %}{% endcapture %}
+{% capture width %}{% render 'shortcode-render' render:'width' default:'' %}{% endcapture %}
+{% capture showFace %}{% render 'shortcode-render' render:'showFace' default:'true' %}{% endcapture %}
+{% capture stream %}{% render 'shortcode-render' render:'stream' default:'' %}{% endcapture %}
+{% capture showBorder %}{% render 'shortcode-render' render:'showBorder' default:'true' %}{% endcapture %}
 <div class="facebook-block {{ class }} ">
   <div id="fb-root"></div>
   {% if idPage != blank %}

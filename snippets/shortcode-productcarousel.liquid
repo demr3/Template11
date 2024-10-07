@@ -1,10 +1,10 @@
-{% capture title %}{% include 'shortcode-render' render:'title' %}{% endcapture %}
-{% capture item_in_page %}{% include 'shortcode-render' render:'item_in_page' %}{% endcapture %}
-{% capture columns_product %}{% include 'shortcode-render' render:'columns_product' %}{% endcapture %}
-{% capture product_in_tab %}{% include 'shortcode-render' render:'product_in_tab' %}{% endcapture %}
-{% capture handle %}{% include 'shortcode-render' render:'handle' %}{% endcapture %}
-{% capture interval %}{% include 'shortcode-render' render:'interval' %}{% endcapture %}
-{% capture id %}{% include 'shortcode-render' render:'id' %}{% endcapture %}
+{% capture title %}{% render 'shortcode-render' render:'title' %}{% endcapture %}
+{% capture item_in_page %}{% render 'shortcode-render' render:'item_in_page' %}{% endcapture %}
+{% capture columns_product %}{% render 'shortcode-render' render:'columns_product' %}{% endcapture %}
+{% capture product_in_tab %}{% render 'shortcode-render' render:'product_in_tab' %}{% endcapture %}
+{% capture handle %}{% render 'shortcode-render' render:'handle' %}{% endcapture %}
+{% capture interval %}{% render 'shortcode-render' render:'interval' %}{% endcapture %}
+{% capture id %}{% render 'shortcode-render' render:'id' %}{% endcapture %}
 {% capture procarouselId %}procarousel-{{ 'now' | date: "%N" }}{% endcapture %}
 {% if id == '' %}
 {% capture prolistID %}productlist-{{ 'now' | date: "%N" }}{% endcapture %}
@@ -40,10 +40,10 @@
     <div class="carousel slide" id="{{ procarouselId }}">
       {% if product_in_tab > item_in_page %}
       <a class="carousel-control left" href="#{{ procarouselId }}"   data-slide="prev" style="position: absolute; top: 50%; left: 10px; z-index: 2;">
-        {% include 'icon-arrow-left' %}
+        {% render 'icon-arrow-left' %}
       </a>
       <a class="carousel-control right" href="#{{ procarouselId }}"  data-slide="next" style="position: absolute; top: 50%; right: 10px; z-index: 2;">
-        {% include 'icon-arrow-right' %}
+        {% render 'icon-arrow-right' %}
       </a>
       {% endif %}
       <div class="carousel-inner">
@@ -60,7 +60,7 @@
             <div class="row">
               {% endif %}
               <div class="item {{ grid_item_width }}">
-                {% include 'product-card' %}
+                {% render 'product-card' %}
               </div>
               {% if modcol == 0 or modpage == 0 or forloop.last %}
             </div>

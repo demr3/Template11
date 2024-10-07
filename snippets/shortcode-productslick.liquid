@@ -1,10 +1,10 @@
-{% capture title %}{% include 'shortcode-render' render:'title' %}{% endcapture %}
-{% capture columns_product %}{% include 'shortcode-render' render:'columns_product' %}{% endcapture %}
-{% capture row_product %}{% include 'shortcode-render' render:'row' %}{% endcapture %}
-{% capture product_in_list %}{% include 'shortcode-render' render:'product_in_list' %}{% endcapture %}
-{% capture handle %}{% include 'shortcode-render' render:'handle' %}{% endcapture %}
-{% capture interval %}{% include 'shortcode-render' render:'interval' %}{% endcapture %}
-{% capture id %}{% include 'shortcode-render' render:'id' %}{% endcapture %}
+{% capture title %}{% render 'shortcode-render' render:'title' %}{% endcapture %}
+{% capture columns_product %}{% render 'shortcode-render' render:'columns_product' %}{% endcapture %}
+{% capture row_product %}{% render 'shortcode-render' render:'row' %}{% endcapture %}
+{% capture product_in_list %}{% render 'shortcode-render' render:'product_in_list' %}{% endcapture %}
+{% capture handle %}{% render 'shortcode-render' render:'handle' %}{% endcapture %}
+{% capture interval %}{% render 'shortcode-render' render:'interval' %}{% endcapture %}
+{% capture id %}{% render 'shortcode-render' render:'id' %}{% endcapture %}
 {% if id == '' %}
 {% capture prolistID %}productlist-{{ 'now' | date: "%N" }}{% endcapture %}
 {% assign id = prolistID %}
@@ -26,7 +26,7 @@
   <div class="row slick_content" data-section-id=sc-productslick-{{id}} data-dots="true" data-slidestoscroll="{{columns_product}}" data-section-type="slickCarousels" data-slidesToShow="{{columns_product}}" data-rows="{{ row_product }}">
     {% for product in products limit:product_in_list %}
     <div class="col">
-      {% include 'product-card' %}
+      {% render 'product-card' %}
     </div>
     {% endfor %}
   </div>

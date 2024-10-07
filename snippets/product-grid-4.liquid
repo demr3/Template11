@@ -6,22 +6,22 @@
       {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
       <img class="lazyload transition first-image"
            data-src="{{ img_url }}"
-           src="{%- include 'srcBlank' -%}"
+           src="{%- render 'srcBlank' -%}"
            data-sizes="auto"
            alt="{{ image.alt | escape }}">
-           {% include 'second-image'%}
+           {% render 'second-image'%}
     </a>
 
     <div class="product-card__overlay d-flex justify-content-center flex-column product-card__overlaytop">
       {%- if settings.enable_wishlsit -%}
       <span data-toggle="tooltip" data-placement="left" data-tooltipalltimes="true" class="btn btn-theme gradient-theme-vertical product-card__overlay-btn js-btn-wishlist" title="{{ 'products.product.wishlist_text' | t }}" data-handle="{{product.handle}}">
-        {%- include 'icon-heart' -%}
+        {%- render 'icon-heart' -%}
       </span>
       {%- endif -%}
       {%- if settings.enable_compare -%}
       <span data-tooltip="true" data-placement="left" class="btn btn-theme gradient-theme-vertical product-card__overlay-btn js-btn-compare" title="{{ 'products.product.compare_text' | t }}" data-handle="{{product.handle}}">
-        {%- include 'icon-exchange' -%}
-        {%- include 'icon-close' -%}
+        {%- render 'icon-exchange' -%}
+        {%- render 'icon-close' -%}
         <span>{{ 'products.product.compare_text' | t }}</span>
       </span>
       {%- endif -%}
@@ -31,26 +31,26 @@
         
         <span>{{ 'products.product.quickview_text' | t }}</span>
         {%-comment-%}
-        {%- include 'icon-quickview' -%}
+        {%- render 'icon-quickview' -%}
         {%-endcomment-%}
       </span>
       <span data-tooltip="false" data-placement="left" class="btn btn-theme gradient-theme-vertical product-card__overlay-btn js-grid-cart {% unless product.available %} disabled{% endunless%}" title="{{ 'products.product.add_to_cart' | t }}" data-id="{{product.selected_or_first_available_variant.id}}">
         <span>{{ 'products.product.add_to_cart' | t }}</span>
         <div class="product-card__loading spinner-{{settings.loading}}" role="status"></div>
         {%-comment-%}
-        {%- include 'icon-cart-bold' -%}
+        {%- render 'icon-cart-bold' -%}
         {%-endcomment-%}
         </span>
     </div>
     
 
-    {%- if settings.enable_countdown_card -%}{%- include 'product-countdown' -%}{%- endif -%}
+    {%- if settings.enable_countdown_card -%}{%- render 'product-countdown' -%}{%- endif -%}
     {%- if settings.enablevideo -%}
       {% for media in product.media %}
         {% render 'productVideo', media: media %}
       {% endfor %}
     {%- endif -%}
-    {% include 'product-label' %}
+    {% render 'product-label' %}
   </div>
   <div class="product-card__info">
 
@@ -85,6 +85,6 @@
       {{ 'products.product.sold_out' | t }}
     </div>
     {%- endif -%}
-    {%- include 'swatch-grid-1' -%}
+    {%- render 'swatch-grid-1' -%}
   </div>
 </div>

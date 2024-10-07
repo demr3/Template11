@@ -132,13 +132,13 @@
         {% if current_tags.size <= 1 %}
         <li class="advanced-filter active-filter" data-size="{{current_tags.size}}" data-handle="{{ custom_tag | handleize }}">
           <a href="{{ collection.url }}" data-tooltip="true" class="catalog_color" title="{{settings[color_text]}}">
-            <img src="{%- include 'srcBlank' -%}" class="lazyload" alt="{{ settings[color_text] }}" data-src="{{ color_image | asset_url }}" />
+            <img src="{%- render 'srcBlank' -%}" class="lazyload" alt="{{ settings[color_text] }}" data-src="{{ color_image | asset_url }}" />
           </a>
         </li>
         {% else %}
         <li class="advanced-filter active-filter" data-handle="{{ custom_tag | handleize }}">
           <a href="{{ collection_url | append: constraint }}" data-tooltip="true" class="catalog_color" title="{{settings[color_text]}}">
-            <img src="{%- include 'srcBlank' -%}" class="lazyload" alt="{{ settings[color_text] }}" data-src="{{ color_image | asset_url }}" />
+            <img src="{%- render 'srcBlank' -%}" class="lazyload" alt="{{ settings[color_text] }}" data-src="{{ color_image | asset_url }}" />
           </a>
         </li>
         {% endif %}
@@ -151,7 +151,7 @@
         {% endif %}
           <li class="advanced-filter" data-handle="{{ custom_tag | handleize }}">
             <a href="{{ collection_url | append: constraint }}" data-tooltip="true" class="catalog_color" title="{{settings[color_text]}}">
-              <img src="{%- include 'srcBlank' -%}" class="lazyload" alt="{{ settings[color_text] }}" data-src="{{ color_image | asset_url }}" />
+              <img src="{%- render 'srcBlank' -%}" class="lazyload" alt="{{ settings[color_text] }}" data-src="{{ color_image | asset_url }}" />
             </a>
           </li>
         {%- endif -%}
@@ -193,11 +193,11 @@
         {%- if current_tags contains listItem -%}
           {% if current_tags.size <= 1 %}
           <li class="advanced-filter active-filter py-1" data-handle="{{ listItem | handleize }}">
-          <a href="{{ collection.url }}" title="{{listItem}}">{%- include 'icon-check-square' -%}&nbsp;{{ listItem }}</a>
+          <a href="{{ collection.url }}" title="{{listItem}}">{%- render 'icon-check-square' -%}&nbsp;{{ listItem }}</a>
         </li>
           {% else %}
           <li class="advanced-filter active-filter py-1" data-handle="{{ listItem | handleize }}">
-            <a href="{{ collection_url | append: constraint }}" title="{{listItem}}">{%- include 'icon-check-square' -%}&nbsp;{{ listItem }}</a>
+            <a href="{{ collection_url | append: constraint }}" title="{{listItem}}">{%- render 'icon-check-square' -%}&nbsp;{{ listItem }}</a>
           </li>
           {% endif %}
         {%- else -%}
@@ -210,7 +210,7 @@
           {% endif %}
 
            
-          <a href="{{ collection_url | append: constraint }}" title="{{listItem}}">{%- include 'icon-square' -%}&nbsp;{{ listItem }}</a>
+          <a href="{{ collection_url | append: constraint }}" title="{{listItem}}">{%- render 'icon-square' -%}&nbsp;{{ listItem }}</a>
         </li>
         {%- endif -%}
         {%- endfor -%}

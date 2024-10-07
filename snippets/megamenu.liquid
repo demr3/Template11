@@ -15,7 +15,7 @@
     {%- if settings[aplink] -%}
     <div class="mega-col col-sm-{{ settings[ap_collink] }} order-{{settings[orderlink]}}">
       {%- capture ap_col_links -%}apmenuitem_columns_{{ intMega }}{%- endcapture -%}
-      {%- include 'menu-blocklinks' -%}
+      {%- render 'menu-blocklinks' -%}
     </div>
     {%- endif -%}
     {%- if settings[apvideo] -%}
@@ -24,14 +24,14 @@
       {%- capture ap_video_mute -%}apmenuitem_video_mute_{{ intMega }}{%- endcapture -%}
       {%- capture ap_video_loop -%}apmenuitem_video_loop_{{ intMega }}{%- endcapture -%}
       {%- capture ap_video_height -%}apmenuitem_video_height_{{ intMega }}{%- endcapture -%}
-      {%- include 'menu-blockvideos' -%}
+      {%- render 'menu-blockvideos' -%}
     </div>
     {%- endif -%}
     {%- if settings[approduct] -%}
     <div class="mega-col col-sm-{{ settings[ap_colproduct] }} order-{{settings[orderproduct]}}">
       {%- capture collection_menu -%}apmenuitem_cproduct_{{ intMega }}{%- endcapture -%}
       {%- capture collection_menu_title -%}apmenuitem_tproduct_{{ intMega }}{%- endcapture -%}
-      {%- include 'menu-blockproducts' -%}
+      {%- render 'menu-blockproducts' -%}
     </div>
     {%- endif -%}
     {%- if settings[aphtml] -%}
@@ -40,7 +40,7 @@
       {%- capture ap_html_eimg -%}apmenuitem_eihtml_{{ intMega }}{%- endcapture -%}
       {%- capture ap_html_img -%}apmenuitem_ihtml_{{ intMega }}{%- endcapture -%}
       {%- capture ap_html_des -%}apmenuitem_chtml_{{ intMega }}{%- endcapture -%}
-      {%- include 'menu-blockhtml' -%}
+      {%- render 'menu-blockhtml' -%}
     </div>
     {%- endif -%}
   </div>

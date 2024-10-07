@@ -1,9 +1,9 @@
-{% capture handle %}{% include 'shortcode-render' render:'handle' %}{% endcapture %}
-{% capture title %}{% include 'shortcode-render' render:'title' %}{% endcapture %}
-{% capture class %}{% include 'shortcode-render' render:'class' %}{% endcapture %}
-{% capture id %}{% include 'shortcode-render' render:'id' %}{% endcapture %}
-{% capture columnsProduct %}{% include 'shortcode-render' render:'columnsProduct' %}{% endcapture %}
-{% capture limit %}{% include 'shortcode-render' render:'limit' %}{% endcapture %}
+{% capture handle %}{% render 'shortcode-render' render:'handle' %}{% endcapture %}
+{% capture title %}{% render 'shortcode-render' render:'title' %}{% endcapture %}
+{% capture class %}{% render 'shortcode-render' render:'class' %}{% endcapture %}
+{% capture id %}{% render 'shortcode-render' render:'id' %}{% endcapture %}
+{% capture columnsProduct %}{% render 'shortcode-render' render:'columnsProduct' %}{% endcapture %}
+{% capture limit %}{% render 'shortcode-render' render:'limit' %}{% endcapture %}
 
   {%- assign columns_product_collections = columnsProduct | plus: 0 -%}
   {%- assign colItem = 12 | divided_by:columns_product_collections -%}
@@ -24,11 +24,11 @@
 <div class="row">
   {% for product in collections[handle].products limit:limit %}
   <div class="{{grid_width}}">
-    {% include 'product-card', product: product %}
+    {% render 'product-card', product: product %}
   </div>
   {% else %}
   <div class="col-md-12">
-    {% include 'collection-blank' %}
+    {% render 'collection-blank' %}
   </div>
   {% endfor %}
 </div>

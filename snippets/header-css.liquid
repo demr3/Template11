@@ -49,9 +49,9 @@ article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{display:bl
 {%- if template contains 'collection' and settings.price_range_enable -%}
 <link href="{{ 'jquery-ui.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all" />
 {%- endif -%}
-{%- include 'font-icon' -%}
+{%- render 'font-icon' -%}
 {%- if settings.font_family_custom -%}
-  {%- include 'font-custom' -%}
+  {%- render 'font-custom' -%}
 {%- endif -%}
 <style>
   {%- if settings.font_family_custom -%}
@@ -219,7 +219,7 @@ article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{display:bl
     }
 </style>
 
-<!-- {%- include 'theme.scss.min' -%} -->
+<!-- {%- render 'theme.scss.min' -%} -->
 
 <link href='{{ 'theme.css' | asset_url }}' rel='stylesheet' type='text/css' media='all' />
 <style>

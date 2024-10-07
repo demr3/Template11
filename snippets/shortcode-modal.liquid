@@ -1,11 +1,11 @@
-{% capture modalBs %}{% include 'shortcode-render' render:'action' default:'' %}{% endcapture %}
-{% capture id %}{% include 'shortcode-render' render:'id' default:'' %}{% endcapture %}
-{% capture close %}{% include 'shortcode-render' render:'close' default:'' %}{% endcapture %}
-{% capture type %}{% include 'shortcode-render' render:'type' default:'' %}{% endcapture %}
-{% capture url %}{% include 'shortcode-render' render:'url' default:'' %}{% endcapture %}
-{% capture height %}{% include 'shortcode-render' render:'height' default:'' %}{% endcapture %}
-{% capture modalTitle %}{% include 'shortcode-render' render:'title' default:'' %}{% endcapture %}
-{% capture des %}{% include 'shortcode-render' render:'description' default:'' %}{% endcapture %}
+{% capture modalBs %}{% render 'shortcode-render' render:'action' default:'' %}{% endcapture %}
+{% capture id %}{% render 'shortcode-render' render:'id' default:'' %}{% endcapture %}
+{% capture close %}{% render 'shortcode-render' render:'close' default:'' %}{% endcapture %}
+{% capture type %}{% render 'shortcode-render' render:'type' default:'' %}{% endcapture %}
+{% capture url %}{% render 'shortcode-render' render:'url' default:'' %}{% endcapture %}
+{% capture height %}{% render 'shortcode-render' render:'height' default:'' %}{% endcapture %}
+{% capture modalTitle %}{% render 'shortcode-render' render:'title' default:'' %}{% endcapture %}
+{% capture des %}{% render 'shortcode-render' render:'description' default:'' %}{% endcapture %}
 {% if id == '' %}
 {% capture id %}modal-{{ 'now' | date: "%N" }}{% endcapture %}
 {% endif %}

@@ -16,7 +16,7 @@
          data-section-id="mgmenu-collection-{{intMega}}" 
          data-section-type="slickCarousels">
       {%- for product in collection_products limit: 5 -%}
-      {%- include 'product-card' -%}
+      {%- render 'product-card' -%}
       {%- endfor -%}
     </div>
   </div>

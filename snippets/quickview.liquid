@@ -16,7 +16,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header p-0">
-        <button type="button" class="close" data-dismiss="modal">{%- include 'icon-close' -%}</button>
+        <button type="button" class="close" data-dismiss="modal">{%- render 'icon-close' -%}</button>
       </div>
       <div class="modal-body p-4">
         <div class="row m-0">
@@ -44,7 +44,7 @@
                 </div>
                 <button type="submit" class="btn btn-theme gradient-theme qv-add-button">{{'general.quickview.addtocart' | t }}</button>
               </div>
-              {%- include 'free-shipping' -%}
+              {%- render 'free-shipping' -%}
               <div class="pt-4">
               {%-if settings.qv_sku -%}
               <div class="pt-1 text-uppercase qv-sku"><small class="text-body d-inline-block" style="min-width: 80px;">{{'general.quickview.sku' | t }}: </small><small class="qv-view-sku text-uppercase"></small></div>
