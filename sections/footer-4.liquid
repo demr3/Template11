@@ -172,51 +172,51 @@
       {%- if settings.social_facebook_link != blank -%}
       <li>
         <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}" style="color:#3b5999">
-          {%- include 'icon-facebook' -%}</a>
+          {%- render 'icon-facebook' -%}</a>
       </li>
       {%- endif -%}
       {%- if settings.social_twitter_link != blank -%}
       <li>
         <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}" style="color:#55acee">
-          {%- include 'icon-twitter' -%}</a>
+          {%- render 'icon-twitter' -%}</a>
       </li>
       {%- endif -%}
       {%- if settings.social_pinterest_link != blank -%}
       <li>
         <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}" style="color:#bd081c">
-          {%- include 'icon-pinterest' -%}</a>
+          {%- render 'icon-pinterest' -%}</a>
       </li>
       {%- endif -%}
       {%- if settings.social_tumblr_link != blank -%}
       <li>
         <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}" style="color:#34465d">
-          {%- include 'icon-tumblr' -%}</a>
+          {%- render 'icon-tumblr' -%}</a>
       </li>
       {%- endif -%}
       {%- if settings.social_snapchat_link != blank -%}
       <li>
         <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}" style="color:#FFFC00">
-          {%- include 'icon-snapchat' -%}
+          {%- render 'icon-snapchat' -%}
         </a>
       </li>
       {%- endif -%}
       {%- if settings.social_youtube_link != blank -%}
       <li>
         <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}" style="color:#cd201f">
-          {%- include 'icon-youtube' -%}
+          {%- render 'icon-youtube' -%}
           </a>
       </li>
       {%- endif -%}
       {%- if settings.social_instagram_link != blank -%}
       <li>
         <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}" style="color:#e4405f">
-          {%- include 'icon-instagram' -%}</a>
+          {%- render 'icon-instagram' -%}</a>
       </li>
       {%- endif -%}
       {%- if settings.social_vimeo_link != blank -%}
       <li>
         <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}" style="color:#1ab7ea">
-          {%- include 'icon-vimeo' -%}
+          {%- render 'icon-vimeo' -%}
         </a>
       </li>
       {%- endif -%}

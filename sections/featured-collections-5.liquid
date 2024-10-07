@@ -10,10 +10,10 @@
     {%- endif -%}
 </style>
 <div class="customstyle{{ section.id }} position-relative " data-aos="{{section.settings.animation}}" style="z-index:{{section.settings.zindex}}" >
-    {%- include 'style-section' -%}
+    {%- render 'style-section' -%}
       <div class="{{ section.settings.setwidth }}">
       <div class="section-block">
-          {%- include 'section-heading' -%}
+          {%- render 'section-heading' -%}
           <div class="collectionlist-wrapper collectionlist-wrapper-{{ section.id }}">
             <div class="collectionlist-slider row" id="collection-list-{{ section.id }}">
               {%- for block in section.blocks -%}
@@ -26,9 +26,9 @@
                     <div class="collection-card__image position-relative">
                       <a class="hv-image" href="{{featured_collection.url | default :'#'}}">
                         {%- if featured_image != blank -%}
-                        <img class="lazyload transition" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_image | img_url: '600x'}}">
+                        <img class="lazyload transition" src="{%- render 'srcBlank' -%}" data-srcset="{{ featured_image | img_url: '600x'}}">
                         {%- elsif featured_collection.image != blank -%}
-                        <img class="lazyload transition" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_collection.image | img_url: '600x'}}">
+                        <img class="lazyload transition" src="{%- render 'srcBlank' -%}" data-srcset="{{ featured_collection.image | img_url: '600x'}}">
                         {%- else -%}
                         {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
                         {%- endif -%}
@@ -48,7 +48,7 @@
             </div>
           </div>
           {%- if section.blocks.size == 0 -%}
-          {%- include 'no-blocks' -%}
+          {%- render 'no-blocks' -%}
           {%- endif -%}
         </div>
       </div>

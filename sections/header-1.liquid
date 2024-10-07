@@ -1384,13 +1384,13 @@ input[type=search]::-webkit-search-cancel-button {
     <div class="container-fluid">
       <div class="row no-gutters">
         <div class="d-block d-lg-none toggle-menu-mobile col-3">
-          {%- include 'button-toggle-menu-mobile' -%}
+          {%- render 'button-toggle-menu-mobile' -%}
         </div>
         <div class="col-6 col-lg-2 d-flex align--center col-logo justify-content-center justify-content-lg-start">
-          {%- include 'site-logo' -%}
+          {%- render 'site-logo' -%}
         </div>
         <div class="col-md-6 col d-none d-lg-block col-menu">
-          {%- include 'block-menu' -%}
+          {%- render 'block-menu' -%}
         </div>
         <div class="ml-auto header-bottom__right col-md col-3">
           {%- if shop.customer_accounts_optional or shop.customer_accounts_enabled -%}
@@ -1417,7 +1417,7 @@ input[type=search]::-webkit-search-cancel-button {
             {%- endif -%}
           {%- endif -%}
           <div class="mr-4 d-none d-lg-block">
-            {%- include 'block-currencies' -%}
+            {%- render 'block-currencies' -%}
           </div>
           <div class="site-header__search-wrap">
             <div class="overlay" onclick="toggleClassSearch()"></div>
@@ -1429,13 +1429,13 @@ input[type=search]::-webkit-search-cancel-button {
                     <input type="hidden" name="type" value="product">
                     <div class="d-flex align-items-center mb-2">
                       <label for="SiteNavSearch" class="label-search mr-auto mb-0 text-uppercase text-muted small">{{ 'general.search.titleplace' | t }}</label>
-                      <a href="#" onclick="toggleClassSearch()">{%- include 'icon-close' -%}</a>
+                      <a href="#" onclick="toggleClassSearch()">{%- render 'icon-close' -%}</a>
                     </div>
                     
                     <div class="d-flex align-items-center pb-lg-2 border-bottom">
                       <input onfocus="this.value=''" type="search" name="q" id="SiteNavSearch" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" autocomplete="off" class="site-header__search-input mr-auto font-family-1">
                       <button type="submit" class="text-link site-header__link site-header__search-submit">
-                        {%- include 'icon-search' -%}
+                        {%- render 'icon-search' -%}
                       </button>
                     </div>
                     <div class="search-results"></div>
@@ -1444,15 +1444,15 @@ input[type=search]::-webkit-search-cancel-button {
               </div>
             </form>
             <button onclick="toggleClassSearch()" class="text-link site-header__link site-header__search-pop">
-              {%- include 'icon-search' -%}
+              {%- render 'icon-search' -%}
             </button>
           </div>
           <div class="wishlist-right">
-            {%- include 'block-wishlist' -%}
+            {%- render 'block-wishlist' -%}
           </div>
-          {%- include 'block-cart' -%}
+          {%- render 'block-cart' -%}
           {%- if section.settings.enablesidebar -%}
-          {%- include 'sidebar-option' -%}
+          {%- render 'sidebar-option' -%}
           {%- endif -%}
         </div>
       </div>

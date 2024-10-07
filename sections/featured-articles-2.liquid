@@ -35,10 +35,10 @@
     }
   </style>
   <div class="customstyle{{ section.id }} blog-section{{section.id}}" data-aos="{{section.settings.animation}}">
-    {%- include 'style-section' -%}
+    {%- render 'style-section' -%}
   <div class="{{ section.settings.setwidth }}">
     <div class="section-block">
-      {%- include 'section-heading' -%}
+      {%- render 'section-heading' -%}
       <div class="bloglist-wrapper dots-negative " data-aos="{{section.settings.animation}}">
         <div class="bloglist-slider row {% if section.settings.reverse %} flex-lg-row-reverse {% endif %}" >
           {%- assign blog = blogs[section.settings.blog] -%}
@@ -58,7 +58,7 @@
                                 <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
                                     {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                                     <img class="lazyload"
-                                        src="{%- include 'srcBlank' -%}"
+                                        src="{%- render 'srcBlank' -%}"
                                         data-src="{{ img_url }}"
                                         data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
                                         data-aspectratio="{{ article.image.aspect_ratio }}"
@@ -94,7 +94,7 @@
                                 <div class="article__photo-wrapper" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
                                     {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                                     <img class="lazyload"
-                                        src="{%- include 'srcBlank' -%}"
+                                        src="{%- render 'srcBlank' -%}"
                                         data-src="{{ img_url }}"
                                         data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
                                         data-aspectratio="{{ article.image.aspect_ratio }}"
@@ -118,7 +118,7 @@
           {%- else -%}
           {%- for i in (1..limit) -%}
           <div class="bloglist-item col">
-            {%- include 'blog-grid-blank' -%}
+            {%- render 'blog-grid-blank' -%}
           </div>
           {%- endfor -%}
           {%- endif -%}

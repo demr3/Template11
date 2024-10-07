@@ -1,10 +1,10 @@
 <!-- advanced-content.liquid -->
 {%- if section.settings.enablesection -%}
 <div class="customstyle{{ section.id }}" >
-    {%- include 'style-section' -%}
+    {%- render 'style-section' -%}
   <div class="{{ section.settings.setwidth }}">
     <div class="section-block">
-      {%- include 'section-heading' -%}
+      {%- render 'section-heading' -%}
       <div class="row {% unless section.settings.padding %} m-0{% endunless %}">
         {%- for block in section.blocks -%}
         {%- case block.settings.width -%}
@@ -69,7 +69,7 @@
                   <div class="video-wrapper">
                     <button class="video-section__player-close">
                       <span class="visually-hidden">{{ 'video.close' | t }}</span>
-                      {%- include 'icon-close' -%}
+                      {%- render 'icon-close' -%}
                     </button>
                     <div class="video-section__player"></div>
                   </div>
@@ -90,7 +90,7 @@
                           alt="{{ block.settings.cover_image.alt | escape }}">
                         
                     </div>
-                    <!-- <img src="{%- include 'srcBlank' -%}" class="lazyload transition w-100" data-src="{{block.settings.cover_image | img_url : '1920x'}}" /> -->
+                    <!-- <img src="{%- render 'srcBlank' -%}" class="lazyload transition w-100" data-src="{{block.settings.cover_image | img_url : '1920x'}}" /> -->
                     {%- endif -%}
                   </div>
                   <div class="video-section__cover-overlay">
@@ -116,7 +116,7 @@
             {%- when 'image' -%}
               {%- if block.settings.image != blank -%}
               <a href="{{block.settings.image_link | default:'#'}}" class="d-block" data-aos="{{section.settings.animation}}" data-aos-duration="1200">
-                <img src="{%- include 'srcBlank' -%}" class="lazyload transition w-100" data-src="{{block.settings.image | img_url : '1920x'}}" />
+                <img src="{%- render 'srcBlank' -%}" class="lazyload transition w-100" data-src="{{block.settings.image | img_url : '1920x'}}" />
               </a>
               {%- else -%}
               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -124,9 +124,9 @@
             {%- when 'productcustom' -%}
               {%- assign productLookbook = all_products[block.settings.product] -%}
                 {%- if productLookbook != blank -%}
-                  {%- include 'product-card', product: productLookbook -%}
+                  {%- render 'product-card', product: productLookbook -%}
                 {%- else -%}
-                  {%- include 'product-grid-blank' -%} 
+                  {%- render 'product-grid-blank' -%} 
               {%- endif -%}
             {%- when 'countdown' -%}
               <div class="countdownhtml text-{{ block.settings.alignhorizotal }} {% if block.settings.image_deal != blank %} lazyload {% endif %}" {% if block.settings.image_deal != blank %} data-bg="{{ block.settings.image_deal | img_url:"1920x" }}" data-sizes="auto"

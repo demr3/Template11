@@ -186,7 +186,7 @@
     {%- if section.settings.enable_sidebar -%}
       <div class="{{section.settings.sidebar_col}} col-12 js-sidebar">
         <div class="sidebar collection-sidebar">
-          {%- include 'sidebar' -%}
+          {%- render 'sidebar' -%}
         </div>
       </div>
     {%- endif -%}
@@ -221,19 +221,19 @@
 	    </div>
           </div>
           <div class="col col-right">
-            {%- include 'collection-sortby' -%}
+            {%- render 'collection-sortby' -%}
           </div>
         </div>
       </div>
       <div id="js-product-ajax"><!-- ONLY HAVE LIST OF PRODUCTS AND PAGINATION TO LOAD AJAX -->
-        {%- include 'current-constraint' -%}
+        {%- render 'current-constraint' -%}
         <div class="row align-items-lg-center">
           {%- for product in collection.products -%}
           <div class="{{gridProduct}}">
-            {%- include 'product-card', product: product -%}
+            {%- render 'product-card', product: product -%}
           </div>
           {%- else -%}
-          {%- include 'collection-blank' -%}
+          {%- render 'collection-blank' -%}
           {%- endfor -%}
         </div>
         {%- if paginate.pages > 1 -%}
@@ -244,7 +244,7 @@
       </div>
     </div>
   </div>
-  {%- include 'coupon_code' -%}
+  {%- render 'coupon_code' -%}
 </div>
 {%- endpaginate -%}
 

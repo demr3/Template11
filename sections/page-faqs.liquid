@@ -133,7 +133,7 @@
 }</style>
 <!-- page-faqs.liquid -->
 <div class="customstyle{{ section.id }}">
-  {%- include 'style-section' -%}
+  {%- render 'style-section' -%}
   <div class="{{ section.settings.setwidth }}">
 <div class="section-faqs {{section.settings.layout}}">
   {% if section.settings.heading != blank %}

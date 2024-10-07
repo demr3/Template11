@@ -1,9 +1,9 @@
 <!-- masonry-banner.liquid -->
 <div class="customstyle{{ section.id }}" >
-  {%- include 'style-section' -%}
+  {%- render 'style-section' -%}
   <div class="{{ section.settings.setwidth }}">
     <div class="section-block">
-      {%- include 'section-heading' -%}
+      {%- render 'section-heading' -%}
       <div class="js-masonry row" data-section-id="{{ section.id }}" data-section-type="masonries" style="opacity:0">
         <div class="grid-sizer"></div>
         {%- for block in section.blocks -%}
@@ -14,7 +14,7 @@
             {%- when 'banner' -%}
               <figure class="banner-theme hv-image-saturate banner-theme-{{block.settings.vertical}} banner-theme-{{block.settings.horizontal}} text-{{block.settings.text_align}}">
                 {%- if block.settings.image != blank -%}
-                <img src="{%- include 'srcBlank' -%}" class="lazyload transition" data-src="{{block.settings.image | img_url:'960x'}}">
+                <img src="{%- render 'srcBlank' -%}" class="lazyload transition" data-src="{{block.settings.image | img_url:'960x'}}">
                 {%- else -%}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                 {%- endif -%}

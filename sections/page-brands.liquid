@@ -51,8 +51,8 @@
         {% for link in linklists[block.settings.linklist].links %}
         <li>
           <a target="_blank" href="{{link.url}}" title="{{link.title}}">
-            {% include 'processMenuTitle' with itemName:link.title %}
-            {% include 'processMenuLabel' with itemName:link.title %}
+            {% render 'processMenuTitle' with itemName:link.title %}
+            {% render 'processMenuLabel' with itemName:link.title %}
           </a>
         </li>
         {% endfor %}

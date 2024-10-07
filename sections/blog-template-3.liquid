@@ -71,7 +71,7 @@
         {%- paginate blog.articles by 24 -%}
         {%- for article in blog.articles -%}
         <div class="{{section.settings.item_width}} grid-item {% for tag in article.tags %}{{ tag | camelcase }} {% endfor %}">
-          {%- include 'blog-card' -%}
+          {%- render 'blog-card' -%}
         </div>
         {%- endfor -%}
       </div>
@@ -83,7 +83,7 @@
       {%- endpaginate -%}
     </div>
     {%- if section.settings.sidebar_enable -%}
-    {%- include 'blogSidebar' -%}
+    {%- render 'blogSidebar' -%}
     {%- endif -%}
   </div>
 </div>

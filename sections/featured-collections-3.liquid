@@ -2,7 +2,7 @@
 
 <style>
   {% assign hex2rgb_hex = section.settings.bg_overlay %}
-  {% include 'hex2rgb' %}
+  {% render 'hex2rgb' %}
   {%- if section.settings.nowrap -%}
   .swipercollection .swiper-container {
     overflow: visible;
@@ -30,11 +30,11 @@
 </style>
 
 <div class="customstyle{{ section.id }} swipercollection swiperco-{{section.id}}  {% if section.settings.stylecollection == 'name' %} collections-name {% endif %}" data-aos="{{section.settings.animation}}" >
-    {%- include 'style-section' -%}
+    {%- render 'style-section' -%}
       <div >
       <div class="section-block" >
         <div class="{{ section.settings.setwidth }}">
-          {%- include 'section-heading' -%}
+          {%- render 'section-heading' -%}
         </div>
           <div class="{{ section.settings.setwidth }} .container-p">
             <div id="swipercol-{{section.id}}" class="collectionlist-wrapper swiper-container swipercol-{{section.id}} {% if section.settings.scrollbar %} pb-5 {% endif %}" 
@@ -66,7 +66,7 @@
                           {%- if featured_image != blank -%}
                           <img 
                               class="lazyload transition" 
-                              src="{%- include 'srcBlank' -%}"
+                              src="{%- render 'srcBlank' -%}"
                               data-srcset="{{ img_url }}"
                               data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
                               data-aspectratio="{{ featured_image.aspect_ratio }}"
@@ -79,7 +79,7 @@
                           {%- elsif featured_collection.image != blank -%}
                             <img 
                               class="lazyload transition" 
-                              src="{%- include 'srcBlank' -%}"
+                              src="{%- render 'srcBlank' -%}"
                               data-srcset="{{ f_img_url }}"
                               data-widths="[360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
                               data-aspectratio="{{ featured_collection.image.aspect_ratio }}"
@@ -124,7 +124,7 @@
               {%- endif -%}
             </div>
             {%- if section.blocks.size == 0 -%}
-            {%- include 'no-blocks' -%}
+            {%- render 'no-blocks' -%}
             {%- endif -%}
         </div>
         </div>

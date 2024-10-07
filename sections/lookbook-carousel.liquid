@@ -8,9 +8,9 @@
 </style>
 <div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" >
   <div class="{{ section.settings.setwidth }}">
-    {%- include 'style-section' -%}
+    {%- render 'style-section' -%}
   <div class="section-block" >
-    {%- include 'section-heading' -%}
+    {%- render 'section-heading' -%}
     {%- if section.blocks.size > 0 -%}
     <div class="lookbooks-wrapper">
       <div class="lookbooks-slider m-0" id="Lookbooks-{{ section.id }}" 
@@ -30,7 +30,7 @@
             <div class="col-md-8 col-lg-9">
               <div class="position-relative">
                 {%- if block.settings.image != blank -%}
-                <img src="{%- include 'srcBlank' -%}" 
+                <img src="{%- render 'srcBlank' -%}" 
                   class="lazyload" 
                   data-src="{{block.settings.image | img_url : '1500x'}}" 
                   src="{{ img_url | img_url: '1x1' }}"
@@ -44,16 +44,16 @@
                   <span data-tooltip="true" title="{{productLookbook.title}}" class="lookbook__dot" style="background:{{block.settings.dot_color}}"></span>
                 </a>
                 {%- if block.settings.instagram != blank -%}
-                <a class="lookbook__instagram text-hover-theme text-white" href="{{block.settings.instagram}}">{%- include 'icon-instagram' -%}</a>
+                <a class="lookbook__instagram text-hover-theme text-white" href="{{block.settings.instagram}}">{%- render 'icon-instagram' -%}</a>
                 {%- endif -%}
               </div>
             </div>
             <div class="col-md-4 col-lg-3 d-none d-md-block">
               <div class="d-flex w-100 h-100 justify-content-center align-items-center p-5">
                 {%- if productLookbook != blank -%}
-                {%- include 'product-card', product: productLookbook -%}
+                {%- render 'product-card', product: productLookbook -%}
                 {%- else -%}
-                {%- include 'product-grid-blank' -%}
+                {%- render 'product-grid-blank' -%}
                 {%- endif -%}
               </div>
             </div>
@@ -64,7 +64,7 @@
     </div>
     {%- endif -%}
     {%- if section.blocks.size == 0 -%}
-    {%- include 'no-blocks' -%}
+    {%- render 'no-blocks' -%}
     {%- endif -%}
   </div>
   </div>

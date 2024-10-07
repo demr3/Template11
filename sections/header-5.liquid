@@ -1502,8 +1502,8 @@ input[type=search]::-webkit-search-cancel-button {
               {% endif %}
               {% endif %}  
             {% endif %}
-          {% comment %} {%- include 'block-wishlist' -%} {% endcomment%}
-          {% comment %} {%- include 'block-compare' -%}  {% endcomment%}
+          {% comment %} {%- render 'block-wishlist' -%} {% endcomment%}
+          {% comment %} {%- render 'block-compare' -%}  {% endcomment%}
           {%- if section.settings.text_topbar != blank -%}
             <div class="html-topbar topbar-block">
             {{ section.settings.text_topbar}}
@@ -1512,12 +1512,12 @@ input[type=search]::-webkit-search-cancel-button {
 
           {%- if section.settings.enablemoney -%}
             <div class="topbar-block d-none d-sm-block">
-            {%- include 'block-currencies' -%}
+            {%- render 'block-currencies' -%}
           </div>
           {%- endif -%}
           {%- if section.settings.enable_social -%}
             <div class="topbar-block">
-              {%- include 'block-social' -%}
+              {%- render 'block-social' -%}
             </div>
           {%- endif -%}
         </div>
@@ -1530,13 +1530,13 @@ input[type=search]::-webkit-search-cancel-button {
     <div class="container-fluid">
       <div class="row align-items-center">
         <div class="col-3 col-md col-menu">
-          {%- include 'block-menu' -%}
+          {%- render 'block-menu' -%}
           <div class="d-block d-lg-none toggle-menu-mobile">
-            {%- include 'button-toggle-menu-mobile' -%}
+            {%- render 'button-toggle-menu-mobile' -%}
           </div>
         </div>
         <div class="col-6 col-lg-2 d-flex align--center justify-content-center col-logo">
-          {%- include 'site-logo' -%}
+          {%- render 'site-logo' -%}
         </div>
         <div class="ml-auto header-bottom__right col-3 col-md ">
           {% unless section.settings.enable_login %}
@@ -1566,7 +1566,7 @@ input[type=search]::-webkit-search-cancel-button {
             {%- endunless -%}
           {%- unless section.settings.enablemoney -%}
           <div class="mr-4 d-none d-sm-block">
-            {%- include 'block-currencies' -%}
+            {%- render 'block-currencies' -%}
           </div>
           {%- endunless -%}
           
@@ -1580,13 +1580,13 @@ input[type=search]::-webkit-search-cancel-button {
                     <input type="hidden" name="type" value="product">
                     <div class="d-flex align-items-center mb-2">
                       <label for="SiteNavSearch" class="label-search mr-auto mb-0 text-uppercase text-muted small">{{ 'general.search.titleplace' | t }}</label>
-                      <a href="#" onclick="toggleClassSearch()">{%- include 'icon-close' -%}</a>
+                      <a href="#" onclick="toggleClassSearch()">{%- render 'icon-close' -%}</a>
                     </div>
                     
                     <div class="d-flex align-items-center pb-lg-2 border-bottom">
                       <input onfocus="this.value=''" type="search" name="q" id="SiteNavSearch" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" autocomplete="off" class="site-header__search-input mr-auto font-family-1">
                       <button type="submit" class="text-link site-header__link site-header__search-submit">
-                        {%- include 'icon-search' -%}
+                        {%- render 'icon-search' -%}
                       </button>
                     </div>
                     <div class="search-results"></div>
@@ -1595,15 +1595,15 @@ input[type=search]::-webkit-search-cancel-button {
               </div>
             </form>
             <button onclick="toggleClassSearch()" class="text-link site-header__link site-header__search-pop">
-              {%- include 'icon-search' -%}
+              {%- render 'icon-search' -%}
             </button>
           </div>
           <div class="wishlist-right">
-          {%- include 'block-wishlist' -%}
+          {%- render 'block-wishlist' -%}
           </div>
-          {%- include 'block-cart' -%}
+          {%- render 'block-cart' -%}
           {%- if section.settings.enablesidebar -%}
-            {%- include 'sidebar-option' -%}
+            {%- render 'sidebar-option' -%}
           {%- endif -%}
         </div>
       </div>
@@ -1611,7 +1611,7 @@ input[type=search]::-webkit-search-cancel-button {
   </div>
 </header>
 {%- if template != 'customers/login' -%}
-{% include 'popup-login' %}
+{% render 'popup-login' %}
 {%- endif -%}
 {% schema %}
 {

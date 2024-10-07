@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "cart-template",
+      "type": "main-wishlist",
       "settings": {
       }
     }

@@ -15,10 +15,10 @@
   }
 </style>
 <div class="customstyle{{ section.id }} blog-section{{section.id}}" data-aos="{{section.settings.animation}}">
-  {%- include 'style-section' -%}
+  {%- render 'style-section' -%}
 <div class="{{ section.settings.setwidth }}">
   <div class="section-block">
-    {%- include 'section-heading' -%}
+    {%- render 'section-heading' -%}
     <div class="bloglist-wrapper dots-negative " data-aos="{{section.settings.animation}}">
       <div class="bloglist-slider row" id="Bloglist-{{ section.id }}"
            data-rows="{{section.settings.rows}}"
@@ -34,13 +34,13 @@
         {%- if blog != blank -%}
         {%- for article in blog.articles limit: limit  -%}
         <div class="bloglist-item col">
-          {%- include 'blog-card' -%}
+          {%- render 'blog-card' -%}
         </div>
         {%- endfor -%}
         {%- else -%}
         {%- for i in (1..limit) -%}
         <div class="bloglist-item col">
-          {%- include 'blog-grid-blank' -%}
+          {%- render 'blog-grid-blank' -%}
         </div>
         {%- endfor -%}
         {%- endif -%}

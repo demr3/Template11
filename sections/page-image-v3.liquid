@@ -1,11 +1,11 @@
 <!-- page-image-v3.liquid -->
 {%- if section.settings.enablesection -%}
 <div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" >
-    {%- include 'style-section' -%}
+    {%- render 'style-section' -%}
   <div class="img-v3">
         <div class="{{ section.settings.setwidth }}">
             {%- if section.settings.image != blank -%}
-            <img src="{%- include 'srcBlank' -%}" class="lazyload transition w-100" data-src="{{section.settings.image | img_url : '1920x'}}" />
+            <img src="{%- render 'srcBlank' -%}" class="lazyload transition w-100" data-src="{{section.settings.image | img_url : '1920x'}}" />
             {%- else -%}
             {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
             {%- endif -%}

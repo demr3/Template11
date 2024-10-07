@@ -1,9 +1,9 @@
 <!-- brand-list.liquid -->
 <div class="customstyle{{ section.id }} " data-aos="{{section.settings.animation}}" >
-  {%- include 'style-section' -%}
+  {%- render 'style-section' -%}
   <div class="{{ section.settings.setwidth }}">
     <div class="section-block">
-      {%- include 'section-heading' -%}
+      {%- render 'section-heading' -%}
       <div class=" row">
         {%- for block in section.blocks -%}
         <div class=" col-6 col-md-{{section.settings.width}} d-flex justify-content-center align-items-center my-4" {{ block.shopify_attributes }} data-aos="{{section.settings.animation}}" data-aos-duration="1200">
@@ -25,7 +25,7 @@
       </div>
 
       {%- if section.blocks.size == 0 -%}
-      {%- include 'no-blocks' -%}
+      {%- render 'no-blocks' -%}
       {%- endif -%}
     </div>
   </div>

@@ -1362,14 +1362,14 @@ input[type=search]::-webkit-search-cancel-button {
       <div class="row no-gutters row-header"> 
         <div class="col-7 col-md-3 col-lg-3 align-items-center d-flex">
           <div class="d-block toggle-menu-mobile">
-            {%- include 'button-toggle-menu-mobile' -%}
+            {%- render 'button-toggle-menu-mobile' -%}
             </div>
             <div class="hide">
-            {%- include 'block-menu' -%}
+            {%- render 'block-menu' -%}
           </div>	
           <div class="d-flex align--center justify-content-center col-logo">
             <div class="d-flex align--center justify-content-center">
-            {%- include 'site-logo' -%}
+            {%- render 'site-logo' -%}
             </div>
           </div>
         </div>
@@ -1402,7 +1402,7 @@ input[type=search]::-webkit-search-cancel-button {
 
           <!-- header-2 | search -->
           <div class="d-none d-sm-block">
-            {%- include 'block-currencies' -%}
+            {%- render 'block-currencies' -%}
           </div>
           <div class="site-header__search-wrap">
             <div class="overlay" onclick="toggleClassSearch()"></div>
@@ -1414,13 +1414,13 @@ input[type=search]::-webkit-search-cancel-button {
                     <input type="hidden" name="type" value="product">
                     <div class="d-flex align-items-center mb-2">
                       <label for="SiteNavSearch" class="label-search mr-auto mb-0 text-uppercase text-muted small">{{ 'general.search.titleplace' | t }}</label>
-                      <a href="#" onclick="toggleClassSearch()">{%- include 'icon-close' -%}</a>
+                      <a href="#" onclick="toggleClassSearch()">{%- render 'icon-close' -%}</a>
                     </div>
                     
                     <div class="d-flex align-items-center pb-lg-2 border-bottom">
                       <input onfocus="this.value=''" type="search" name="q" id="SiteNavSearch" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" autocomplete="off" class="site-header__search-input mr-auto font-family-1">
                       <button type="submit" class="text-link site-header__link site-header__search-submit">
-                        {%- include 'icon-search' -%}
+                        {%- render 'icon-search' -%}
                       </button>
                     </div>
                     <div class="search-results"></div>
@@ -1429,17 +1429,17 @@ input[type=search]::-webkit-search-cancel-button {
               </div>
             </form>
             <button onclick="toggleClassSearch()" class="text-link site-header__link site-header__search-pop">
-              {%- include 'icon-search' -%}
+              {%- render 'icon-search' -%}
             </button>
           </div>
          
           <div>
-          {%- include 'block-wishlist' -%}
+          {%- render 'block-wishlist' -%}
           </div>
           <div>
-            {%- include 'block-compare' -%}
+            {%- render 'block-compare' -%}
           </div>
-          {%- include 'block-cart' -%}
+          {%- render 'block-cart' -%}
 
         </div>
       </div>
@@ -1447,7 +1447,7 @@ input[type=search]::-webkit-search-cancel-button {
   </div>
 </header>
 {%- if template != 'customers/login' -%}
-{% include 'popup-login' %}
+{% render 'popup-login' %}
 {%- endif -%}
 {% schema %}
 {

@@ -89,7 +89,7 @@
           <h3 class="h3 site-footer__section-title text-{{ block.settings.align }}">{{ block.settings.title | escape }}</h3>
           {%- endif -%}
           <ul class="list-inline social-icons text-{{ block.settings.align }}">
-            {%- include 'footer-socical' -%}
+            {%- render 'footer-socical' -%}
           </ul>
         </div>
 
@@ -113,7 +113,7 @@
           <h3 class="h3 site-footer__section-title">{{ block.settings.title | escape }}</h3>
           {%- endif -%}
           {%- if block.settings.logofooter != blank -%}
-            <img class="lazyload" src="{%- include 'srcBlank' -%}" data-src="{{block.settings.logofooter | img_url : '400x'}}" />
+            <img class="lazyload" src="{%- render 'srcBlank' -%}" data-src="{{block.settings.logofooter | img_url : '400x'}}" />
           {%- endif -%}
           <div class="rte-setting">{{ block.settings.text }}</div>
         </div>
@@ -153,7 +153,7 @@
             {%- if settings.social_facebook_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
-                {%- include 'icon-facebook' -%}
+                {%- render 'icon-facebook' -%}
                 <span >Fb</span>
               </a>
             </li>
@@ -161,7 +161,7 @@
             {%- if settings.social_twitter_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
-                {%- include 'icon-twitter' -%}
+                {%- render 'icon-twitter' -%}
                 <span >Tw</span>
               </a>
             </li>
@@ -169,7 +169,7 @@
             {%- if settings.social_pinterest_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
-                {%- include 'icon-pinterest' -%}
+                {%- render 'icon-pinterest' -%}
                 <span>Pin</span>
               </a>
             </li>
@@ -177,7 +177,7 @@
             {%- if settings.social_instagram_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
-                {%- include 'icon-instagram' -%}
+                {%- render 'icon-instagram' -%}
                 <span >Ins</span>
               </a>
             </li>
@@ -185,7 +185,7 @@
             {%- if settings.social_tumblr_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
-                {%- include 'icon-tumblr' -%}
+                {%- render 'icon-tumblr' -%}
                 <span >Tum</span>
               </a>
             </li>
@@ -193,7 +193,7 @@
             {%- if settings.social_snapchat_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
-                {%- include 'icon-snapchat' -%}
+                {%- render 'icon-snapchat' -%}
                 <span >Snap</span>
               </a>
             </li>
@@ -201,7 +201,7 @@
             {%- if settings.social_youtube_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
-                {%- include 'icon-youtube' -%}
+                {%- render 'icon-youtube' -%}
                 <span class="icon__fallback-text">You</span>
               </a>
             </li>
@@ -209,7 +209,7 @@
             {%- if settings.social_vimeo_link != blank -%}
             <li class="list-inline-item">
               <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
-                {%- include 'icon-vimeo' -%}
+                {%- render 'icon-vimeo' -%}
                 <span >Vim</span>
               </a>
             </li>
@@ -227,7 +227,7 @@
       <div class="row align-items-lg-center">
         <div class="col-lg-4">
           <ul class="list-inline social-icons ">
-            {%- include 'footer-socical' -%}
+            {%- render 'footer-socical' -%}
           </ul>
         </div>
         <div class="col-lg-4 text-center">
@@ -259,7 +259,7 @@
             </ul>
           {%- else -%}
             {%- if section.settings.imgpayment != blank -%}
-              <img class="lazyload" src="{%- include 'srcBlank' -%}" data-src="{{section.settings.imgpayment | img_url : '400x'}}" />
+              <img class="lazyload" src="{%- render 'srcBlank' -%}" data-src="{{section.settings.imgpayment | img_url : '400x'}}" />
             {%- endif -%}
           {%- endif -%}
         </div>

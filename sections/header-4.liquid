@@ -1685,8 +1685,8 @@ p#left-cart-subtotal {
               {% endif %}
               {% endif %}  
             {% endif %}
-          {% comment %} {%- include 'block-wishlist' -%} {% endcomment%}
-          {% comment %} {%- include 'block-compare' -%}  {% endcomment%}
+          {% comment %} {%- render 'block-wishlist' -%} {% endcomment%}
+          {% comment %} {%- render 'block-compare' -%}  {% endcomment%}
           {%- if section.settings.text_topbar != blank -%}
             <div class="html-topbar topbar-block">
             {{ section.settings.text_topbar}}
@@ -1695,12 +1695,12 @@ p#left-cart-subtotal {
 
           {%- if section.settings.enablemoney -%}
             <div class="topbar-block d-none d-sm-block">
-            {%- include 'block-currencies' -%}
+            {%- render 'block-currencies' -%}
            </div>
           {%- endif -%}
           {%- if section.settings.enable_social -%}
             <div class="topbar-block">
-              {%- include 'block-social' -%}
+              {%- render 'block-social' -%}
             </div>
           {%- endif -%}
         </div>
@@ -1713,21 +1713,21 @@ p#left-cart-subtotal {
       <div class="row no-gutters row-header align-items-center">
         <div class="col d-lg-none">
           <div class="d-block d-lg-none toggle-menu-mobile">
-            {%- include 'button-toggle-menu-mobile' -%}
+            {%- render 'button-toggle-menu-mobile' -%}
           </div>
         </div>
         <div class="col d-flex align-items-center justify-content-center justify-content-lg-start col-logo ">
           <div class="pl-lg-0 ml-lg-0">
-          {%- include 'site-logo' -%}
+          {%- render 'site-logo' -%}
         </div>
         </div>
         <div class="col-md-6 col-lg-7 d-none d-lg-block text-{{section.settings.align_menu}} col-menu">
-          {%- include 'block-menu' -%}
+          {%- render 'block-menu' -%}
         </div>
         <div class="col header-bottom__right">
           {%- unless section.settings.enablemoney -%}
           <div class="mr-4 d-none d-sm-block">
-            {%- include 'block-currencies' -%}
+            {%- render 'block-currencies' -%}
           </div>
           {%- endunless -%}
           <!-- header-4 | search -->
@@ -1741,13 +1741,13 @@ p#left-cart-subtotal {
                     <input type="hidden" name="type" value="product">
                     <div class="d-flex align-items-center mb-2">
                       <label for="SiteNavSearch" class="label-search mr-auto mb-0 text-uppercase text-muted">{{ 'general.search.titleplace' | t }}</label>
-                      <a href="#" onclick="toggleClassSearch()">{%- include 'icon-close' -%}</a>
+                      <a href="#" onclick="toggleClassSearch()">{%- render 'icon-close' -%}</a>
                     </div>
                     
                     <div class="d-flex align-items-center pb-lg-2 border-bottom">
                       <input onfocus="this.value=''" type="search" name="q" id="SiteNavSearch" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" autocomplete="off" class="site-header__search-input mr-auto">
                       <button type="submit" class="text-link site-header__link site-header__search-submit">
-                        {%- include 'icon-search' -%}
+                        {%- render 'icon-search' -%}
                       </button>
                     </div>
                     <div class="search-results"></div>
@@ -1756,16 +1756,16 @@ p#left-cart-subtotal {
               </div>
             </form>
             <button onclick="toggleClassSearch()" class="text-link site-header__link site-header__search-pop">
-              {%- include 'icon-search' -%}
+              {%- render 'icon-search' -%}
             </button>
           </div>
           <div class="wishlist-right">
-          {%- include 'block-wishlist' -%}
+          {%- render 'block-wishlist' -%}
           </div>
           <!-- header-4 | cart -->
-          {%- include 'block-cart' -%}
+          {%- render 'block-cart' -%}
           {%- if section.settings.enablesidebar -%}
-          {%- include 'sidebar-option' -%}
+          {%- render 'sidebar-option' -%}
           {%- endif -%}
         </div>
       </div>
@@ -1773,7 +1773,7 @@ p#left-cart-subtotal {
   </div>
 </header>
 {%- if template != 'customers/login' -%}
-{% include 'popup-login' %}
+{% render 'popup-login' %}
 {%- endif -%}
 {% schema %}
 {

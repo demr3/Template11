@@ -1,6 +1,6 @@
 <!-- image-content.liquid -->
 <div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}">
-  {%- include 'style-section' -%}
+  {%- render 'style-section' -%}
 <div class="{{ section.settings.setwidth }}">
   <div class="section-block">
     <div class="row {% if section.settings.enable_padding %}no-gutters {% endif%}">
@@ -54,7 +54,7 @@
     </div>
 
     {%- if section.blocks.size == 0 -%}
-      {%- include 'no-blocks' -%}
+      {%- render 'no-blocks' -%}
     {%- endif -%}
   </div>
 </div>

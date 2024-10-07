@@ -1476,7 +1476,7 @@
                         {%- if settings.social_pinterest_link != blank -%}
                           <li class="list-inline-item">
                             <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
-                              {%- include 'icon-pinterest' -%}
+                              {%- render 'icon-pinterest' -%}
                               <span>Pin</span>
                             </a>
                           </li>
@@ -1484,7 +1484,7 @@
                         {%- if settings.social_instagram_link != blank -%}
                           <li class="list-inline-item">
                             <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
-                              {%- include 'icon-instagram' -%}
+                              {%- render 'icon-instagram' -%}
                               <span >Ins</span>
                             </a>
                           </li>
@@ -1492,7 +1492,7 @@
                         {%- if settings.social_tumblr_link != blank -%}
                           <li class="list-inline-item">
                             <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
-                              {%- include 'icon-tumblr' -%}
+                              {%- render 'icon-tumblr' -%}
                               <span >Tum</span>
                             </a>
                           </li>
@@ -1500,7 +1500,7 @@
                         {%- if settings.social_snapchat_link != blank -%}
                           <li class="list-inline-item">
                             <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
-                              {%- include 'icon-snapchat' -%}
+                              {%- render 'icon-snapchat' -%}
                               <span >Snap</span>
                             </a>
                           </li>
@@ -1508,7 +1508,7 @@
                         {%- if settings.social_youtube_link != blank -%}
                           <li class="list-inline-item">
                             <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
-                              {%- include 'icon-youtube' -%}
+                              {%- render 'icon-youtube' -%}
                               <span class="icon__fallback-text">You</span>
                             </a>
                           </li>
@@ -1516,7 +1516,7 @@
                         {%- if settings.social_vimeo_link != blank -%}
                           <li class="list-inline-item">
                             <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
-                              {%- include 'icon-vimeo' -%}
+                              {%- render 'icon-vimeo' -%}
                               <span >Vim</span>
                             </a>
                           </li>
@@ -1534,15 +1534,15 @@
           <div class="container-fluid">
             <div class="row row-header pt-3 pb-3 pb-lg-0">
               <div class="d-block d-lg-none toggle-menu-mobile col-3 col-md align-items-center d-flex">
-                {%- include 'button-toggle-menu-mobile' -%}
+                {%- render 'button-toggle-menu-mobile' -%}
               </div>
               <div class="col-md-4 col-3 col-sm-3 header-top__left d-none d-lg-flex">
                 {%- if section.settings.enablesidebar -%}
-                  {%- include 'sidebar-option' -%}
+                  {%- render 'sidebar-option' -%}
                 {%- endif -%}
               </div>
               <div class="col-sm-12 col-md-4 col-6 d-flex align--center justify-content-center col-logo {% if section.settings.animation_logo %} animation-logo{% endif %}">
-                {%- include 'site-logo' -%}
+                {%- render 'site-logo' -%}
               </div>
               <div class="col-sm-3 col-md-4 col-3 header-top__right">
                 <!-- header-3 | login -->
@@ -1574,7 +1574,7 @@
               {% endif %}  
               {%- if section.settings.currencies -%}
                 <div class="mr-4 d-none d-lg-block">
-                  {%- include 'block-currencies' -%}
+                  {%- render 'block-currencies' -%}
                 </div>
               {%- endif -%}
               <!-- header-3 | search -->
@@ -1588,13 +1588,13 @@
                         <input type="hidden" name="type" value="product">
                         <div class="d-flex align-items-center mb-2">
                           <label for="SiteNavSearch" class="label-search mr-auto mb-0 text-uppercase text-muted">{{ 'general.search.titleplace' | t }}</label>
-                          <a href="#" onclick="toggleClassSearch()">{%- include 'icon-close' -%}</a>
+                          <a href="#" onclick="toggleClassSearch()">{%- render 'icon-close' -%}</a>
                         </div>
                         
                         <div class="d-flex align-items-center pb-lg-2 border-bottom">
                           <input onfocus="this.value=''" type="search" name="q" id="SiteNavSearch" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" autocomplete="off" class="site-header__search-input mr-auto">
                           <button type="submit" class="text-link site-header__link site-header__search-submit">
-                            {%- include 'icon-search' -%}
+                            {%- render 'icon-search' -%}
                           </button>
                         </div>
                         <div class="search-results"></div>
@@ -1603,19 +1603,19 @@
                   </div>
                 </form>
                 <button onclick="toggleClassSearch()" class="text-link site-header__link site-header__search-pop">
-                  {%- include 'icon-search' -%}
+                  {%- render 'icon-search' -%}
                 </button>
                 
               </div>
               <div class="wishlist-right">
-                {%- include 'block-wishlist' -%}
+                {%- render 'block-wishlist' -%}
               </div>
-              {%- include 'block-cart' -%}
+              {%- render 'block-cart' -%}
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 col d-none d-lg-block text-center col-menu">
-              {%- include 'block-menu' -%}
+              {%- render 'block-menu' -%}
             </div>
           </div>
         </div>
@@ -1623,7 +1623,7 @@
     </div>
 </header>
 {%- if template != 'customers/login' -%}
-  {% include 'popup-login' %}
+  {% render 'popup-login' %}
 {%- endif -%}
 {% schema %}
 {

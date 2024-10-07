@@ -166,7 +166,7 @@
     {%- if section.settings.enable_sidebar -%}
     <div class="{{section.settings.sidebar_col}} col-12 js-sidebar">
       <div class="sidebar collection-sidebar js-stick-parent">
-        {%- include 'sidebar' -%}
+        {%- render 'sidebar' -%}
       </div>
     </div>
     {%- endif -%}
@@ -189,7 +189,7 @@
           {%- if section.settings.enable_sidebar -%}
           <div class="col col-3 col-left d-lg-none">
             <span class="js-toggle-filter d-flex align-items-center px-3">
-              {%- include 'icon-sliders' -%}
+              {%- render 'icon-sliders' -%}
               <span class="ml-2">{{'collections.general.filter' | t}}</span>
             </span>
           </div>
@@ -202,19 +202,19 @@
           </div>
             </div>
           <div class="col col-right">
-            {%- include 'collection-sortby' -%}
+            {%- render 'collection-sortby' -%}
           </div>
         </div>
       </div>
       <div id="js-product-ajax" ><!-- ONLY HAVE LIST OF PRODUCTS AND PAGINATION TO LOAD AJAX -->
-        {%- include 'current-constraint' -%}
+        {%- render 'current-constraint' -%}
         <div class="row AjaxinateLoop">
           {%- for product in collection.products -%}
           <div class="{{gridProduct}}">
-            {%- include 'product-card', product: product -%}
+            {%- render 'product-card', product: product -%}
           </div>
           {%- else -%}
-          {%- include 'collection-blank' -%}
+          {%- render 'collection-blank' -%}
           {%- endfor -%}
         </div>
         <div class="AjaxinatePagination text-center">
@@ -225,7 +225,7 @@
       </div>
     </div>
   </div>
-  {%- include 'coupon_code' -%}
+  {%- render 'coupon_code' -%}
 </div>
 {%- endpaginate -%}
 

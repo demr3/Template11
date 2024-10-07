@@ -1,9 +1,9 @@
 <!-- instagram-customize.liquid -->
 <div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" >
   <div class="{{ section.settings.setwidth }}">
-    {%- include 'style-section' -%}
+    {%- render 'style-section' -%}
   <div class="section-block">
-    {%- include 'section-heading' -%}
+    {%- render 'section-heading' -%}
     <div class="instagramoff-wrapper dots-negative">
       <div class="instagramoff-slider mb-0  {% if section.settings.padding == false %} row mx-0 {% else %} row{% endif %}" id="service-list-{{ section.id }}"
            data-rows="{{section.settings.rows}}"
@@ -39,7 +39,7 @@
       </div>
     </div>
     {%- if section.blocks.size == 0 -%}
-    {%- include 'no-blocks' -%}
+    {%- render 'no-blocks' -%}
     {%- endif -%}
   </div>
 </div>

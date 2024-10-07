@@ -6,12 +6,12 @@
     }
   </style>
   <div class="customstyle{{ section.id }}" data-aos="{{section.settings.animation}}" >
-    {%- include 'style-section' -%}
+    {%- render 'style-section' -%}
     <div class="{{ section.settings.setwidth }} text-center">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-9">
           <div class="bg-white p-4 p-md-5">
-            {%- include 'section-heading' -%} 
+            {%- render 'section-heading' -%} 
               <div class="form-vertical px-md-5 pb-md-4">
                 {%- form 'customer' -%}
                   {{ form.errors | default_errors }}

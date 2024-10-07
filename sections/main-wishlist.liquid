@@ -8,8 +8,8 @@
       </div>
     </div>
     <div class="tab">
-      <button class="tablinks" onclick="openCity(event, 'main-wishlist-bag')" id="defaultOpen">Shopping Bag</button>
-      <button class="tablinks" onclick="openCity(event, 'main-wishlist-favorites')">My Favorites</button>
+      <button class="tablinks" onclick="openTab(event, 'main-wishlist-bag')" id="js-wishlist-bag">Shopping Bag</button>
+      <button class="tablinks" onclick="openTab(event, 'main-wishlist-favorites')" id="js-wishlist-favorites">My Favorites</button>
     </div>
     
     <div id="main-wishlist-bag" class="tabcontent">
@@ -181,10 +181,12 @@
       chatToggleButton.click();
     }
   });
-
+  
   document.getElementById("defaultOpen").click();
+  function defaultTab(id) {
+  }
 
-  function openCity(evt, cityName) {
+  function openTab(evt, cartTab) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -194,9 +196,20 @@
     for (i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(cartTab).style.display = "block";
     evt.currentTarget.className += " active";
   }
+
+  // On page load, check for the hash in the URL
+  {% comment %} document.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash; // Get the hash from the URL
+    console.log("hash", hash);
+    if (hash === '#my-favorites') {
+      openTab(event, 'main-wishlist-favorites'); // Open My Favorites tab
+    } else {
+      openTab(event, 'main-wishlist-bag'); // Default to Shopping Bag tab
+    }
+  }); {% endcomment %}
 </script>
 {% schema %}
 {

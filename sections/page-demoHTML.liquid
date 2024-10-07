@@ -19,10 +19,10 @@
         </div>
         <div class="col-12 col-mid-main">
           <div class="container">
-            <button class="btn btn-danger btn-html-view" data-id="Mainbox">Try view {% include 'icon-arrow-down' %}</button>
-            <button class="btn btn-outline-danger" id="js-formatCode">Beautiful Code {% include 'icon-idea' %}</button>
-            <button class="btn btn-success btn-html-copy" data-id="Mainbox">Copy to clipboard {% include 'icon-copy' %}</button>
-            <button class="btn btn-outline-secondary btn-html-copy float-right" id="js-downloadCode">Save as *.html {% include 'icon-download' %}</button>
+            <button class="btn btn-danger btn-html-view" data-id="Mainbox">Try view {% render 'icon-arrow-down' %}</button>
+            <button class="btn btn-outline-danger" id="js-formatCode">Beautiful Code {% render 'icon-idea' %}</button>
+            <button class="btn btn-success btn-html-copy" data-id="Mainbox">Copy to clipboard {% render 'icon-copy' %}</button>
+            <button class="btn btn-outline-secondary btn-html-copy float-right" id="js-downloadCode">Save as *.html {% render 'icon-download' %}</button>
           </div>
         </div>
         <div class="col-12 col-right">
@@ -36,14 +36,14 @@
 
 <div class="section-demoHTML">
   <div class="html-contents">
-    {%- include 'htmlbuilder-layout' -%}
+    {%- render 'htmlbuilder-layout' -%}
 
     <h3 class="html-title mt-5 mb-5">2. Build elements</h3>
 
-    {%- include 'htmlbuilder-text' -%}
-    {%- include 'htmlbuilder-divided' -%}
-    {%- include 'htmlbuilder-banner' -%}
-    {%- include 'htmlbuilder-snippet' -%}
+    {%- render 'htmlbuilder-text' -%}
+    {%- render 'htmlbuilder-divided' -%}
+    {%- render 'htmlbuilder-banner' -%}
+    {%- render 'htmlbuilder-snippet' -%}
 
     <h3 id="html-dynamic" class="html-title pt-3 mt-5 mb-5"># Other components</h3>
     {%- for block in section.blocks -%}
@@ -59,8 +59,8 @@
           <textarea id="htmlCode-{{block.id}}" class="html-code">{{block.settings.html}}</textarea>
         </div>
         <div class="col-md-2 col-mid">
-          <button class="btn btn-outline-secondary btn-html-view" data-id="{{block.id}}">Preview{%- include 'icon-arrow-right' -%}</button>
-          <button class="btn btn-secondary btn-html-copy" data-id="{{block.id}}">Copy {%- include 'icon-copy' -%}</button>
+          <button class="btn btn-outline-secondary btn-html-view" data-id="{{block.id}}">Preview{%- render 'icon-arrow-right' -%}</button>
+          <button class="btn btn-secondary btn-html-copy" data-id="{{block.id}}">Copy {%- render 'icon-copy' -%}</button>
         </div>
         <div class="col-md-3 col-right">
           <div id="htmlView-{{block.id}}" class="html-view shadow">
@@ -72,8 +72,8 @@
     <hr />
     {%- endfor -%}
 
-    {%- include 'htmlbuilder-icon' -%}
-    {%- include 'htmlbuilder-howthisworks' -%}
+    {%- render 'htmlbuilder-icon' -%}
+    {%- render 'htmlbuilder-howthisworks' -%}
   </div>
 </div>
 
@@ -83,28 +83,28 @@
     <a href="#html-howthisworks">How this works?</a>
   </li>
   <li>
-    <a class="btn btn-secondary pt-0" href="#html-layout" title="Layouts" data-tooltip="true">{%- include 'icon-app-alt' -%}</a>
+    <a class="btn btn-secondary pt-0" href="#html-layout" title="Layouts" data-tooltip="true">{%- render 'icon-app-alt' -%}</a>
   </li>
   <li>
-    <a href="#html-text" title="Heading, text" data-tooltip="true">{%- include 'icon-typography' -%}</a>
+    <a href="#html-text" title="Heading, text" data-tooltip="true">{%- render 'icon-typography' -%}</a>
   </li>
   <li>
-    <a href="#html-divided" title="Divided" data-tooltip="true">{%- include 'icon-minus' -%}</a>
+    <a href="#html-divided" title="Divided" data-tooltip="true">{%- render 'icon-minus' -%}</a>
   </li>
   <li>
-    <a href="#html-banner" title="Banners" data-tooltip="true">{%- include 'icon-picture-alt' -%}</a>
+    <a href="#html-banner" title="Banners" data-tooltip="true">{%- render 'icon-picture-alt' -%}</a>
   </li>
   <li>
-    <a href="#html-snippet" title="Snippets" data-tooltip="true">{%- include 'icon-gear-alt' -%}</a>
+    <a href="#html-snippet" title="Snippets" data-tooltip="true">{%- render 'icon-gear-alt' -%}</a>
   </li>
   <li>
-    <a href="#html-dynamic" title="Others" data-tooltip="true">{%- include 'icon-more' -%}</a>
+    <a href="#html-dynamic" title="Others" data-tooltip="true">{%- render 'icon-more' -%}</a>
   </li>
   <li>
-    <a href="#html-icon" title="Icons" data-tooltip="true">{%- include 'icon-star-alt' -%}</a>
+    <a href="#html-icon" title="Icons" data-tooltip="true">{%- render 'icon-star-alt' -%}</a>
   </li>
   <li>
-    <a class="btn btn-danger pt-0" href="#shopify-section-page-demoHTML" title="Main editor" data-tooltip="true">{%- include 'icon-home' -%}</a>
+    <a class="btn btn-danger pt-0" href="#shopify-section-page-demoHTML" title="Main editor" data-tooltip="true">{%- render 'icon-home' -%}</a>
   </li>
 </ul>
 

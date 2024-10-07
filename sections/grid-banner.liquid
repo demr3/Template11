@@ -17,7 +17,7 @@
   {%- endif -%}
   {%- if section.settings.show_overlay %}
     {% assign hex2rgb_hex = section.settings.bg_overlay %}
-    {% include 'hex2rgb' %} 
+    {% render 'hex2rgb' %} 
     .customstyle{{ section.id }} .banner-theme .banner-overlay{
       position: absolute;
       top:0;
@@ -41,10 +41,10 @@
 
 <div class="customstyle{{ section.id }} {% if section.settings.bgstyle %} gr-banner-bg {% endif %}" data-aos="{{section.settings.animation}}" >
   {% if section.settings.bgstyle %}<div class="bg-before" data-aos="{{section.settings.animation}}" data-aos-duration="500"></div>{% endif %}
-  {%- include 'style-section' -%}
+  {%- render 'style-section' -%}
 <div class="{{ section.settings.setwidth }}">
   <div class="section-block">
-    {%- include 'section-heading' -%}
+    {%- render 'section-heading' -%}
     <div class="row {% if section.settings.no_gutter %}no-gutters{% endif %}">
       {%- for block in section.blocks -%}
       <style>
@@ -70,7 +70,7 @@
         <figure class="banner-theme hv-image-saturate banner-theme-{{block.settings.vertical}} banner-theme-{{block.settings.horizontal}} text-{{block.settings.text_align}} {% if section.settings.no_gutter %}m-0{% endif %} banner-theme-{{block.id}}">
           {%- if block.settings.image != blank -%}
           <div class="position-relative">
-            <img src="{% include 'srcBlank' %}" class="lazyload transition" data-src="{{block.settings.image | img_url:'1920x'}}">
+            <img src="{% render 'srcBlank' %}" class="lazyload transition" data-src="{{block.settings.image | img_url:'1920x'}}">
             <a class="banner-overlay" href="{{block.settings.button_link| default:"#"}}"></a>
           </div>
           {%- else -%}
