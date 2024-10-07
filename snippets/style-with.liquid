@@ -15,7 +15,7 @@
     	<div class="row {% if block.settings.enable_center_product %} justify-content-center{% endif %}">
     	{% for product in p_handle %}
     		<div class="col-lg-2 col-6">
-    		{%- render 'product-card', product: all_products[product] -%}
+    		{%- include 'product-card', product: all_products[product] -%}
     		</div>
     	{% endfor %}
     	</div>

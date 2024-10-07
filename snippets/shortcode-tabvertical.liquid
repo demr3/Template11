@@ -1,8 +1,8 @@
-{% capture tab %}{% render 'shortcode-render' render:'action' %}{% endcapture %}
-{% capture active %}{% render 'shortcode-render' render:'active' %}{% endcapture %}
-{% capture id %}{% render 'shortcode-render' render:'id' %}{% endcapture %}
-{% capture title %}{% render 'shortcode-render' render:'title' %}{% endcapture %}
-{% capture align %}{% render 'shortcode-render' render:'align' default:'left' %}{% endcapture %}
+{% capture tab %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture active %}{% include 'shortcode-render' render:'active' %}{% endcapture %}
+{% capture id %}{% include 'shortcode-render' render:'id' %}{% endcapture %}
+{% capture title %}{% include 'shortcode-render' render:'title' %}{% endcapture %}
+{% capture align %}{% include 'shortcode-render' render:'align' default:'left' %}{% endcapture %}
 {% if id == ''%}
 {% assign id = 'tab' %}
 {% endif %}

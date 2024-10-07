@@ -1,12 +1,12 @@
 {% unless collection_image_size %}
 {%- assign collection_image_size = '450x450' -%}
 {% endunless %}
-{% capture listcollection %}{% render 'shortcode-render' render:'action' %}{% endcapture %}
-{% capture title %}{% render 'shortcode-render' render:'title' default:'' %}{% endcapture %}
-{% capture columnsItem %}{% render 'shortcode-render' render:'columns' default:'4' %}{% endcapture %}
-{% capture itemHandle %}{% render 'shortcode-render' render:'handle' default:'' %}{% endcapture %}
-{% capture itemTitle %}{% render 'shortcode-render' render:'title' default:'' %}{% endcapture %}
-{% capture itemHref %}{% render 'shortcode-render' render:'href' default:'' %}{% endcapture %}
+{% capture listcollection %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture title %}{% include 'shortcode-render' render:'title' default:'' %}{% endcapture %}
+{% capture columnsItem %}{% include 'shortcode-render' render:'columns' default:'4' %}{% endcapture %}
+{% capture itemHandle %}{% include 'shortcode-render' render:'handle' default:'' %}{% endcapture %}
+{% capture itemTitle %}{% include 'shortcode-render' render:'title' default:'' %}{% endcapture %}
+{% capture itemHref %}{% include 'shortcode-render' render:'href' default:'' %}{% endcapture %}
 {% case listcollection %}
 {% when 'new list' %}
 {% assign columnsItem = columnsItem | plus:0 %}
@@ -44,7 +44,7 @@
         {% if collection.image %}
         {% capture collectionlist_image_url %}{{ collection.image | img_url: collection_image_size, crop: 'top' }}{% endcapture %}
         <div class="lazyload" style="background-image: url({{ collectionlist_image_url }}); background-position: center;"
-             data-bgset="{% render 'bgset', image: collection_image %}"
+             data-bgset="{% include 'bgset', image: collection_image %}"
              data-sizes="auto"
              data-parent-fit="cover"
              >                            	

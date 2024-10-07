@@ -6,34 +6,34 @@
       {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
       <img class="lazyload"
            data-src="{{ img_url }}"
-           src="{%- render 'srcBlank' -%}"
+           src="{%- include 'srcBlank' -%}"
            data-sizes="auto"
            alt="{{ image.alt | escape }}">
-      {% render 'second-image'%}
+      {% include 'second-image'%}
     </a>
 
     <div class="product-card__overlay d-flex justify-content-center flex-column">
       {%- if settings.enable_wishlsit -%}
       <span data-toggle="tooltip" data-placement="left" data-tooltipalltimes="true" class="btn btn-theme gradient-theme-vertical product-card__overlay-btn js-btn-wishlist" title="{{ 'products.product.wishlist_text' | t }}" data-handle="{{product.handle}}">
-        {%- render 'icon-heart' -%}
+        {%- include 'icon-heart' -%}
       </span>
       {%- endif -%}
       
 
       <span data-tooltip="true" data-placement="left" class="btn btn-theme gradient-theme-vertical product-card__overlay-btn js-btn-quickview" title="{{ 'products.product.quickview_text' | t }}" data-toggle="modal" data-target="#jsQuickview" data-handle="{{product.handle}}">
-        {%- render 'icon-quickview' -%}
+        {%- include 'icon-quickview' -%}
         <span>{{ 'products.product.quickview_text' | t }}</span>
       </span>
 
       {%- if settings.enable_compare -%}
       <span data-tooltip="true" data-placement="left" class="btn btn-theme gradient-theme-vertical product-card__overlay-btn js-btn-compare" title="{{ 'products.product.compare_text' | t }}" data-handle="{{product.handle}}">
-        {%- render 'icon-exchange' -%}
-        {%- render 'icon-close' -%}
+        {%- include 'icon-exchange' -%}
+        {%- include 'icon-close' -%}
         <span>{{ 'products.product.compare_text' | t }}</span>
       </span>
       {%- endif -%}
       <span data-tooltip="true" data-placement="left" class="btn btn-theme gradient-theme-vertical product-card__overlay-btn js-grid-cart {% unless product.available %} disabled{% endunless%}" title="{{ 'products.product.add_to_cart' | t }}" data-id="{{product.selected_or_first_available_variant.id}}">
-        {%- render 'icon-cart' -%}
+        {%- include 'icon-cart' -%}
         <div class="product-card__loading spinner-{{settings.loading}}" role="status"></div>
         <span>{{ 'products.product.add_to_cart' | t }}</span>
       </span>
@@ -41,7 +41,7 @@
 
     
 
-    {%- if settings.enable_countdown_card -%}{%- render 'product-countdown' -%}{%- endif -%}
+    {%- if settings.enable_countdown_card -%}{%- include 'product-countdown' -%}{%- endif -%}
 
     {%- if settings.enablevideo -%}
       {% for media in product.media %}
@@ -49,7 +49,7 @@
       {% endfor %}
     {%- endif -%}
 
-    {% render 'product-label' %}
+    {% include 'product-label' %}
   </div>
   <div class="product-card__info">
 
@@ -84,6 +84,6 @@
       {{ 'products.product.sold_out' | t }}
     </div>
     {%- endif -%}
-    {%- render 'swatch-grid-1' -%}
+    {%- include 'swatch-grid-1' -%}
   </div>
 </div>

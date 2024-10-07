@@ -4,9 +4,9 @@
   <div class="collection-card__image overflow-hidden">
     <a class="hv-image-saturate" href="{{featured_collection.url | default :'#'}}">
       {%- if featured_image != blank -%}
-      <img class="lazyload transition" src="{%- render 'srcBlank' -%}" data-srcset="{{ featured_image | img_url: '800x'}}">
+      <img class="lazyload transition" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_image | img_url: '800x'}}">
       {%- elsif featured_collection.image != blank -%}
-      <img class="lazyload transition" src="{%- render 'srcBlank' -%}" data-srcset="{{ featured_collection.image | img_url: '800x'}}">
+      <img class="lazyload transition" src="{%- include 'srcBlank' -%}" data-srcset="{{ featured_collection.image | img_url: '800x'}}">
       {%- else -%}
       {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
       {%- endif -%}

@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header card-header-border-top">
         <a class="card-link" data-toggle="collapse" data-target="#collapseOne" href="#">
-            {% render 'icon-arrow-right' %} {{section.settings.gtab_des | default:'Description'}}
+            {% include 'icon-arrow-right' %} {{section.settings.gtab_des | default:'Description'}}
         </a>
       </div>
       <div id="collapseOne" class="collapse" data-parent="#accordion">
@@ -17,7 +17,7 @@
       <div class="card-header">
         {% if product.metafields.custom.product_details != blank %}
         <a class="collapsed card-link" data-toggle="collapse" data-target="#collapseTwo"  href="#">
-          {% render 'icon-arrow-right' %} {{section.settings.stab_title1}}
+          {% include 'icon-arrow-right' %} {{section.settings.stab_title1}}
         </a>
         {% endif %}
       </div>
@@ -33,7 +33,7 @@
       <div class="card-header">
         {% if product.metafields.custom.shipping_returns != blank %}
         <a class="collapsed card-link" data-toggle="collapse" data-target="#collapseTwo2"  href="#">
-          {% render 'icon-arrow-right' %} {{section.settings.stab_title2}}
+          {% include 'icon-arrow-right' %} {{section.settings.stab_title2}}
         </a>
         {% endif %}
       </div>
@@ -49,7 +49,7 @@
       <div class="card-header">
         {% if product.metafields.info.tab3 != blank %}
         <a class="collapsed card-link" data-toggle="collapse" data-target="#collapseTwo3"  href="#">
-          {% render 'icon-arrow-right' %} {{section.settings.stab_title3}}
+          {% include 'icon-arrow-right' %} {{section.settings.stab_title3}}
         </a>
         {% endif %}
       </div>
@@ -65,7 +65,7 @@
       <div class="card-header">
         {% if product.metafields.info.tab4 != blank %}
         <a class="collapsed card-link" data-toggle="collapse" data-target="#collapseTwo4"  href="#">
-          {% render 'icon-arrow-right' %} {{section.settings.stab_title4}}
+          {% include 'icon-arrow-right' %} {{section.settings.stab_title4}}
         </a>
         {% endif %}
       </div>
@@ -80,7 +80,7 @@
     <div class="card">
       <div class="card-header">
         <a class="collapsed card-link" data-toggle="collapse" data-target="#collapseThree"  href="#">
-          {% render 'icon-arrow-right' %} {{section.settings.gtab_review}}
+          {% include 'icon-arrow-right' %} {{section.settings.gtab_review}}
         </a>
       </div>
       <div id="collapseThree" class="collapse" data-parent="#accordion">

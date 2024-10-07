@@ -1,8 +1,8 @@
-{% capture slick %}{% render 'shortcode-render' render:'action' %}{% endcapture %}
-{% capture title %}{% render 'shortcode-render' render:'title' %}{% endcapture %}
-{% capture columns_product %}{% render 'shortcode-render' render:'columns' %}{% endcapture %}
-{% capture row_product %}{% render 'shortcode-render' render:'row' %}{% endcapture %}
-{% capture id %}{% render 'shortcode-render' render:'id' %}{% endcapture %}
+{% capture slick %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture title %}{% include 'shortcode-render' render:'title' %}{% endcapture %}
+{% capture columns_product %}{% include 'shortcode-render' render:'columns' %}{% endcapture %}
+{% capture row_product %}{% include 'shortcode-render' render:'row' %}{% endcapture %}
+{% capture id %}{% include 'shortcode-render' render:'id' %}{% endcapture %}
 {% capture procarouselId %}procarousel-{{ 'now' | date: "%N" }}{% endcapture %}
 {% if id == '' %}
 {% capture slideID %}slide-{{ 'now' | date: "%N" }}{% endcapture %}

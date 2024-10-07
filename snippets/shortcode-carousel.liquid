@@ -1,8 +1,8 @@
-{% capture carousel %}{% render 'shortcode-render' render:'action' %}{% endcapture %}
-{% capture active %}{% render 'shortcode-render' render:'active' %}{% endcapture %}
-{% capture class %}{% render 'shortcode-render' render:'class' %}{% endcapture %}
-{% capture total %}{% render 'shortcode-render' render:'total' %}{% endcapture %}
-{% capture interval %}{% render 'shortcode-render' render:'interval' %}{% endcapture %}
+{% capture carousel %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture active %}{% include 'shortcode-render' render:'active' %}{% endcapture %}
+{% capture class %}{% include 'shortcode-render' render:'class' %}{% endcapture %}
+{% capture total %}{% include 'shortcode-render' render:'total' %}{% endcapture %}
+{% capture interval %}{% include 'shortcode-render' render:'interval' %}{% endcapture %}
 
 {% assign total = total | plus: 0 %}
 {% case carousel %}
@@ -22,10 +22,10 @@
 	{% when 'display control' %}
 		{% capture lastTime %}{{ carouselId }}{% endcapture %}
 		<a class="carousel-control left" href="#{{ lastTime }}" role="button" data-slide="prev" style="position: absolute; top: 50%; left: 10px; z-index: 1;">
-          {% render 'icon-arrow-left' %}
+          {% include 'icon-arrow-left' %}
 		</a>
 		<a class="carousel-control right" href="#{{ lastTime }}" role="button" data-slide="next" style="position: absolute; top: 50%; right: 10px; z-index: 1;">
-          {% render 'icon-arrow-right' %}	
+          {% include 'icon-arrow-right' %}	
 		</a>
 	{% when 'display indicators' %}
 		{% if total > 0 %}

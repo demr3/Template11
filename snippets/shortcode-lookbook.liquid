@@ -1,13 +1,13 @@
-{% capture lookbook %}{% render 'shortcode-render' render:'action' %}{% endcapture %}
-{% capture serviceTitle %}{% render 'shortcode-render' render:'title' %}{% endcapture %}
-{% capture id %}{% render 'shortcode-render' render:'id' default:'' %}{% endcapture %}
-{% capture urlImage %}{% render 'shortcode-render' render:'urlimage' %}{% endcapture %}
-{% capture total %}{% render 'shortcode-render' render:'total-dot' %}{% endcapture %}
-{% capture producthandle %}{% render 'shortcode-render' render:'producthandle' %}{% endcapture %}
-{% capture top %}{% render 'shortcode-render' render:'top' %}{% endcapture %}
-{% capture left %}{% render 'shortcode-render' render:'left' %}{% endcapture %}
-{% capture position %}{% render 'shortcode-render' render:'position' %}{% endcapture %}
-{% capture number %}{% render 'shortcode-render' render:'number' %}{% endcapture %}
+{% capture lookbook %}{% include 'shortcode-render' render:'action' %}{% endcapture %}
+{% capture serviceTitle %}{% include 'shortcode-render' render:'title' %}{% endcapture %}
+{% capture id %}{% include 'shortcode-render' render:'id' default:'' %}{% endcapture %}
+{% capture urlImage %}{% include 'shortcode-render' render:'urlimage' %}{% endcapture %}
+{% capture total %}{% include 'shortcode-render' render:'total-dot' %}{% endcapture %}
+{% capture producthandle %}{% include 'shortcode-render' render:'producthandle' %}{% endcapture %}
+{% capture top %}{% include 'shortcode-render' render:'top' %}{% endcapture %}
+{% capture left %}{% include 'shortcode-render' render:'left' %}{% endcapture %}
+{% capture position %}{% include 'shortcode-render' render:'position' %}{% endcapture %}
+{% capture number %}{% include 'shortcode-render' render:'number' %}{% endcapture %}
 
 {% if id == '' %}
 {% capture id %}modal-{{ 'now' | date: "%N" }}{% endcapture %}
@@ -33,7 +33,7 @@
           {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
           {% unless product.featured_image == blank %}
-          {% render 'image-style' with image: product.featured_image, width: max_height, height: max_height, small_style: true, wrapper_id: wrapper_id, img_id: img_id %}
+          {% include 'image-style' with image: product.featured_image, width: max_height, height: max_height, small_style: true, wrapper_id: wrapper_id, img_id: img_id %}
           {% endunless %}
           <a class="img-product" href="{{ product.url }}">
             <div id="{{ wrapper_id }}" class="grid-view-item__image-wrapper js">
@@ -51,7 +51,7 @@
           </a>
           <div class="pop-ifo">
             <h4 class="pop-ifo--title"><a href="{{ product.url }}">{{ product.title }}</a></h4><p><span class="price product-price ">
-            <span class="money">{% render 'product-price' %}</span>
+            <span class="money">{% include 'product-price' %}</span>
             </span>
             </p>
           </div>

@@ -1,9 +1,9 @@
-{% capture type %}{% render 'shortcode-render' render:'type' default:'default' %}{% endcapture %}
-{% capture text %}{% render 'shortcode-render' render:'text' default:'' %}{% endcapture %}
-{% capture url %}{% render 'shortcode-render' render:'url' default:'' %}{% endcapture %}
-{% capture isOpen %}{% render 'shortcode-render' render:'isOpen' default:'' %}{% endcapture %}
-{% capture isBlock %}{% render 'shortcode-render' render:'isBlock' default:'' %}{% endcapture %}
-{% capture size %}{% render 'shortcode-render' render:'size' default:'' %}{% endcapture %}
+{% capture type %}{% include 'shortcode-render' render:'type' default:'default' %}{% endcapture %}
+{% capture text %}{% include 'shortcode-render' render:'text' default:'' %}{% endcapture %}
+{% capture url %}{% include 'shortcode-render' render:'url' default:'' %}{% endcapture %}
+{% capture isOpen %}{% include 'shortcode-render' render:'isOpen' default:'' %}{% endcapture %}
+{% capture isBlock %}{% include 'shortcode-render' render:'isBlock' default:'' %}{% endcapture %}
+{% capture size %}{% include 'shortcode-render' render:'size' default:'' %}{% endcapture %}
 
 {% if text != '' %}
 {% if url != '' %}

@@ -3,7 +3,7 @@
     <form action="/search" method="get" class="drawer__search mt-3" role="search">
       <input type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" autocomplete="off" class="drawer__search-input">
       <button type="submit" class="text-link drawer__search-submit">
-        {%- render 'icon-search' -%}
+        {%- include 'icon-search' -%}
         <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
       </button>
     </form>
@@ -18,21 +18,21 @@
              id="DrawerLabel-{{ child_list_handle }}"
              {% if link.active %} aria-current="page"{% endif %}
              >
-            {%- render 'processMenuTitle' with itemName:link.title -%}
-            {%- render 'processMenuLabel' with itemName:link.title -%}
+            {%- include 'processMenuTitle' with itemName:link.title -%}
+            {%- include 'processMenuLabel' with itemName:link.title -%}
           </a>
-          <button data-toggle="collapse" data-target="#DrawerLinklist-{{ child_list_handle }}" for="DrawerLinklist-{{ child_list_handle }}"  type="button" aria-controls="DrawerLinklist-{{ child_list_handle }}" class="text-link drawer__nav-toggle-btn collapsed" aria-label="{%- render 'processMenuTitle' with itemName:link.title -%}" aria-expanded="true">
+          <button data-toggle="collapse" data-target="#DrawerLinklist-{{ child_list_handle }}" for="DrawerLinklist-{{ child_list_handle }}"  type="button" aria-controls="DrawerLinklist-{{ child_list_handle }}" class="text-link drawer__nav-toggle-btn collapsed" aria-label="{%- include 'processMenuTitle' with itemName:link.title -%}" aria-expanded="true">
             <span class="drawer__nav-toggle--open">
-              {%- render 'icon-plus' -%}
+              {%- include 'icon-plus' -%}
             </span>
             <span class="drawer__nav-toggle--close">
-              {%- render 'icon-minus' -%}
+              {%- include 'icon-minus' -%}
             </span>
           </button>
         </div>
         <div class="collapse meganav meganav--drawer" id="DrawerLinklist-{{ child_list_handle }}" aria-labelledby="DrawerLabel-{{ child_list_handle }}" role="navigation">
           <ul class="meganav__nav">
-            {%- render 'drawer-nav' -%}
+            {%- include 'drawer-nav' -%}
           </ul>
         </div>
       </li>
@@ -42,8 +42,8 @@
            class="drawer__nav-link drawer__nav-link--top-level"
            {% if link.active %} aria-current="page"{% endif %}
            >
-          {%- render 'processMenuTitle' with itemName:link.title -%}
-          {%- render 'processMenuLabel' with itemName:link.title -%}
+          {%- include 'processMenuTitle' with itemName:link.title -%}
+          {%- include 'processMenuLabel' with itemName:link.title -%}
         </a>
       </li>
       {%- endif -%}
@@ -77,7 +77,7 @@
       {%- if settings.show_multiple_currencies -%}
       <li class="drawer__nav-item pl-3 drawer-nav__item--secondary">
         <div class="px-2 border d-inline-block mt-3">
-          {%- render 'block-currencies' -%}
+          {%- include 'block-currencies' -%}
         </div>
       </li>
       {%- endif -%}

@@ -4,7 +4,7 @@
   <div class="modal-dialog modal-dialog--coupon modal-dialog-centered" role="document">
     <div class="modal-content" {%- if collection.metafields.info.coupon_image != blank -%}style="background:url({{collection.metafields.info.coupon_image}}) white no-repeat center ; background-size:cover;"{%- endif -%}>
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">{%- render 'icon-close' -%}</button>
+        <button type="button" class="close" data-dismiss="modal">{%- include 'icon-close' -%}</button>
       </div>
       <div class="modal-body pb-5">
         <p class="coupon-promotion">{{collection.metafields.info.promotion}}</p>

@@ -16,7 +16,7 @@
     </div>
     {% for product in featured_collection.products limit: 3 %}
     <div class="col-lg-3 col-12 {% if forloop.index == 3 %} d-none d-lg-block{% endif %}">
-      {% render 'product-card', product: product %}
+      {% include 'product-card', product: product %}
     </div>
     {% endfor %}
   </div>

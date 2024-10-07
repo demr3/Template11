@@ -1,6 +1,6 @@
 {%- if settings.enable_wishlsit -%}
 <a href="/cart#my-favorites" class="site-header__link site-header__wishlist js-wishlist-link" title="{{ 'products.product.wishlist_text' | t }}">
-  {%- render 'icon-heart' -%}
+  {%- include 'icon-heart' -%}
   <!-- <span class="wishlist-text">{{ 'products.product.wishlist_text' | t }}</span> -->
   <span class="js-wishlist-count"></span>
 </a>

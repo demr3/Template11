@@ -36,9 +36,9 @@
           {% endfor %}
       	
       {% if current_tags.size <= 1 %}
-      	<li class="advanced-filter"> <a href="{{ collection.url }}"><span>{{ tag }}</span> {%- render 'icon-close' -%}</a></li>
+      	<li class="advanced-filter"> <a href="{{ collection.url }}"><span>{{ tag }}</span> {%- include 'icon-close' -%}</a></li>
       {% else %}
-      	<li class="advanced-filter"><a href="{{collection_url}}{{constraint}}"><span>{{ tag }}</span>  {%- render 'icon-close' -%}</a></li>
+      	<li class="advanced-filter"><a href="{{collection_url}}{{constraint}}"><span>{{ tag }}</span>  {%- include 'icon-close' -%}</a></li>
       {% endif %}
       {% endfor %}
       

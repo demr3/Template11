@@ -1,6 +1,6 @@
 <span class="site-header__link site-header__cart js-mini-cart {% if settings.cartdraw %} cardraw{% endif %}" data-cartmini="{{settings.cartdraw }}">
   <span class="js-toggle-cart" title="{{'cart.general.title' | t}}">
-    {%- render 'icon-cart' -%}
+    {%- include 'icon-cart' -%}
     <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
     <span class="js-cart-count site-header__cart-indicator">{{cart.item_count}}</span>
   </span>
@@ -9,7 +9,7 @@
     <div class="mini-cart-total font-family-1">
       {{'cart.label.total' | t }}: <span class="js-cart-total">{{cart.total_price | money}}</span>
     </div>
-    {%- render 'free-shipping' -%}
+    {%- include 'free-shipping' -%}
     <div class="mini-cart-taxes">
       {{'cart.general.taxes_and_shipping_at_checkout' | t}}
     </div>
