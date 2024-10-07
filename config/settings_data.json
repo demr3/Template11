@@ -206,7 +206,7 @@
     "shop_by_type_number": "10",
     "shop_by_type_custom_list": "",
     "sidebar_html_title_top": "ABOUT AUTHOR",
-    "sidebar_html_top": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0415\/5382\/1854\/files\/feat13.jpg?v=1596818131\">\n<p class=\"mt-4\">Etiam vel magna sed leo feugiat cursus. Cras mollis blandit dolor. Praesent vulputate justo quis volutpat pharetra. Suspendisse<\/p>",
+    // "sidebar_html_top": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0415\/5382\/1854\/files\/feat13.jpg?v=1596818131\">\n<p class=\"mt-4\">Etiam vel magna sed leo feugiat cursus. Cras mollis blandit dolor. Praesent vulputate justo quis volutpat pharetra. Suspendisse<\/p>",
     "sidebar_tag": true,
     "sidebar_post": true,
     "sidebar_post_title": "Recent Post",
@@ -1818,154 +1818,154 @@
           "enable_description": true
         }
       },
-      "page-gallery": {
-        "type": "page-gallery",
-        "blocks": {
-          "1562991736405": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Classic",
-              "link": "#"
-            }
-          },
-          "1562991832725": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "The Chair",
-              "link": "#"
-            }
-          },
-          "1562991809926": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Decor",
-              "link": ""
-            }
-          },
-          "1562991850006": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Single product",
-              "link": "#"
-            }
-          },
-          "1562991892614": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Shoes",
-              "link": "shopify:\/\/collections\/shoes"
-            }
-          },
-          "1562991919564": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Shirt",
-              "link": "shopify:\/\/collections\/shirt"
-            }
-          },
-          "1562991968766": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Top collection",
-              "link": "shopify:\/\/collections\/tops"
-            }
-          },
-          "1562991997078": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Our team",
-              "link": "shopify:\/\/pages\/team-member"
-            }
-          },
-          "1562992017741": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "FAQs",
-              "link": "shopify:\/\/pages\/faqs"
-            }
-          },
-          "1562992046055": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Our story",
-              "link": "shopify:\/\/pages\/our-story"
-            }
-          },
-          "1562992909584": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Trousers",
-              "link": "shopify:\/\/collections\/trousers"
-            }
-          },
-          "1562992952360": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Brands",
-              "link": "shopify:\/\/pages\/brands"
-            }
-          },
-          "1562992970394": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "About us",
-              "link": "shopify:\/\/pages\/about-us"
-            }
-          },
-          "1562992997330": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Blog",
-              "link": "shopify:\/\/blogs\/news"
-            }
-          },
-          "1562993011560": {
-            "type": "photo",
-            "settings": {
-              "image": "",
-              "title": "Shopping",
-              "link": "shopify:\/\/collections\/all"
-            }
-          }
-        },
-        "block_order": [
-          "1562991736405",
-          "1562991832725",
-          "1562991809926",
-          "1562991850006",
-          "1562991892614",
-          "1562991919564",
-          "1562991968766",
-          "1562991997078",
-          "1562992017741",
-          "1562992046055",
-          "1562992909584",
-          "1562992952360",
-          "1562992970394",
-          "1562992997330",
-          "1562993011560"
-        ],
-        "settings": {
-          "setwidth": "container-fluid",
-          "heading": "Gallery",
-          "subheading": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>",
-          "animation": "fade-up"
-        }
-      },
+      // "page-gallery": {
+      //   "type": "page-gallery",
+      //   "blocks": {
+      //     "1562991736405": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Classic",
+      //         "link": "#"
+      //       }
+      //     },
+      //     "1562991832725": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "The Chair",
+      //         "link": "#"
+      //       }
+      //     },
+      //     "1562991809926": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Decor",
+      //         "link": ""
+      //       }
+      //     },
+      //     "1562991850006": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Single product",
+      //         "link": "#"
+      //       }
+      //     },
+      //     "1562991892614": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Shoes",
+      //         "link": "shopify:\/\/collections\/shoes"
+      //       }
+      //     },
+      //     "1562991919564": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Shirt",
+      //         "link": "shopify:\/\/collections\/shirt"
+      //       }
+      //     },
+      //     "1562991968766": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Top collection",
+      //         "link": "shopify:\/\/collections\/tops"
+      //       }
+      //     },
+      //     "1562991997078": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Our team",
+      //         "link": "shopify:\/\/pages\/team-member"
+      //       }
+      //     },
+      //     "1562992017741": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "FAQs",
+      //         "link": "shopify:\/\/pages\/faqs"
+      //       }
+      //     },
+      //     "1562992046055": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Our story",
+      //         "link": "shopify:\/\/pages\/our-story"
+      //       }
+      //     },
+      //     "1562992909584": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Trousers",
+      //         "link": "shopify:\/\/collections\/trousers"
+      //       }
+      //     },
+      //     "1562992952360": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Brands",
+      //         "link": "shopify:\/\/pages\/brands"
+      //       }
+      //     },
+      //     "1562992970394": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "About us",
+      //         "link": "shopify:\/\/pages\/about-us"
+      //       }
+      //     },
+      //     "1562992997330": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Blog",
+      //         "link": "shopify:\/\/blogs\/news"
+      //       }
+      //     },
+      //     "1562993011560": {
+      //       "type": "photo",
+      //       "settings": {
+      //         "image": "",
+      //         "title": "Shopping",
+      //         "link": "shopify:\/\/collections\/all"
+      //       }
+      //     }
+      //   },
+      //   "block_order": [
+      //     "1562991736405",
+      //     "1562991832725",
+      //     "1562991809926",
+      //     "1562991850006",
+      //     "1562991892614",
+      //     "1562991919564",
+      //     "1562991968766",
+      //     "1562991997078",
+      //     "1562992017741",
+      //     "1562992046055",
+      //     "1562992909584",
+      //     "1562992952360",
+      //     "1562992970394",
+      //     "1562992997330",
+      //     "1562993011560"
+      //   ],
+      //   "settings": {
+      //     "setwidth": "container-fluid",
+      //     "heading": "Gallery",
+      //     "subheading": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>",
+      //     "animation": "fade-up"
+      //   }
+      // },
       "blog-template-1": {
         "type": "blog-template-1",
         "settings": {
@@ -2703,17 +2703,6 @@
           "sidebar_col": "col-md-3",
           "enable_title": false,
           "enable_description": true
-        }
-      },
-      "article-template-1": {
-        "type": "article-template-1",
-        "settings": {
-          "social_sharing_blog": true,
-          "same_blog": "In same category",
-          "related_blog": "Related by tags",
-          "sidebar_enable": false,
-          "sidebar_position": "left",
-          "blog_show_previous_and_next_buttons": true
         }
       },
       "grid-banner": {

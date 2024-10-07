@@ -57,6 +57,38 @@
   .footer-email .form-control::-ms-input-placeholder {
     color:var(--footer-text);
   }
+
+  summary  {
+    list-style: none;
+  }
+  
+  /* sigh, Safari again */
+  
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  
+  summary {
+    display: flex;
+  }
+  .justify-content-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .footer-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .h5.site-footer__section-title {
+    margin: 0; /* Remove margin to ensure correct alignment */
+  }
 </style>
 
 <footer class="site-footer" role="contentinfo">
@@ -133,11 +165,13 @@
 
         {%- when 'accordion' -%}
           {%- if linklists[block.settings.link_list].links.size > 0 -%}
-            <details class="d-flex mt-3 mb-3 pl-3 pr-3 align-items-center" onclick="dropdown(this)">
-              <summary class="row d-flex justify-content-between align-items-center">
-                <h6 class="h5 site-footer__section-title">{{ linklists[block.settings.link_list].title }}</h6>
-                <span class="footer-icon-down" style="display: block">{%- include 'icon-down' -%}</span>
-                <span class="footer-icon-up" style="display: none">{%- include 'icon-up' -%}</span>
+            <details class="d-flex mt-3 mb-3 pl-3 pr-3" onclick="dropdown(this)">
+              <summary class="row">
+                <div class="justify-content-between">
+                  <h6 class="h5 site-footer__section-title">{{ linklists[block.settings.link_list].title }}</h6>
+                  <span class="footer-icon" id="footer-plus" style="display: flex">{%- include 'icon-plus' -%}</span>
+                  <span class="footer-icon" id="footer-minus" style="display: none">{%- include 'icon-minus' -%}</span>
+                </div>
               </summary>
               <ul class="site-footer__list">
                 {%- for link in linklists[block.settings.link_list].links -%}
@@ -309,15 +343,15 @@
 </footer>
 <script>
   function dropdown(accordion) {
-    var up = accordion.querySelector('span.footer-icon-up');
-    var down = accordion.querySelector("span.footer-icon-down");
+    var up = accordion.querySelector('#footer-plus');
+    var down = accordion.querySelector("#footer-minus");
     if (up.style.display === "none") {
-      up.style.display = "block";
+      up.style.display = "flex";
     } else {
       up.style.display = "none";
     }
     if (down.style.display === "none") {
-      down.style.display = "block";
+      down.style.display = "flex";
     } else {
       down.style.display = "none";
     }

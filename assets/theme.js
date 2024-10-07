@@ -4005,7 +4005,7 @@ theme.miniCart = (function(){
       }
       // add total price and cart button / checkout button
       $(cartContent).html(htmlCart);
-      $(".js-qty__adjust--plus").unbind('click');
+      $(".js-qty__adjust--minus").unbind('click');
       $(".js-qty__adjust--minus").click(function(){
         if ($(this).parent().find('input').val() < 1) {
           $(this).parent().find('input').val(0);
