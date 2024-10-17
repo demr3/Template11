@@ -1,0 +1,17 @@
+
+<div id="productrelated"  class="{{block.settings.setwidthcontent}} pt-5" >
+  {%- if block.settings.relate_products_title != blank -%}
+  <h4 class="mb-5 text-center section-title-1" data-aos="fade-up"  data-aos-duration="500">{{ block.settings.relate_products_title }}</h4>
+  {%- endif -%}
+  <div class="js-slick-carousel" data-aos="fade-up" data-aos-duration="1000">
+    <div class="row slick_content" data-section-id="relate-{{section.id}}" data-section-type="slickCarousels" data-dots="{{block.settings.dots}}" data-rows="1" data-slidesToShow="{{block.settings.show}}" data-infinite="false" 
+    data-draggable="{{block.settings.draggable}}" data-arrows="{{block.settings.arrows}}">
+      {%- assign collection_produclists = collection.products -%}
+      {% for product in collections['loki-travel-bags'].products limit: 6 %}
+      <div class="col">
+        {%- include 'product-card' -%}
+      </div>  
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

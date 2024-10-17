@@ -925,6 +925,15 @@ input[type=search]::-webkit-search-cancel-button {
 .left-cart-wishlist-section {
   flex-direction: column;
   flex-basis: 70%; 
+ 
+}
+
+@media (min-width: 1200px) {
+  .left-cart-wishlist-section {
+    max-width: 70%;
+    margin: 0 auto; /* Centers the container */
+    width: 100%; /* Ensures the container takes full width if below the max */
+  }
 }
 
 #left-cart-subtotal {
@@ -1636,7 +1645,7 @@ p#left-cart-subtotal {
 /* Style the tab content */
 .tabcontent {
   display: none;
-  padding: 6px 12px;
+  {% comment %} padding: 6px 12px; {% endcomment %}
   {% comment %} border: 1px solid #ccc; {% endcomment %}
   border-top: none;
 }

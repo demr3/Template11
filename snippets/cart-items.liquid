@@ -6,12 +6,59 @@
     .js-qty__input{
       background-color: #fff;
     }
+
+    .page-empty .cart--empty-message {
+      font-size:var(--g-font-size);
+    }
+    .cart-product-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-product-card-details {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1rem;
+      width: 100%;
+      height: 100%;
+    }
+    .tr-container {
+      display: flex;
+      flex-direction: row;
+      padding: inherit 0px;
+    }
+
+    .td-product-description {
+      display: flex;
+      flex-direction: row;
+      {% comment %} flex-basis: 70%; {% endcomment %}
+    }
+    .td-subtotal {
+      flex-basis: 15%;
+    }
+    
+    .td-remove {
+      display:flex;
+      flex-basis: 15%;
+      justify-content: center;
+    }
+
+    .td-product-image {
+      min-width: 120px;
+    }
+    .item-details {
+      display: flex;
+      flex-direction: column;
+    }
+    .item-details p {
+      margin: 0px 0px;
+      line-height: 1.2;
+    }
   </style>
   <div data-section-id="{{ section.id }}" data-section-type="cart">
-    <div class="page-width">
+    <div class="page-width-cart-items">
       {% if cart.item_count > 0 %}
   
-        <h2 class="text-center h3 mb-5">{{ 'cart.general.title' | t }}</h2>
+        {% comment %} <h2 class="text-center h3 mb-5">{{ 'cart.general.title' | t }}</h2> {% endcomment %}
         <form action="/cart" method="post" novalidate class="cart">
           <table class="responsive-table cart-table">
             <thead class="cart__row visually-hidden">
@@ -20,55 +67,64 @@
               <th>{{ 'cart.label.total' | t }}</th>
             </thead>
             <tbody id="CartProducts">
+              <tr class="tr-container" id="tr-container-title">
+                <td class="td-product-description" >Product description</td>
+                <td class="td-subtotal">Subtotal</td>
+                <td class="td-remove"> Remove</td>
+              </tr>
               {% for item in cart.items %}
-                <tr class="cart__row responsive-table__row">
-                  <td class="cart__cell--image text-center">
-                    <a href="{{ item.url | within: collections.all }}" class="cart__image">
-                      <img src="{{ item | img_url: '240x240' }}" alt="{{ item.title | escape }}">
+                <tr class="tr-container">
+                  <td class="td-product-description">
+                    <a href="{{ item.url | within: collections.all }}" class="td-product-image">
+                      <img src="{{ item | image_url: width:120, height:120 }}" width="120px", height="120px" alt="{{ item.title | escape }}">
                     </a>
+                    <div class="cart-product-card-details">
+                      <a href="{{ item.url }}" class="h6 text-body">
+                        {{ item.product.title }}
+                      </a>
+                      <span class="cart__item-total-mobile">
+                        {{ item.line_price | money }}
+                      </span>
+                      <div class="item-details">
+                        {% for option in item.options_with_values %}
+                          <p>{{ option.name }}: {{ option.value }}</p>
+                        {% endfor %}
+                        <p>QTY: {{ item.quantity }}</p>
+                        {% assign property_size = item.properties | size %}
+                        {% if property_size > 0 %}
+                          {% for p in item.properties %}
+                            {% assign first_character_in_key = p.first | truncate: 1, '' %}
+                            {% unless p.last == blank or first_character_in_key == '_' %}
+                              {{ p.first }}:
+                              {% if p.last contains '/uploads/' %}
+                                <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                              {% else %}
+                                {{ p.last }}
+                              {% endif %}
+      
+                            {% endunless %}
+                          {% endfor %}
+                        {% endif %}
+                      </div>
+                  </div>
                   </td>
-                  <td>
-                    <a href="{{ item.url }}" class="h6 text-body">
-                      {{ item.product.title }}
-                    </a>
-                    {% unless item.variant.title contains 'Default' %}
-                      <p>{{ item.variant.title }}</p>
-                    {% endunless %}
-  
-                    {% assign property_size = item.properties | size %}
-                    {% if property_size > 0 %}
-                      {% for p in item.properties %}
-                        {% assign first_character_in_key = p.first | truncate: 1, '' %}
-                        {% unless p.last == blank or first_character_in_key == '_' %}
-                          {{ p.first }}:
-                          {% if p.last contains '/uploads/' %}
-                            <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-                          {% else %}
-                            {{ p.last }}
-                          {% endif %}
-  
-                        {% endunless %}
+                  <td class="td-subtotal">
+                    <div class="">
+                      <span class="cart__item-total">
+                        {{ item.line_price | money }}
+                      </span><br>
+                      {% if item.original_line_price != item.line_price %}
+                        <small class="cart-item__original-price cart__item-total"><s>{{ item.original_line_price | money }}</s></small>
+                      {% endif %}
+                      {% for discount in item.discounts %}
+                        <p class="cart-item__discount cart__item-total">{{ discount.title }}</p>
                       {% endfor %}
-                    {% endif %}
-  
-                    <p>
-                      <a class="small" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">{{ 'cart.general.remove' | t }}</a>
-                    </p>
+                    </div>
                   </td>
-                  <td class="cart__cell--quantity">
-                    <label for="Updates_{{ item.key }}" class="cart__quantity-label medium-up--hide">{{ 'cart.label.quantity' | t }}</label>
-                    <input type="number" name="updates[]" id="Updates_{{ item.key }}" class="cart__quantity" value="{{ item.quantity }}" min="0" data-line="{{ forloop.index }}" aria-label="{{ 'cart.label.quantity' | t }}">
-                  </td>
-                  <td class="cart__cell--total">
-                    {% if item.original_line_price != item.line_price %}
-                      <small class="cart-item__original-price cart__item-total"><s>{{ item.original_line_price | money }}</s></small><br>
-                    {% endif %}
-                    <span class="cart__item-total">
-                      {{ item.line_price | money }}
-                    </span>
-                    {% for discount in item.discounts %}
-                      <p class="cart-item__discount cart__item-total">{{ discount.title }}</p>
-                    {% endfor %}
+                  <td class="td-remove">
+                    <div>
+                      <a class="small" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">{% render "icon-remove" %}</a>
+                    </div>
                   </td>
                 </tr>
               {% endfor %}
@@ -82,7 +138,7 @@
               <textarea name="note" id="CartSpecialInstructions" class="cart__note">{{ cart.note }}</textarea>
             </div>
             {% endif %}
-            <div class="col text-center text-md-right">
+            {% comment %} <div class="col text-center text-md-right">
               <p class="h3 cart__subtotal " id="CartSubtotal">{{ cart.total_price | money }}</p>
               <p id="cartDiscountTotal">
                 {% if cart.total_discounts > 0 %}
@@ -113,13 +169,13 @@
                 <img class="lazyload" data-src="{{ settings.safe_checkout_cart | img_url: '300x' }}"/>
               </div>
               {% endif %}
-            </div>
+            </div> {% endcomment %}
           </div>
         </form>
       {% else %}
         <div class="page-empty text-center">
-          <h1>{{ 'cart.general.title' | t }}</h1>
-          <p class="cart--empty-message">{{ 'cart.general.empty' | t }}</p>
+          {% comment %} <h1>{{ 'cart.general.title' | t }}</h1> {% endcomment %}
+          <p class="cart--empty-message">You have <b>no items</b> in you Bag.</p>
           <hr>
           <p class="cart--continue-message">
             <a href="/collections/all" class="btn btn-theme gradient-theme">{{ 'cart.general.continue_browsing' | t }}</a>

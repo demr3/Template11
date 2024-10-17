@@ -2313,7 +2313,7 @@ th, td {
 	border: 1px solid rgba(0, 0, 0, .1);
 }
 /*============================================================================ Responsive tables, defined with .responsive-table on table element. ==============================================================================*/
-@media only screen and (max-width: 749px) {
+/* @media only screen and (max-width: 749px) {
 	.responsive-table thead {
 		display: none;
 	}
@@ -2335,6 +2335,37 @@ th, td {
 		text-align: center;
 		font-size: var(--g-font-size);
 		padding-right: 10px;
+	}
+} */
+
+@media only screen and (max-width: 749px) {
+	#tr-container-title {
+		display: none;
+	}
+	.cart__item-total-mobile {
+		visibility: visible;
+	}
+
+	.td-subtotal {
+		display: none;
+	}
+	.td-product-description {
+		flex-basis: 85%;
+	}
+}
+
+@media only screen and (min-width: 750px) {
+	#tr-container-title {
+		display: flex;
+	}
+	.cart__item-total-mobile {
+		visibility: collapse;
+	}	
+	.td-product-description {
+		flex-basis: 70%;
+	}
+	.td-subtotal {
+		display: table-cell;
 	}
 }
 
@@ -4506,6 +4537,7 @@ a:hover, .link-accent-color:hover, a:focus, .link-accent-color:focus {
 @media (max-width: 1200px) {
 	.container--wishlist {
 		flex-direction: column;
+		max-width: 90%;
 	}
 }
 
@@ -6254,7 +6286,7 @@ a:hover, .link-accent-color:hover, a:focus, .link-accent-color:focus {
 	}
 }
 /*================ Cart cell responsive labels ================*/
-@media only screen and (max-width: 749px) {
+/* @media only screen and (max-width: 749px) {
 	.cart-table th, .cart-table td {
 		text-align: center;
 	}
@@ -6262,7 +6294,7 @@ a:hover, .link-accent-color:hover, a:focus, .link-accent-color:focus {
 	.cart-table td:before {
 		display: none;
 	}
-}
+} */
 /*================ Cart items ================*/
 .cart__image {
 	display: inline-block;
@@ -11049,4 +11081,8 @@ ul.site-footer__list {
 
 .inner-position-relative {
 	list-style-type: disc;
+}
+
+ul.slick-dots {
+	margin-left: 0px;
 }

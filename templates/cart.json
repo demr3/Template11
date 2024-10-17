@@ -2,6 +2,22 @@
   "sections": {
     "main": {
       "type": "main-wishlist",
+      "blocks": {
+        "related_product_rQX6VD": {
+          "type": "related-products-featured",
+          "settings": {
+            "setwidthcontent": "container-fluid",
+            "relate_products_title": "Featured product",
+            "show": 3,
+            "arrows": false,
+            "draggable": true,
+            "dots": true
+          }
+        }
+      },
+      "block_order": [
+        "related_product_rQX6VD"
+      ],
       "settings": {
       }
     }

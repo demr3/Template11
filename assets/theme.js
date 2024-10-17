@@ -3566,7 +3566,7 @@ theme.quickview = (function() {
 
     //Pushdata
     $(quickviewId).addClass(product_handle).data('handle',product_handle);
-    jQuery.getJSON(`/products/${product_handle}.js`, function(product) {
+    Shopify.getProduct(product_handle, function(product) {
       var title = product.title;
       var type = product.type;
       var vendor = product.vendor;
@@ -3590,6 +3590,9 @@ theme.quickview = (function() {
       else{
         $(quickviewAddCartButton).prop('disabled', true).html(theme.strings.soldOut);
       }
+      console.log("variants: ", variants);
+      console.log("options: ", options);
+      
       $(product.variants).each(function(i,variants) {
         if(variants.sku != null){
           $('.qv-sku').addClass("show").removeClass("hide");
@@ -3603,7 +3606,6 @@ theme.quickview = (function() {
       var imageCount = $(images).length;
       $(images).each(function(i, image) {
         image_embed = `<div><img src="${image}"></div>`;
-        image_embed = image_embed.replace('.jpg', '_800x.jpg').replace('.png', '_800x.png');
         $(quickviewThumb).append(image_embed);
       });
       $(quickviewThumb).slick({
@@ -3638,6 +3640,8 @@ theme.quickview = (function() {
             $(option.values).each(function(i, value) {
               var cl="";
               if (i == 0){
+                console.log("i = " , i);
+                
                 cl="active";
               }
               if (option.name == 'Color') {
@@ -3669,8 +3673,26 @@ theme.quickview = (function() {
         });
         
         if ($("#jsQuickview").data('type') == 'list') {
+          var slickPosition = 0;
+          $(product.variants).each(function(i, v) {
+            $(v.options).each(function(i, opt) {
+              console.log("abara: ", options[0].values[0], opt);
+              
+              if(options[0].values[0] === opt) {
+                if (v.featured_image !== null){
+                  var iSlick = v.featured_image.position - 1;
+                  console.log("position", iSlick);
+                  
+                  $(quickviewThumb).slick('slickGoTo', iSlick);
+                }
+              }
+              
+            });
+          });
+          // $(quickviewThumb).slick('slickGoTo', 2);
           $("#jsQuickview .option-selection label").click(function(){
-
+            console.log("clicked me");
+            
             $(this).closest('.option-selection').find('select').val($(this).data('value'));
             $(this).closest('.option-selection').find('label').removeClass('active');
             $(this).addClass('active');
@@ -3718,13 +3740,15 @@ theme.quickview = (function() {
                 if (v.title == selectedOptions) {
                   if (v.featured_image !== null){
                     var iSlick = v.featured_image.position - 1;
+                    console.log("position", iSlick);
+                    
                     $(quickviewThumb).slick('slickGoTo', iSlick);
                   }
                   var price = theme.Currency.formatMoney(v.price, theme.moneyFormat);
                   var compare_price = theme.Currency.formatMoney(v.compare_at_price, theme.moneyFormat);
                   $(quickviewPrice).html(price);
                   $(quickviewComparePrice).html(compare_price);
-                  if (v.compare_at_price !== null) {
+                  if (v.compare_at_price !== null && v.compare_at_price != 0) {
                     $(quickviewComparePrice).html(compare_price).show();
                   } else {
                     $(quickviewComparePrice).hide();
@@ -3757,7 +3781,7 @@ theme.quickview = (function() {
           price = theme.Currency.formatMoney(v.price, theme.moneyFormat);
           compare_price = theme.Currency.formatMoney(v.compare_at_price, theme.moneyFormat);
           $(quickviewPrice).html(price);
-          if (v.compare_at_price !== null) {
+          if (v.compare_at_price !== null && v.compare_at_price != 0) {
             $(quickviewComparePrice).html(compare_price).show();
           } else {
             $(quickviewComparePrice).hide();
@@ -3845,7 +3869,7 @@ theme.quickview = (function() {
           else{
             $('.qv-sku').addClass("hide").removeClass("show");
           }
-          if (v.compare_at_price !== null) {
+          if (v.compare_at_price !== null && v.compare_at_price != 0) {
             $(quickviewComparePrice).html(compare_price).show();
           } else {
             $(quickviewComparePrice).hide();
@@ -4215,7 +4239,7 @@ theme.wishlist = (function (){
       cartTotal = '.js-cart-total',
       cartTax = '.js-cart-tax';
       loadNoResult = function (){
-    $wishlistContainer.html(`<div class="col text-center"><div class="alert alert-warning d-inline-block">${theme.strings.wishlistNoResult}</div></div>`);
+    $wishlistContainer.html(`<div class="col text-center"><div class="page-empty"><div class="alert alert-warning d-inline-block">${theme.strings.wishlistNoResult}</div></div></div>`);
       };
 
   function updateWishlist(self) {
@@ -4392,7 +4416,7 @@ theme.wishlist = (function (){
     return discountList;
   }
   
-  async function applyDiscounts(cartId, discountList) {
+  async function applyDiscounts(cartId, discountList, addDiscount) {
     // const updateCartDiscount = async (cartId, discountCode) => {
     const query = `
       mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]) {
@@ -4422,17 +4446,38 @@ theme.wishlist = (function (){
     };
     console.log("second request");
     const response = await runGraphQLQuery(query, variables)
+    const codesArray = response.data.cartDiscountCodesUpdate.cart.discountCodes
+
+    for (code in codesArray) {
+      var discountMessage = document.getElementById('discount-message');
+      if (codesArray[code].code === addDiscount) {
+        console.log("code is ", codesArray[code].code);
+        
+        if (codesArray[code].applicable ) {
+          discountMessage.textContent = '';
+          displayDiscountCodes(addDiscount);
+        } else {
+          const errorMessages = codesArray[code].code;
+          console.error('Error applying discount:', errorMessages);
+
+          // Display error message in the p tag
+          discountMessage.textContent = 'Failed to apply discount: ' + errorMessages;
+          discountMessage.style.color = 'red'; // Optional: Change text color to red for errors
+        }
+      }
+    }
     
     // Update discounts
     var taxes = response.data.cartDiscountCodesUpdate.cart.cost.totalTaxAmount || 0.00;
     Shopify.getCart( function(cart){
+      // add discount tag here 
       var totaldiscounts = 0.00;
       totaldiscounts = cart.total_discount;
       $(cartDiscount).html(theme.Currency.formatMoney(totaldiscounts, theme.moneyFormat));
       $(cartSubotal).html(theme.Currency.formatMoney(cart.original_total_price, theme.moneyFormat));
       $(cartTax).html(theme.Currency.formatMoney(taxes, theme.moneyFormat));
       $(cartTotal).html(theme.Currency.formatMoney(cart.total_price, theme.moneyFormat));
-      console.log("updated subtotal",totaldiscounts,"", subtotal, response);
+      console.log("updated subtotal",totaldiscounts, response);
     });
     return response;
   }
@@ -4442,14 +4487,13 @@ theme.wishlist = (function (){
     var discount_input = document.getElementById('discount-code');
     var discountCode = discount_input.value;
     discount_input.value = '';
-    displayDiscountCodes(discountCode);
     if (discountCode) {
       try {
         const cartId = await getCartId();
         const discountList = await findAppliedDiscounts(cartId);
         discountList.push(discountCode);
         
-        let response = await applyDiscounts(cartId, discountList);
+        let response = await applyDiscounts(cartId, discountList, discountCode);
         console.log("this is the response",response);
         
         // $(cartDiscount).html(theme.Currency.formatMoney(cart.total_discount, theme.moneyFormat));
