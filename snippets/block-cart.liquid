@@ -1,4 +1,4 @@
-<span class="site-header__link site-header__cart js-mini-cart {% if settings.cartdraw %} cardraw{% endif %}" data-cartmini="{{settings.cartdraw }}">
+<span href="/cart#my-shopping-bag" class="site-header__link site-header__cart js-mini-cart {% if settings.cartdraw %} cardraw{% endif %}" data-cartmini="{{settings.cartdraw }}">
   <span class="js-toggle-cart" title="{{'cart.general.title' | t}}">
     {%- include 'icon-cart' -%}
     <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>

@@ -14,6 +14,13 @@
   p#discount-message {
     margin-bottom: 0px;
   }
+  .tab-wishlist {
+    display:flex;
+  }
+
+  .order-summary-small-text {
+    font-size: 13px;
+  }
 </style>
 <div class="container container--wishlist">
   <div class="content-block left-cart-wishlist-section">
@@ -26,19 +33,24 @@
     </div>
     <div>
       <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'main-wishlist-bag')" id="defaultOpen">Shopping Bag</button>
-        <button class="tablinks" onclick="openCity(event, 'main-wishlist-favorites')">My Favorites</button>
+        <button class="tablinks" onclick="openCart(event, 'main-wishlist-bag')" id="my-shopping-bag">Shopping Bag ({{ cart.item_count }})</button>
+        <button class="tablinks" onclick="openCart(event, 'main-wishlist-favorites')" id="my-favorites"><span class="tab-wishlist">My Favorites (<div class="js-wishlist-count"></div>)</span></button>
       </div>
-      {% if cart.item_count > 0 %}
-      <div class="cart-total-bar" >
-        <div><b> SHIPPING TO AN ADDRESS ({{ cart.item_count | t }})</b></div>
-      </div>
-      {% endif %}
       <div id="main-wishlist-bag" class="tabcontent">
+        {% if cart.item_count > 0 %}
+        <div class="cart-total-bar" >
+          <div><b> SHIPPING TO AN ADDRESS ({{ cart.item_count | t }})</b></div>
+        </div>
+        {% endif %}
         {% render 'cart-items' %}
       </div>
       
       <div id="main-wishlist-favorites" class="tabcontent">
+        {% if cart.item_count > 0 %}
+          <div class="cart-total-bar" >
+            <div><b class="tab-wishlist"> MY WISHLIST (<div class="js-wishlist-count"></div>)</b></div>
+          </div>
+        {% endif %}
         <div class="cart-wishlist">
           <div class="row js-wishlist-content">
           </div>
@@ -70,9 +82,9 @@
     </div>
     
     
-    <div class="order-summaray-section">
+    <div class="order-summaray-section ">
       <h5 id="right-text-header" class="order-summary-block">Order Summary</h5>
-      <div class="order-summary-row">
+      <div class="order-summary-row order-summary-small-text">
         <div>
             <p>Subtotal:</p>
         </div>
@@ -80,7 +92,7 @@
             <p class="js-cart-subtotal"></p>
         </div>
       </div>
-      <div class="order-summary-row">
+      <div class="order-summary-row order-summary-small-text">
         <div>
             <p>Discount:</p>
         </div>
@@ -88,7 +100,7 @@
             <p class="js-cart-discount"></p>
         </div>
       </div>
-      <div class="order-summary-row">
+      <div class="order-summary-row order-summary-small-text">
         <div>
             <p>Estimated Tax:</p>
         </div>
@@ -98,7 +110,7 @@
       </div>
       <div class="order-summary-row">
         <div>
-            <p>Order Total: </p>
+            <p class="right-cart-subtotal">Order Total: </p>
         </div>
         <div>
             <p class="js-cart-total"></p>
@@ -212,9 +224,17 @@
     }
   });
 
-  document.getElementById("defaultOpen").click();
+  if (window.location.hash) {
+    // Get the value after the #
+    var hashValue = window.location.hash.substring(1);
 
-  function openCity(evt, cityName) {
+    console.log("value ",hashValue);  // Output: 'value'
+    document.getElementById(hashValue).click();
+  } else {
+    document.getElementById('my-shopping-bag').click();
+  }
+
+  function openCart(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -226,6 +246,7 @@
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
+
   }
 </script>
 {% schema %}

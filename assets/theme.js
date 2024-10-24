@@ -4190,12 +4190,12 @@ theme.infiniteScroll = (function (){
       pagination: '.js-pagination'
     });
   }
-
+  
   document.addEventListener('DOMContentLoaded', function(){
     initInfiniteScroll();
     initOtherPages();
   });
-
+  
   return{
     load:initInfiniteScroll
   }
@@ -4228,19 +4228,19 @@ theme.headersidebar = (function(){
 // Wishlist
 theme.wishlist = (function (){
   var wishlistButtonClass = '.js-btn-wishlist',
-      wishlistRemoveButtonClass = '.js-remove-wishlist',
-      $wishlistCount = $('.js-wishlist-count'),
-      $wishlistContainer = $('.js-wishlist-content'),
-      wishlistObject = JSON.parse(localStorage.getItem('localWishlist')) || [],
-      wishlistPageUrl = $('.js-wishlist-link').attr('href'),
-      applydiscount = '#apply-discount-btn',
-      cartSubotal = '.js-cart-subtotal',
-      cartDiscount = '.js-cart-discount',
-      cartTotal = '.js-cart-total',
-      cartTax = '.js-cart-tax';
-      loadNoResult = function (){
+  wishlistRemoveButtonClass = '.js-remove-wishlist',
+  $wishlistCount = $('.js-wishlist-count'),
+  $wishlistContainer = $('.js-wishlist-content'),
+  wishlistObject = JSON.parse(localStorage.getItem('localWishlist')) || [],
+  wishlistPageUrl = $('.js-wishlist-link').attr('href'),
+  applydiscount = '#apply-discount-btn',
+  cartSubotal = '.js-cart-subtotal',
+  cartDiscount = '.js-cart-discount',
+  cartTotal = '.js-cart-total',
+  cartTax = '.js-cart-tax';
+  loadNoResult = function (){
     $wishlistContainer.html(`<div class="col text-center"><div class="page-empty"><div class="alert alert-warning d-inline-block">${theme.strings.wishlistNoResult}</div></div></div>`);
-      };
+  };
 
   function updateWishlist(self) {
     var productHandle = $(self).data('handle'),
@@ -4248,7 +4248,8 @@ theme.wishlist = (function (){
     var isAdded = $.inArray(productHandle,wishlistObject) !== -1 ? true:false;
     if (isAdded) {
       // go to wishlist page
-      window.location.href = wishlistPageUrl;
+      window.location.href = "/cart#my-favorites";
+      document.getElementById("my-favorites").click();
     }else{
       wishlistObject.push(productHandle);
       allSimilarProduct.fadeOut('slow').fadeIn('fast').html(theme.strings.wishlistIconAdded + theme.strings.wishlistTextAdded);
@@ -4297,14 +4298,47 @@ theme.wishlist = (function (){
     $(wishlistButtonClass).each(function(){
       var productHandle = $(this).data('handle');
       var iconWishlist = $.inArray(productHandle,wishlistObject) !== -1 ? theme.strings.wishlistIconAdded : theme.strings.wishlistIcon;
-      var textWishlist = $.inArray(productHandle,wishlistObject) !== -1 ? theme.strings.wishlistTextAdded : theme.strings.wishlistText;
+      if (this.classList.contains('ci-wishlist-btn')) {
+        var textWishlist = $.inArray(productHandle,wishlistObject) !== -1 ? theme.strings.wishlistTextAdded : theme.strings.wishlistTextCart;
+      } else {
+        var textWishlist = $.inArray(productHandle,wishlistObject) !== -1 ? theme.strings.wishlistTextAdded : theme.strings.wishlistText;
+      }
       $(this).html(iconWishlist+textWishlist).attr('title',textWishlist);
     });
   }
+
+  function moveItemToWishlist(line) {
+    // Remove the item from the cart
+    var removeFromCartParams = {
+        type: 'POST',
+        url: '/cart/change.js',
+        data: { quantity: 0, line: line }, // 0 quantity to remove item
+        dataType: 'json',
+        success: function(response) {
+          // Check if the response indicates a successful update
+          if (response) { // or response.success if your API returns a success field
+              // Reload the page
+              location.reload();
+          } else {
+              // Handle any other response cases if needed
+              alert('Failed to update cart item.');
+          }
+      },
+        error: function(xhr, status, error) {
+            console.log('Error removing item from cart: ', error);
+        }
+    };
+
+    $.ajax(removeFromCartParams);
+  }
   
   $(document).on('click',wishlistButtonClass,function (event) {
+    var line = $(this).data('line');
+    console.log('Element has the class. line is', line);
     event.preventDefault();
     updateWishlist(this);
+    loadWishlist();
+    moveItemToWishlist(line);
   });
   $(document).on('click',wishlistRemoveButtonClass,function(){
     var productHandle = $(this).data('handle'),
@@ -6038,7 +6072,4 @@ theme.ajaxFilter = (function() {
   
 })();
 
-theme.wishlist = (function (){
-  
-})()
 $(theme.init);

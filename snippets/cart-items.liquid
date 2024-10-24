@@ -18,13 +18,21 @@
       display: flex;
       flex-direction: column;
       margin-left: 1rem;
-      width: 100%;
+      {% comment %} width: 100%;   {% endcomment %}
       height: 100%;
+      min-width: 160px;
     }
     .tr-container {
       display: flex;
       flex-direction: row;
       padding: inherit 0px;
+    }
+
+    .td-product-description-container {
+      display: flex;
+      flex-direction: column;
+      {% comment %} width: 100%; {% endcomment %}
+      {% comment %} flex-basis: 70%; {% endcomment %}
     }
 
     .td-product-description {
@@ -53,6 +61,23 @@
       margin: 0px 0px;
       line-height: 1.2;
     }
+    .edit-items {
+      display: flex;
+      position: relative; /* Defines the element's containing block */
+      {% comment %} width: 100%; {% endcomment %}
+      margin-top: 10px;
+    }
+
+    .ci-wishlist-btn {
+      padding-bottom: 0px;
+      margin-left: 15px;
+      {% comment %} min-width: 100%; {% endcomment %}
+    }
+
+    #ci-edit-btn {
+      display: flex;
+      padding-bottom: 0px;
+    }
   </style>
   <div data-section-id="{{ section.id }}" data-section-type="cart">
     <div class="page-width-cart-items">
@@ -68,45 +93,60 @@
             </thead>
             <tbody id="CartProducts">
               <tr class="tr-container" id="tr-container-title">
-                <td class="td-product-description" >Product description</td>
+                <td class="td-product-description-container" >Product description</td>
                 <td class="td-subtotal">Subtotal</td>
                 <td class="td-remove"> Remove</td>
               </tr>
               {% for item in cart.items %}
                 <tr class="tr-container">
-                  <td class="td-product-description">
-                    <a href="{{ item.url | within: collections.all }}" class="td-product-image">
-                      <img src="{{ item | image_url: width:120, height:120 }}" width="120px", height="120px" alt="{{ item.title | escape }}">
-                    </a>
-                    <div class="cart-product-card-details">
-                      <a href="{{ item.url }}" class="h6 text-body">
-                        {{ item.product.title }}
+                  <td class="td-product-description-container">
+                    <div class="td-product-description">
+                      <a href="{{ item.url | within: collections.all }}" class="td-product-image">
+                        <img src="{{ item | image_url: width:120, height:120 }}" width="120px", height="120px" alt="{{ item.title | escape }}">
                       </a>
-                      <span class="cart__item-total-mobile">
-                        {{ item.line_price | money }}
-                      </span>
-                      <div class="item-details">
-                        {% for option in item.options_with_values %}
-                          <p>{{ option.name }}: {{ option.value }}</p>
-                        {% endfor %}
-                        <p>QTY: {{ item.quantity }}</p>
-                        {% assign property_size = item.properties | size %}
-                        {% if property_size > 0 %}
-                          {% for p in item.properties %}
-                            {% assign first_character_in_key = p.first | truncate: 1, '' %}
-                            {% unless p.last == blank or first_character_in_key == '_' %}
-                              {{ p.first }}:
-                              {% if p.last contains '/uploads/' %}
-                                <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-                              {% else %}
-                                {{ p.last }}
-                              {% endif %}
-      
-                            {% endunless %}
+                      <div class="cart-product-card-details">
+                        <a href="{{ item.url }}" class="h6 text-body">
+                          {{ item.product.title }}
+                        </a>
+                        <span class="cart__item-total-mobile">
+                          {{ item.line_price | money }}
+                        </span>
+                        <div class="item-details">
+                          {% for option in item.options_with_values %}
+                            <p>{{ option.name }}: {{ option.value }}</p>
                           {% endfor %}
-                        {% endif %}
+                          <p>QTY: {{ item.quantity }}</p>
+                          {% assign property_size = item.properties | size %}
+                          {% if property_size > 0 %}
+                            {% for p in item.properties %}
+                              {% assign first_character_in_key = p.first | truncate: 1, '' %}
+                              {% unless p.last == blank or first_character_in_key == '_' %}
+                                {{ p.first }}:
+                                {% if p.last contains '/uploads/' %}
+                                  <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                                {% else %}
+                                  {{ p.last }}
+                                {% endif %}
+        
+                              {% endunless %}
+                            {% endfor %}
+                          {% endif %}
+                        </div>
                       </div>
-                  </div>
+                      {% comment %} <div class="cart__cell--quantity">
+                        <label for="Updates_{{ item.key }}" class="cart__quantity-label medium-up--hide">{{ 'cart.label.quantity' | t }}</label>
+                        <input type="number" name="updates[]" id="Updates_{{ item.key }}" class="cart__quantity" value="{{ item.quantity }}" min="0" data-line="{{ forloop.index }}" aria-label="{{ 'cart.label.quantity' | t }}">
+                      </div> {% endcomment %}
+                    </div>
+                    <div class="edit-items">
+                      <a id="ci-edit-btn" href="#">{% render 'icon-pencil' %} Edit</a>
+                      {% if settings.enable_wishlsit %}
+                        <span data-tooltip="true" class="js-btn-wishlist ci-wishlist-btn" data-line="{{ forloop.index }}" title="Move to Wishlist" data-handle="{{item.product.handle}}">
+                          {%- render 'icon-heart' -%}
+                          {% comment %} <div class="wishlist-text">Move to Wishlist</div> {% endcomment %}
+                        </span>
+                      {% endif %}
+                    </div>
                   </td>
                   <td class="td-subtotal">
                     <div class="">
