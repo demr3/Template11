@@ -191,7 +191,7 @@
             {%- endfor -%}
           </div>
         </div>
-        <script>
+        {% comment %} <script>
           {%- capture arrow_left -%}{%- include 'icon-arrow-left' -%}{%- endcapture -%}
           {%- capture arrow_right -%}{%- include 'icon-arrow-right' -%}{%- endcapture -%}
           {%- capture arrow_up -%}{%- include 'icon-arrow-up' -%}{%- endcapture -%}
@@ -202,7 +202,7 @@
             up: {{ arrow_up | json }},
             down: {{ arrow_down | json }}
           }
-        </script>
+        </script> {% endcomment %}
         {%- endif -%}
         {% if section.settings.positiontab == "left" %}
           <div class=" {% unless settings.productpage == "product-1" %}pl-5 {% endunless %}" >

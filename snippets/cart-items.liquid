@@ -20,14 +20,19 @@
       margin-left: 1rem;
       {% comment %} width: 100%;   {% endcomment %}
       height: 100%;
-      min-width: 160px;
+      min-width: 100px;
     }
     .tr-container {
       display: flex;
       flex-direction: row;
       padding: inherit 0px;
+      font-size: .625rem;
+      border-bottom: 1px solid #ebebeb;
+      {% comment %} padding-bottom: 10px; {% endcomment %}
+      margin: 0 12px;
+      color: #000;
     }
-
+    
     .td-product-description-container {
       display: flex;
       flex-direction: column;
@@ -72,11 +77,13 @@
       padding-bottom: 0px;
       margin-left: 15px;
       {% comment %} min-width: 100%; {% endcomment %}
+      font-size: .625rem;
     }
 
-    #ci-edit-btn {
+    .js-btn-quickedit {
       display: flex;
       padding-bottom: 0px;
+      font-size: .625rem;
     }
   </style>
   <div data-section-id="{{ section.id }}" data-section-type="cart">
@@ -98,7 +105,13 @@
                 <td class="td-remove"> Remove</td>
               </tr>
               {% for item in cart.items %}
+                {% comment %} <script>console.log("item", {{item | json}} );</script> {% endcomment %}
                 <tr class="tr-container">
+                  {% capture attributes %}
+                    {% for option in item.options_with_values %}
+                      data-{{ option.name | downcase }} = "{{ option.value }}"
+                    {% endfor %}
+                  {% endcapture %}
                   <td class="td-product-description-container">
                     <div class="td-product-description">
                       <a href="{{ item.url | within: collections.all }}" class="td-product-image">
@@ -139,7 +152,12 @@
                       </div> {% endcomment %}
                     </div>
                     <div class="edit-items">
-                      <a id="ci-edit-btn" href="#">{% render 'icon-pencil' %} Edit</a>
+                      <span data-tooltip="true" data-placement="left" class="js-btn-quickedit" title="{{ 'products.product.quickview_text' | t }}" data-toggle="modal" data-target="#jsQuickedit" data-handle="{{item.product.handle}}" data-line="{{forloop.index}}" {{ attributes }}>
+                        {% render 'icon-pencil' %} Edit
+                      </span>
+                      {% comment %} <a data-handle="{{productLookbook.handle}}" class=" js-btn-quickedit" data-toggle="modal" data-target="#jsQuickedit" >
+                        <span data-tooltip="true" title="{{productLookbook.title}}" class="lookbook__dot" style="background:{{block.settings[sColor]}}"></span>
+                        {% render 'icon-pencil' %} Edit</a> {% endcomment %}
                       {% if settings.enable_wishlsit %}
                         <span data-tooltip="true" class="js-btn-wishlist ci-wishlist-btn" data-line="{{ forloop.index }}" title="Move to Wishlist" data-handle="{{item.product.handle}}">
                           {%- render 'icon-heart' -%}

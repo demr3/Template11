@@ -4008,19 +4008,19 @@
         "type": "checkbox",
         "id": "qv_sku",
         "label": "Enable SKU",
-        "default": true
+        "default": false
       },
       {
         "type": "checkbox",
         "id": "qv_type",
         "label": "Enable Type",
-        "default": true
+        "default": false
       },
       {
         "type": "checkbox",
         "id": "qv_vendor",
         "label": "Enable Vendor",
-        "default": true
+        "default": false
       }
     ]
   },

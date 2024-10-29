@@ -15,6 +15,7 @@
     stockAvailable: {{ 'products.product.stock_available' | t: count: '1' | json }},
     freeShipping: {{ settings.free_shipping_text | json}},
     addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    updateCart: {{ 'cart.general.update' | t | json }},
     addToCartSuccess: {{ 'products.product.product_added_to_cart_html' | t | json }},
     soldOut: {{ 'products.product.sold_out' | t | json }},
     unavailable: {{ 'products.product.unavailable' | t | json }},
