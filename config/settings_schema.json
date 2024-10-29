@@ -3078,7 +3078,7 @@
         "type": "text",
         "id": "social_tiktok_link",
         "label": "TikTok",
-        "info": "https://www.tiktok.com/"
+        "info": "https:\/\/www.tiktok.com\/"
       },
       {
         "type": "text",
@@ -3231,78 +3231,6 @@
       }
     ]
   },
-  // {
-  //   "name": "Sidebar blog pages",
-  //   "settings": [
-  //     {
-  //       "type": "header",
-  //       "content": "HTML"
-  //     },
-  //     {
-  //       "type": "text",
-  //       "id": "sidebar_html_title_top",
-  //       "default": "Something here",
-  //       "label": "Title"
-  //     },
-  //     {
-  //       "type": "textarea",
-  //       "id": "sidebar_html_top",
-  //       "label": "HTML code",
-  //       "info": "[💡 Build HTML](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
-  //     },
-  //     {
-  //       "type": "header",
-  //       "content": "Tags"
-  //     },
-  //     {
-  //       "type": "checkbox",
-  //       "id": "sidebar_tag",
-  //       "default": true,
-  //       "label": "Show tags"
-  //     },
-  //     {
-  //       "type": "header",
-  //       "content": "Recent Post"
-  //     },
-  //     {
-  //       "type": "checkbox",
-  //       "id": "sidebar_post",
-  //       "default": true,
-  //       "label": "Enable"
-  //     },
-  //     {
-  //       "type": "text",
-  //       "id": "sidebar_post_title",
-  //       "default": "Recent Post",
-  //       "label": "Title"
-  //     },
-  //     {
-  //       "type": "range",
-  //       "id": "sidebar_post_limit",
-  //       "min": 2,
-  //       "max": 6,
-  //       "step": 1,
-  //       "label": "Limit",
-  //       "default": 5
-  //     },
-  //     {
-  //       "type": "header",
-  //       "content": "HTML"
-  //     },
-  //     {
-  //       "type": "text",
-  //       "id": "sidebar_html_title",
-  //       "default": "Something here",
-  //       "label": "Title"
-  //     },
-  //     {
-  //       "type": "textarea",
-  //       "id": "sidebar_html",
-  //       "label": "HTML code",
-  //       "info": "[💡 Build HTML](https:\/\/ap2020.myshopify.com\/pages\/html-builder)"
-  //     }
-  //   ]
-  // },
   {
     "name": "Collection filter",
     "settings": [

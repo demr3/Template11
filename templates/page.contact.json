@@ -1,50 +1,33 @@
 {
   "sections": {
-    "main": {
-      "type": "page-contact",
-      "blocks": {
-        "6c7961f4-e774-45a9-a2af-2063a83032e6": {
-          "type": "address",
-          "settings": {
-            "store_addess": "<div class=\"mt-5\">\n<h2 class=\"mb-3 f-90\">01<\/h2>\n<span class=\"text-body font-weight-bold\">STORE NEWYORK<\/span>\n<\/div>",
-            "contact_addess": "123 Sky Tower, West 21th Street, Suite 721, NY",
-            "contact_phone": "+844 123 456 789",
-            "contact_mail": "sale@yourcompany.com"
-          }
-        },
-        "b3ac5eb8-9210-4208-96cd-be2b4b3e2c5b": {
-          "type": "address",
-          "settings": {
-            "store_addess": "<div class=\"mt-5\">\n<h2 class=\"mb-3 f-90\">02<\/h2>\n<span class=\"text-body font-weight-bold\">STORE NEWYORK<\/span>\n<\/div>",
-            "contact_addess": "123 Sky Tower, West 21th Street, Suite 721, NY",
-            "contact_phone": "+844 123 456 789",
-            "contact_mail": "sale@yourcompany.com"
-          }
-        },
-        "c1af8b2f-c168-4c65-bec0-109765063f30": {
-          "type": "address",
-          "settings": {
-            "store_addess": "<div class=\"mt-5\">\n<h2 class=\"mb-3 f-90\">03<\/h2>\n<span class=\"text-body font-weight-bold\">STORE NEWYORK<\/span>\n<\/div>",
-            "contact_addess": "123 Sky Tower, West 21th Street, Suite 721, NY",
-            "contact_phone": "+844 123 456 789",
-            "contact_mail": "sale@yourcompany.com"
-          }
-        }
-      },
-      "block_order": [
-        "6c7961f4-e774-45a9-a2af-2063a83032e6",
-        "b3ac5eb8-9210-4208-96cd-be2b4b3e2c5b",
-        "c1af8b2f-c168-4c65-bec0-109765063f30"
-      ],
+    "rich_text_PDTWFB": {
+      "type": "rich-text",
       "settings": {
-        "title_page": "Stay in touch! Contact us",
-        "contact_des": "Have a question? Give us a call or fill out the contact form. We’d love to hear from you",
+        "animation": "",
+        "paddingsection": "0px 0px 0px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "bgsection": "#fefefe",
+        "title_top": "",
+        "title": "Stay in touch!",
+        "des": "Have a question? Give us a call or fill out the contact form. We’d love to hear from you",
+        "setwidth": "container",
+        "text": ""
+      }
+    },
+    "main": {
+      "type": "page-contact-v2",
+      "settings": {
+        "title_page": "Contact Us",
+        "contact_des": "",
         "gmap": true,
-        "gmap_iframe": "<div class=\"mapouter\">\n<div class=\"gmap_canvas\">\n<iframe width=\"1080\" height=\"500\" id=\"gmap_canvas\" src=\"https:\/\/maps.google.com\/maps?q=68%20nguyen%20co%20thach&t=&z=15&ie=UTF8&iwloc=&output=embed\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\"><\/iframe>Google Maps Generator by <a href=\"https:\/\/www.embedgooglemap.net\">embedgooglemap.net<\/a>\n<\/div>\n<style>.mapouter{position:relative;text-align:right;height:500px;width:1080px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:1080px;}.gmap-iframe .mapouter, .gmap-iframe .gmap_canvas, .gmap-iframe iframe{ width:100% !important; } @media (max-width:767px){ .gmap-iframe .mapouter, .gmap-iframe .gmap_canvas, .gmap-iframe iframe{ height:350px !important; } }<\/style>\n<\/div>"
+        "gmap_iframe": ""
       }
     }
   },
   "order": [
+    "rich_text_PDTWFB",
     "main"
   ]
 }
