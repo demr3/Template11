@@ -19,24 +19,6 @@
             "enable_center_product": false
           }
         },
-        "f9c4c75c-4fad-4273-940c-9e165e651ac2": {
-          "type": "video",
-          "settings": {
-            "setwidthcontent": "container",
-            "align": "right",
-            "padding_desktop": 160,
-            "padding_mobile": 80,
-            "bg_box": "#ffffff",
-            "opacity_bgbox": 0.7,
-            "title": "",
-            "title_color": "#ffffff",
-            "subtext": "<div class=\"text-center\">\n<h2>\nNew Style <br> Pieces<\/h2>\n<\/div>",
-            "subtitle_color": "#ffffff",
-            "button": "discover now",
-            "link": "#",
-            "link_video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0031\/3072\/0369\/files\/video.mp4?v=1622743396"
-          }
-        },
         "ae23a44a-7f0c-4258-bac5-9d1171bb3dab": {
           "type": "related-product",
           "settings": {
@@ -52,7 +34,6 @@
       "block_order": [
         "71eb61e1-c84b-4162-94a4-10300de6e405",
         "5fa75617-a7f4-4729-84ef-c92ef9bd2446",
-        "f9c4c75c-4fad-4273-940c-9e165e651ac2",
         "ae23a44a-7f0c-4258-bac5-9d1171bb3dab"
       ],
       "settings": {

@@ -412,7 +412,7 @@
           "product_wJYk3N": {
             "type": "product",
             "settings": {
-              "product": "waterproof-man-waist-bag-fanny-pack-fashion-chest-pack-outdoor-sports-crossbody-bag-casual-travel-male-belt-bag-hip-waist-packs",
+              "product": "waterproof-man-waist-fanny-pack",
               "local": "in Blackburn, UK",
               "time": "about 21 minutes ago"
             }
@@ -1451,7 +1451,7 @@
           "enable_login": true,
           "enable_social": false,
           "enablemoney": false,
-          "topbartext": "Free shipping on all orders over $35",
+          "topbartext": "Free shipping on all orders",
           "topbarbg": "#000000",
           "topborderbg": "rgba(0,0,0,0)",
           "textcolor-top": "#ffffff",
@@ -3670,17 +3670,41 @@
       "162266004920c5a7b3": {
         "type": "advanced-content",
         "blocks": {
+          "countdown_cQjPTF": {
+            "type": "countdown",
+            "settings": {
+              "width": "100%",
+              "alignhorizotal": "center",
+              "align": "auto",
+              "titlecount": "Fall Discount Sale",
+              "time": "11\/01\/2024",
+              "button_link": "shopify:\/\/collections\/all",
+              "button_text": "Shop now",
+              "cover": "contain"
+            }
+          },
+          "html_tJUK6X": {
+            "type": "html",
+            "settings": {
+              "fullhtml": false,
+              "code": "<br>",
+              "width": "100%",
+              "align": "auto"
+            }
+          },
           "247d6711-35d9-4278-b492-1491815fce2d": {
             "type": "html",
             "settings": {
               "fullhtml": false,
-              "code": "<h3 class=\"anim-loop-left white-space text-uppercase\">JElle - Les Echos - The Sunday Times - British Vogue - Financial Times - The New York Times  Business of Fashion - Elle - Les Echos - The Sunday Times - British Vogue - Financial Times - The New York Times - Business of Fashion - Elle - Les Echos - The Sunday Times - British Vogue - Financial Times - The New York Times - Business of Fashion - Business of Fashion<\/h3>",
+              "code": "<h3 class=\"anim-loop-left white-space text-uppercase\">\n<b>Use discount Fall15<\/b> to get an extra 15% off of your order - <b>Use discount Fall15<\/b> to get an extra 15% off of your order - <b>Use discount Fall15<\/b> to get an extra 15% off of your order<\/h3>",
               "width": "100%",
               "align": "center"
             }
           }
         },
         "block_order": [
+          "countdown_cQjPTF",
+          "html_tJUK6X",
           "247d6711-35d9-4278-b492-1491815fce2d"
         ],
         "settings": {
@@ -3802,7 +3826,7 @@
               "max-width": 290,
               "button_text": "shop now",
               "button_icon": "",
-              "button_link": "#",
+              "button_link": "shopify:\/\/collections\/backpacks",
               "vertical": "mid",
               "horizontal": "center",
               "text_align": "center"
@@ -3822,7 +3846,7 @@
               "max-width": 290,
               "button_text": "shop now",
               "button_icon": "",
-              "button_link": "",
+              "button_link": "shopify:\/\/collections\/loki-travel-bags",
               "vertical": "mid",
               "horizontal": "center",
               "text_align": "center"
@@ -3901,7 +3925,7 @@
             "type": "html",
             "settings": {
               "fullhtml": false,
-              "code": "<div class=\" pr-md-5 mr-md-5 pt-5\">\n<span class=\"subtop\"> limited edition<\/span>\n<h2 class=\"mt-3 mb-5\">New ! Supper<br> Summer Sale<\/h2>\n<a href=\"\/collections\/new-arrivals\" class=\"btn btn-theme\">Shop now<\/a>\n<div class=\"mt-lg-5 pt-5 pl-lg-5 text-right\">\n<\/div>\n<\/div>",
+              "code": "<div class=\" pr-md-5 mr-md-5 pt-5\">\n<span class=\"subtop\"> limited edition<\/span>\n<h2 class=\"mt-3 mb-5\">New ! Supper<br> Fall Sale<\/h2>\n<a href=\"\/collections\/new-arrivals\" class=\"btn btn-theme\">Shop now<\/a>\n<div class=\"mt-lg-5 pt-5 pl-lg-5 text-right\">\n<\/div>\n<\/div>",
               "width": "50%",
               "align": "auto"
             }
@@ -3937,88 +3961,6 @@
           "des": "",
           "setwidth": "container",
           "padding": true
-        }
-      },
-      "165591926672fd6044": {
-        "type": "instagram-customize",
-        "blocks": {
-          "165591926672fd6044-1": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image_link": "https:\/\/www.instagram.com\/p\/B2Gd5A-pL0s\/"
-            }
-          },
-          "2ea8fbde-53d0-4204-b121-fd317d780008": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image_link": "https:\/\/www.instagram.com\/p\/B7ZKrySp03E\/"
-            }
-          },
-          "b484ea73-4277-4674-b36b-b57d9f7e96c1": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image_link": "https:\/\/www.instagram.com\/p\/BucN0sCAtfi\/"
-            }
-          },
-          "165591926672fd6044-5": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image_link": "https:\/\/www.instagram.com\/p\/CMh4GcPJeZx\/"
-            }
-          },
-          "165591926672fd6044-2": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image_link": "https:\/\/www.instagram.com\/p\/CCEXXsyp_qL\/"
-            }
-          },
-          "c09c8b81-b924-4d98-8ed6-4b0b3ba3c667": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image_link": ""
-            }
-          },
-          "1a1964df-b11e-4d42-9674-0f4dd7b69663": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image_link": "https:\/\/www.instagram.com\/p\/CZhF5U1KmTj\/"
-            }
-          }
-        },
-        "block_order": [
-          "165591926672fd6044-1",
-          "2ea8fbde-53d0-4204-b121-fd317d780008",
-          "b484ea73-4277-4674-b36b-b57d9f7e96c1",
-          "165591926672fd6044-5",
-          "165591926672fd6044-2",
-          "c09c8b81-b924-4d98-8ed6-4b0b3ba3c667",
-          "1a1964df-b11e-4d42-9674-0f4dd7b69663"
-        ],
-        "disabled": true,
-        "settings": {
-          "animation": "",
-          "paddingsection": "0px 0px 0px 0px",
-          "paddingmobile": "0px 0px 0px 0px",
-          "marginsection": "0px 0px 0px 0px",
-          "marginmobile": "0px 0px 0px 0px",
-          "bgsection": "#fefefe",
-          "title_top": "",
-          "title": "",
-          "des": "",
-          "setwidth": "full",
-          "arrows": true,
-          "draggable": true,
-          "dots": false,
-          "infinite": true,
-          "show": 6,
-          "padding": false
         }
       },
       "1656666149fcae427f": {
@@ -4161,7 +4103,7 @@
             "settings": {
               "bgtext": "#fefefe",
               "title": "",
-              "text": "<div class=\"pl-lg-5 ml-lg-5\">\n<span class=\"subtop\">MATCH COLORS<\/span>\n<h2 class=\"mt-2 mb-4\">Hyper wearable Fashion <\/h2>\n<p>Discover the art of style at The Origami Way, where fashion meets finesse with our curated selection of clothing and handbags, folding elegance into every outfit.<\/p>\n<a href=\"#\" class=\"mt-5 btn btn-theme\"> Shop now<\/a>\n<\/div>",
+              "text": "<div class=\"pl-lg-5 ml-lg-5\">\n<span class=\"subtop\">MATCH COLORS<\/span>\n<h2 class=\"mt-2 mb-4\">Hyper wearable Fashion <\/h2>\n<p>Discover the art of style at The Origami Way, where fashion meets finesse with our curated selection of clothing and handbags, folding elegance into every outfit.<\/p>\n<a href=\"\/women\" class=\"mt-5 btn btn-theme\"> Shop now<\/a>\n<\/div>",
               "align": "left"
             }
           }
@@ -4286,29 +4228,13 @@
           "1656870916c9656b37-0": {
             "type": "collection",
             "settings": {
-              "title": "Classic",
-              "collection": "backpacks"
-            }
-          },
-          "1656870916c9656b37-1": {
-            "type": "collection",
-            "settings": {
-              "title": "Summer",
-              "collection": "womens-duffels-luggage"
-            }
-          },
-          "1656870916c9656b37-2": {
-            "type": "collection",
-            "settings": {
-              "title": "Buisness",
-              "collection": "mens-duffle-and-luggage"
+              "title": "Fall collection",
+              "collection": "fall-collection"
             }
           }
         },
         "block_order": [
-          "1656870916c9656b37-0",
-          "1656870916c9656b37-1",
-          "1656870916c9656b37-2"
+          "1656870916c9656b37-0"
         ],
         "settings": {
           "animation": "",
@@ -4351,7 +4277,7 @@
           "opacity_bg_overlay": 0.4,
           "title": "",
           "title_color": "#ffffff",
-          "subtext": "<div>\n<span class=\"subtop\">TRENDING<\/span>\n<h1 class=\"mt-2 mb-4\">Got You Covered<\/h1>\n<p>Some extra special people reviewed our swimwear and clothing.<\/p>\n<a href=\"#\" class=\"mt-5 btn btn-theme\"> Shop now<\/a>\n<\/div>",
+          "subtext": "<div>\n<span class=\"subtop\">TRENDING<\/span>\n<h1 class=\"mt-2 mb-4\">Got You Covered<\/h1>\n<p>Some extra special people reviewed our swimwear and clothing.<\/p>\n<a href=\"\/collections\/all\" class=\"mt-5 btn btn-theme\"> Shop now<\/a>\n<\/div>",
           "overwritecolor": true,
           "subtitle_color": "#ffffff",
           "button": "discover now",
@@ -4367,7 +4293,7 @@
             "type": "html",
             "settings": {
               "fullhtml": false,
-              "code": "<div class=\"text-center\">\n<a href=\"\/collections\/alls\" class=\"btn  btn-underline\">shop all products <i class=\"icon-arrow-thin-right\"><\/i><\/a>\n<\/div>",
+              "code": "<div class=\"text-center\">\n<a href=\"\/collections\/all\" class=\"btn  btn-underline\">shop all products <i class=\"icon-arrow-thin-right\"><\/i><\/a>\n<\/div>",
               "width": "100%",
               "align": "auto"
             }
@@ -4454,8 +4380,7 @@
       "1656666152b14fbfbe",
       "16225699042bd07c44",
       "162237804441268bd5",
-      "165690588456226989",
-      "165591926672fd6044"
+      "165690588456226989"
     ],
     "blocks": {
       "1143683040400472741": {
