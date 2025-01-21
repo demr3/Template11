@@ -26,9 +26,9 @@
     <div class="tab-pane fade show active" id="gtab1" role="tabpanel" >
       {{product.description}}
     </div>
-    {% if product.metafields.custom.product_details != blank %}
+    {% if product.metafields.custom.product_details  != blank %}
     <div class="tab-pane fade" id="stab1" role="tabpanel">
-      {{product.metafields.custom.product_details}}
+      {{product.metafields.custom.product_details | metafield_tag}}
     </div>
     {% endif %}
     {% if product.metafields.custom.shipping_returns != blank %}

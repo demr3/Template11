@@ -1,0 +1,29 @@
+<style>
+  .urgency-loop-left {
+    animation: loop-anim-left 5s linear infinite reverse;
+  }
+  .bg-color-animation {
+    display: flex;
+    justify-self: {{ block.settings.justify_content }};
+    background-color: {{ block.settings.background_color }};
+    font-weight: {{ block.settings.font_weight }};
+    font-size: {{ block.settings.font_size }}px;
+    color: {{ block.settings.color }};
+    padding: 0px 10px;
+    {% comment %} width: 100%; {% endcomment %}
+    animation: pulse 2s infinite;
+  }
+  .card-urgency-text {
+    {% comment %} width: 100%; {% endcomment %}
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+</style>
+<div class="bg-color-animation">
+  <div class="card-urgency-text">
+    {%  render "icon-price-tag" %} {{ block.settings.urgency_text }}
+  </div>
+</div>

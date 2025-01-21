@@ -2,8 +2,7 @@
   "sections": {
     "main": {
       "type": "page-gallery",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [

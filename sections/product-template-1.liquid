@@ -90,7 +90,7 @@
       padding:0rem 0rem 0rem 3rem;
   }
   .template-product .main-content{
-    padding-top:80px;
+    {% comment %} padding-top:20px; {% endcomment %}
   }
   .product-form-select .selector-wrapper{
     flex: 0 0 50%;
@@ -127,6 +127,72 @@
     }
   }
   
+
+
+/* Hook Styling */
+.product-hook {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: left;
+  color: #333;
+  padding-bottom: 10px;
+  max-width: 600px;
+  line-height: 1  ;
+}
+
+/* Selling Points Styling */
+.selling-points {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555; /* Medium gray for a softer look */
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  {% comment %} gap: 3px; {% endcomment %}
+  text-align: left;
+}
+
+.selling-points li {
+  position: relative;
+  padding-left: 20px;
+}
+
+/* Minimal Circle Icon for Each Item */
+.selling-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: #888; /* Soft gray dot for a subtle effect */
+  border-radius: 50%;
+}
+
+/* Responsive Adjustment */
+@media (max-width: 600px) {
+  .product-hook {
+      font-size: 1.2rem;
+  }
+  .selling-points {
+      font-size: 0.95rem;
+  }
+}
+/* Default: show on screens smaller than or equal to 767px */
+.mobile-only {
+  display: block;
+}
+
+/* Hide on screens larger than 767px */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+}
 </style>
 <div class="container js-recently-view" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" data-ajax="true" data-stock="{{ section.settings.stock_enable }}" data-handle="{{product.handle}}">
   {% assign product_image_size = '480x480' %}
@@ -139,83 +205,19 @@
   <div class="row product-single">
     <div class="col-md-6">
       <div class="photos">
-        
-        <div class="photos__item photos__item--main " >
-          <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-            {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
-            {%- for image in product.images -%}
-            <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="product-single__photo product__photo-container product__photo-container-{{ section.id }}{% unless image == featured_image %} hide{% endunless %}"
-                id="ProductPhoto{{ section.id }}"
-                style="max-width: {% include 'image-width' with image: image, width: 480 %}px;"
-                data-image-id="{{ image.id }}">
-                <a href="{{ image | img_url: '1400x' }}" itemprop="contentUrl" data-size="1400x1400"
-                class="product__photo-wrapper product__photo-wrapper-{{ section.id }} zoom_image zoom zoom_enabled"
-                style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
-                {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                <img itemprop="thumbnail" class="lazyload {% unless image == featured_image %} lazypreload{% endunless %}"
-                    src="{{ image | img_url: '1200x' }}"
-                    data-src="{{ img_url }}"
-                    data-widths="[180, 240, 360, 480, 720, 960, 1080, 1296, 1512, 1728, 2048]"
-                    data-aspectratio="{{ image.aspect_ratio }}"
-                    data-sizes="auto"
-                    alt="{{ image.alt | escape }}">
-              </a>
-            </figure>
-          {%- endfor -%}
-          </div>
-          <noscript>
-              <a href="{{ featured_image | img_url: '1200x' }}">
-              <img src="{{ featured_image | img_url: product_image_size }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg-{{ section.id }}">
-            </a>
-          </noscript>
-          {% for media in product.media %}
-            {% render 'productVideo', media: media %}
-          {% endfor %}
-        </div>
-        {%- if product.images.size > 1 -%}
-        <div class="photos__item photos__item--thumbs">
-          <div class="product-single__thumbnails product-single__thumbnails-{{ section.id }} product-single__thumbnails--static">
-            {%- for image in product.images -%}
-            <div class="product-single__thumbnail-item product-single__thumbnail-item-{{ section.id }}{% if image == featured_image %} is-active{% endif %}" data-image-id="{{ image.id }}">
-              <a href="{{ image.src | img_url: product_image_size }}" data-zoom="{{ image.src | img_url: '1200x' }}" class="product-single__thumbnail product-single__thumbnail-{{ section.id }}">
-                    {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                    <img class="lazyload {% unless image == featured_image %} lazypreload{% endunless %}"
-                         src="{{ image | img_url: '1200x' }}"
-                         data-src="{{ img_url }}"
-                         data-widths="[180, 240, 360, 480, 720, 960, 1080, 1296, 1512, 1728, 2048]"
-                         data-aspectratio="{{ image.aspect_ratio }}"
-                         data-sizes="auto"
-                         alt="{{ image.alt | escape }}">
-              </a>
-            </div>
-            {%- endfor -%}
-          </div>
-        </div>
-        {% comment %} <script>
-          {%- capture arrow_left -%}{%- include 'icon-arrow-left' -%}{%- endcapture -%}
-          {%- capture arrow_right -%}{%- include 'icon-arrow-right' -%}{%- endcapture -%}
-          {%- capture arrow_up -%}{%- include 'icon-arrow-up' -%}{%- endcapture -%}
-          {%- capture arrow_down -%}{%- include 'icon-arrow-down' -%}{%- endcapture -%}
-          var sliderArrows = {
-            left: {{ arrow_left | json }},
-            right: {{ arrow_right | json }},
-            up: {{ arrow_up | json }},
-            down: {{ arrow_down | json }}
-          }
-        </script> {% endcomment %}
-        {%- endif -%}
-        {% if section.settings.positiontab == "left" %}
-          <div class=" {% unless settings.productpage == "product-1" %}pl-5 {% endunless %}" >
-            <div class="{% unless settings.productpage == "product-1" %}pl-5 {% endunless %}">
-              {% if section.settings.enable_tabvertical %}
-                {%- include 'product-information-vertical' -%}
-              {% else %}
-              {%- include 'product-information' -%}
-              {% endif %}
-            </div>
-          </div>
-        {% endif %}
+        {% include 'image-slick' %}
       </div>
+      {% if section.settings.positiontab == "left" %}
+        <div class=" {% unless settings.productpage == "product-1" %}pl-5 {% endunless %}" >
+          <div class="{% unless settings.productpage == "product-1" %}pl-5 {% endunless %}">
+            {% if section.settings.enable_tabvertical %}
+              {%- include 'product-information-vertical' -%}
+            {% else %}
+            {%- include 'product-information' -%}
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
     </div>
     <div class="col-12 col-md-6 order-1" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
       <div class="product-single__info-wrapper">
@@ -233,10 +235,15 @@
             {{product.metafields.info.shortdesc}}
           </div>
           {% endif %}
-          <div class="review">
-            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-          </div>
+
           <ul class="pb-3 product-single__meta-list list--inline{% if shop.taxes_included or shop.shipping_policy.body != blank %} product-single__price-container{% endif %}">
+            {% for block in section.blocks %}
+              {% if block.type == 'urgency-message' %}
+                <li>
+                {%- include 'urgency-message' -%}
+                </li>
+              {% endif %}
+            {% endfor %}
             <li>
               {%- unless product.compare_at_price_max > product.price -%}
               <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
@@ -252,13 +259,27 @@
                 {{ current_variant.compare_at_price | money }}
               </s>
             </li>
-            {% endif %}
-            
+            <li>
+              {% capture discount %}
+              {{current_variant.compare_at_price | minus: current_variant.price | divided_by: 1.0 | divided_by: current_variant.compare_at_price | times: 100 | floor}}
+              {% endcapture %}
+            </li>
+          {% endif %}
+          <script>console.log({{ current_variant | json }})</script>
+          
             {%- if section.settings.stock_enable -%}
             <li>{%- include 'productStock' -%}</li>
             {%- endif -%}
           </ul>
+          {% if section.settings.key_points_enable %}
+          <div class="product-hook">
+            {{ section.settings.key_points_title }}
+          </div>
           
+          <ul class="selling-points">
+            {{ section.settings.key_points }}
+          </ul>
+        {% endif %}
          
          
         </div>
@@ -342,7 +363,15 @@
             <span class="btn btn-waitlist btn-theme" data-toggle="modal" data-target="#jsSoldout" title="{{ 'products.product.soldout_messenger' | t }}">{{'products.product.waitlist' | t}}</span>
           </div>
           {% endif %}
+        {% endform %}
           <div class="gr-btnjs py-4 mt-4 border-top">
+            <div class="mobile-only pb-4">
+              {% for block in section.blocks %}
+                {% if block.type == 'image-with-text' %}
+                  {%- include 'image-with-text' -%}
+                {% endif %}
+              {% endfor %}
+            </div>
             <div class="d-flex align-items-start flex-column">
               {% comment %} <div> {% endcomment %}
                 {% if settings.enable_compare %}
@@ -376,7 +405,6 @@
             {% endif %}
             
           </div> 
-          {% endform %}
           {% include 'notifySoldoutProduct' %}
         {% endif %}
 
@@ -435,8 +463,10 @@
         {% elsif block.type == 'style-with' %}
           {%- include 'style-with' -%}
         {% elsif block.type == 'service' %}
-        {%- include 'service-pro' -%}
-      {% endif %}
+          {%- include 'service-pro' -%}
+        {% elsif block.type == 'image-with-text' %}
+          {%- include 'image-with-text' -%}
+        {% endif %}
       {% endfor %}
     </div>
   {%- include 'cross-sell' -%}
@@ -450,12 +480,79 @@
 {
 "name": "Product template 1",
 "settings": [
+  {
+    "type": "select",
+    "id": "animation",
+    "options": [
+      { "value": "", "label": "None"},
+      { "value": "fade", "label": "Fade"},
+      { "value": "fade-up", "label": "Fade Up"},
+      { "value": "fade-down", "label": "Fade Down"},
+      { "value": "fade-left", "label": "Fade Left"},
+      { "value": "fade-right", "label": "Fade Right"},
+      { "value": "fade-up-right", "label": "Fade Up Right"},
+      { "value": "fade-up-left", "label": "Fade Up Left"},
+      { "value": "fade-down-right", "label": "Fade Down Right"},
+      { "value": "fade-down-left", "label": "Fade Down Left"},
+      { "value": "flip-up", "label": "Flip Up"},
+      { "value": "flip-down", "label": "Flip Down"},
+      { "value": "flip-left", "label": "Flip Left"},
+      { "value": "flip-right", "label": "Flip Right"},
+      { "value": "slide-up", "label": "Slide Up"},
+      { "value": "slide-down", "label": "Slide Down"},
+      { "value": "slide-left", "label": "Slide Left"},
+      { "value": "slide-right", "label": "Slide Right"},
+      { "value": "zoom-in", "label": "Zoom In"},
+      { "value": "zoom-in-up", "label": "Zoom In Up"},
+      { "value": "zoom-in-down", "label": "Zoom In Down"},
+      { "value": "zoom-in-left", "label": "Zoom In Left"},
+      { "value": "zoom-in-right", "label": "Zoom In Right"},
+      { "value": "zoom-out", "label": "Zoom Out"},
+      { "value": "zoom-out-up", "label": "Zoom Out Up"},
+      { "value": "zoom-out-down", "label": "Zoom Out Down"},
+      { "value": "zoom-out-left", "label": "Zoom Out Feft"},
+      { "value": "zoom-out-right", "label": "Zoom Out Right"}
+    ],
+    "label": "Select Animation"
+},
+{
+  "type": "select",
+  "id": "setwidth",
+  "label": "Full Width",
+  "default": "container",
+  "options": [
+    {
+      "value": "container",
+      "label": "Box"
+    },
+    {
+      "value": "container-fluid",
+      "label": "Container Fluid"
+    },
+    {
+      "value": "full",
+      "label": "Full"
+    }
+  ]
+},
+{
+  "type": "checkbox",
+  "id": "enable_padding",
+  "label": "Enable Padding",
+  "default": true
+},
+{
+  "type": "checkbox",
+  "id": "align_center",
+  "label": "Align Center",
+  "default": true
+},
 {
   "type": "checkbox",
   "id": "enable_hurrify",
   "label": "Show Hurrify",
   "default": true
-  },
+},
 {
 "type": "checkbox",
 "id": "stock_enable",
@@ -510,6 +607,23 @@
   "id": "waitlist",
   "label": "Show waitlist",
   "default": true
+},
+{
+  "type": "checkbox",
+  "id": "key_points_enable",
+  "label": "Enable selling points",
+  "default": true,
+},
+{
+  "type": "text",
+  "id": "key_points_title",
+  "label": "Selling Points Title",
+  "default": "Never worry about expensinve baggage fees again!"
+},
+{
+  "type": "html",
+  "id": "key_points",
+  "label": "Selling Points in HTML <li></li>",
 },
 {
 "type": "select",
@@ -847,6 +961,147 @@
             "type": "paragraph",
             "content": "💡 [Enter content for each product here.](\/admin\/bulk?resource_name=Product&edit=metafields.info.stylewith%3Astring%2Chandle)"
             }
+        ]
+      },
+      {
+        "type": "urgency-message",
+        "name": "Urgency Message",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "urgency_title",
+            "label": "Title",
+            "default": "Related product"
+          },
+          {
+            "type": "text",
+            "id": "urgency_text",
+            "label": "Message",
+            "default": "Last Day For Sale"
+          },
+          {
+            "type": "text",
+            "id": "font_weight",
+            "label": "Font Weight",
+            "info": "Sets the CSS font weight.",
+            "default": "400"
+          },
+          {
+            "type": "number",
+            "id": "font_size",
+            "label": "Font Size",
+            "info": "Sets the CSS font weight.",
+            "default": 15
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color",
+            "default": "#343a40"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Text Alignment",
+            "default": "#343a40",
+            "info": "Text color"
+          },
+          {
+            "type": "select",
+            "id": "justify_content",
+            "label": "Color",
+            "options": [
+              {
+                "label": "Front",
+                "value": "flex-start"
+              },
+              {
+                "label": "Center",
+                "value": "center"
+              },
+              {
+                "label": "End",
+                "value": "flex-end"
+              },
+            ],
+          }
+        ]
+      },
+            {
+        "type": "image-with-text",
+        "name": "Image with Text",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "align_center",
+            "label": "Align Center",
+            "default": true
+          },
+          {
+            "type": "select",
+            "id": "setwidthcontent",
+            "label": "Width Content",
+            "default":"container",
+            "options": [
+            {
+            "value": "container",
+            "label": "Container"
+            },
+            {
+            "value": "container-fluid",
+            "label": "Container Fluid"
+            },
+            {
+              "value": "",
+              "label": "Full No Padding"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "color",
+            "id": "bgtext",
+              "label": "Background Text Block",
+              "default": "#fefefe"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Image with text"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "HTML / Description",
+            "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          },
+          {
+            "type": "select",
+            "id": "align",
+            "label": "Text alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "left"
+          }
         ]
       },
       {

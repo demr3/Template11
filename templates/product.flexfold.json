@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-template-1",
+      "blocks": {
+        "image_with_text_JNeDTY": {
+          "type": "image-with-text",
+          "settings": {
+            "align_center": true,
+            "setwidthcontent": "container",
+            "image": "{{ product.metafields.custom.detailed_image.value }}",
+            "bgtext": "#fefefe",
+            "title": "Designed with Origami In Mind",
+            "text": "<p>Where every fold has a purpose, this bag is crafted to make every journey more organized and meaningful. With its foldable compartments and sleek design.<\/p>",
+            "align": "left"
+          }
+        },
+        "ae23a44a-7f0c-4258-bac5-9d1171bb3dab": {
+          "type": "related-product",
+          "settings": {
+            "setwidthcontent": "container",
+            "relate_products_title": "Related product",
+            "show": 4,
+            "arrows": false,
+            "draggable": true,
+            "dots": true
+          }
+        },
+        "urgency_message_iHAztw": {
+          "type": "urgency-message",
+          "settings": {
+            "urgency_title": "Related product",
+            "urgency_text": "Sale Ending Soon!",
+            "font_weight": "600",
+            "font_size": 16,
+            "background_color": "#f91e1e",
+            "color": "#ffffff",
+            "justify_content": "flex-start"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_JNeDTY",
+        "ae23a44a-7f0c-4258-bac5-9d1171bb3dab",
+        "urgency_message_iHAztw"
+      ],
+      "settings": {
+        "animation": "fade-up",
+        "setwidth": "container",
+        "enable_padding": true,
+        "align_center": true,
+        "enable_hurrify": true,
+        "stock_enable": true,
+        "enable_payment_button": true,
+        "social_sharing_products": true,
+        "next_prev_enable": true,
+        "product_vendor_enable": false,
+        "product_type_enable": false,
+        "variant_sku_enable": true,
+        "variant_available_enable": false,
+        "waitlist": true,
+        "key_points_enable": true,
+        "key_points_title": "Never worry about expensinve baggage fees again!",
+        "key_points": "<li>Wrinkle-Free Travel<\/li>\n<li>Easy Access &amp; Quick Packing<\/li>\n<li>3-in-1 Design: Garment, Duffle and Backpack<\/li>\n<li>Fits in Every Overhead Compartments<\/li>",
+        "product_selector": "radio",
+        "sizeguide_enable": true,
+        "sizeguide_title": "Size Guide",
+        "sizeguide_page": "sizeguide",
+        "fake_view_enable": true,
+        "fake_view_min": 12,
+        "fake_view_max": 30,
+        "fake_view_duration": 3,
+        "fake_view_text_prefix": "Currently there are",
+        "fake_view_text_suffix": "peoples are currently looking at this product",
+        "gtab_des": "Design",
+        "gtab_review_enable": false,
+        "gtab_review": "Review",
+        "positiontab": "right",
+        "enable_tabvertical": false,
+        "stab_title1": "Details",
+        "stab_title2": "Shipping & Retruns",
+        "stab_title3": "Specific tab 3",
+        "stab_title4": "Specific tab 4",
+        "enable": true,
+        "mix_1": "#3e3e3e",
+        "mix_2": "#c0c0c0",
+        "text_cl": "#ffffff",
+        "cart_bg": "#ff5f6d",
+        "cart_cl": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -45,7 +45,7 @@
     {%- include 'loading' -%}
     {%- include 'header' -%}
     <div class="page-container page-element is-moved-by-drawer">
-      {%- include 'breadcrumb' -%}
+      {% comment %} {%- include 'breadcrumb' -%} {% endcomment %}
       <main class="main-content" id="MainContent" role="main">
         {%- if settings.enable_animationscroll -%}<div id ="js-scroll">{% endif%}
           {%- if settings.enable_animationscroll -%}<div data-scroll-section>{% endif%}

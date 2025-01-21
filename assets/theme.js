@@ -1472,6 +1472,46 @@ theme.Product = (function() {
     stockSetting: false
   };
 
+    $('#template-product-images').slick({
+      rtl: theme.rtl,
+      dots: true,
+      arrows: true,
+      respondTo: 'min',
+      useTransform: true
+    }).css('opacity', '1');
+    
+    // Listen for changes on option radio buttons
+    $('.single-option-selector__radio').on('click', function() {
+      // Get the selected option's image ID
+      const selectedOption = $(this);
+      const imageId = selectedOption.data('image-id');
+    
+      console.log("Selected image ID:", imageId);  // Debugging line
+    
+      // Find the index of the matching image in the carousel
+      let slideIndex = null;
+      $('#template-product-images .product-single__thumbnail-item').each(function(index) {
+          console.log("Checking image ID in slide:", $(this).data('image-id'));  // Debugging line
+    
+          if ($(this).data('image-id') == imageId) {
+              slideIndex = index - 1;
+              console.log("Match found at index:", index);  // Debugging line
+              return false; // Break the loop
+          }
+      });
+    
+      // Go to the corresponding slide if a match was found
+      if (slideIndex !== null) {
+          $('#template-product-images').slick('slickGoTo', slideIndex);
+      } else {
+          console.log("No matching slide found for image ID:", imageId);  // Debugging line
+      }
+    });
+  $(document).ready(function() {
+
+    $('.single-option-selector__radio:first').trigger('click');
+    });
+
   function Product(container) {
     var $container = (this.$container = $(container));
     var sectionId = $container.attr('data-section-id');
@@ -5636,7 +5676,7 @@ theme.stickyHeader = (function(){
   let stickHeaderClass = '.site-header--sticky';
   if ($(stickHeaderClass).length !== 0){
     $(window).scroll(function() {
-      if (window.pageYOffset >= 20) {
+      if (window.scrollY >= 20) {
         $(stickHeaderClass).addClass('active');
       } else {
         $(stickHeaderClass).removeClass('active');

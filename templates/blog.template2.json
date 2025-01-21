@@ -2,8 +2,7 @@
   "sections": {
     "main": {
       "type": "blog-template-2",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [

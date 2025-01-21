@@ -33,6 +33,7 @@
          value="{{ value | escape }}"
          data-index="option{{ option_index }}"
          name="{{ option.name | handleize }}"
+         data-image-id="{% if currenVariant.image %}{{ currenVariant.image.id }}{% endif %}"
          class="single-option-selector-{{ section.id }} single-option-selector__radio"
          id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
   <label {% if hasImage %}data-tooltip="true" title="{{ value | escape }}" style="background-image:url({{currenVariant.image.src | img_url:'100x'}})"{% endif %}

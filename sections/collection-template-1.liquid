@@ -173,8 +173,15 @@
     </div>
     {%- endif -%}
     <div class="col ">
-      <div class="pl-lg-4 pl-md-4 pl-0">
+      <div class="pl-0">
         <header class="section-header">
+          <form action="/search" method="get" class="drawer__search--collection" role="search">
+            <input type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}" autocomplete="off" class="drawer__search-input">
+            <button type="submit" class="text-link drawer__search-submit">
+              {%- include 'icon-search' -%}
+              <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+            </button>
+          </form>
           {%- if section.settings.enable_title -%}
           <h1 class="section-header__title js-collection-title h3">
             {{ collection.title }}

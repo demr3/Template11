@@ -1,0 +1,58 @@
+<!-- image-content.liquid -->
+<style>
+    .image-text-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    @media (max-width: 767px) {
+        .image-text-container {
+          flex-direction: column;
+        }
+      
+        .image, .text {
+          width: 100%; /* Make each item take full width */
+          margin-bottom: 10px; /* Space between items */
+        }
+    }
+    
+    .container-item {
+        flex: 1;
+    }
+    .container-text {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+</style>
+<div class="customstyle{{ block.id }} image-text-container" data-aos="fade-up">
+    <div class="container-item">
+        {%- if block.settings.image != blank -%}
+            <noscript>
+            <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.image.alt }}" class="image-content__image">
+            </noscript>
+            <div class="image-content__image-container">
+                <div class="image-content__image-wrapper" style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
+                    {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img class="image-content__image lazyload"
+                    src="{{ block.settings.image | img_url: '300x300' }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                    data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ block.settings.image.alt | escape }}">
+                </div>
+            </div>
+        {%- else -%}
+            <div class="image-content__image">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+        {%- endif -%}
+    </div>
+    <div class="container-item container-text">
+        <h2 class="mb-3 font-family-1">{{ block.settings.title}}</h2>
+        <div class="rte-setting">{{ block.settings.text }}</div>
+    </div>
+</div>
+
+  
