@@ -2,8 +2,7 @@
   "sections": {
     "product-grid": {
       "type": "collection-template-6",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [

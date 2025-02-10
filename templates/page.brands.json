@@ -2,8 +2,7 @@
   "sections": {
     "main": {
       "type": "page-brands",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [

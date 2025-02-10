@@ -1264,28 +1264,96 @@ window.AjaxCart = (function() {
       $cartIconIndicator: $('.site-header__cart-indicator')
     };
 
-    this.$form = $form;
+    this.$forms = [$form];
     this.eventListeners();
     
     this.showNotice = false;
-    if (this.$form.length) {
-      this.showNotice  = this.$form.hasClass('js-form--notice')? true : false;
+    if (this.$forms.length) {
+      this.showNotice  = this.$forms.some(form => $(form).hasClass('js-form--notice'));
     }
   };
 
   cart.prototype.eventListeners = function() {
-    if (this.$form.length) {
-      this.$form.on('submit', $.proxy(this.addItemFromForm, this));
+    this.$forms.forEach(($form) => {
+      if ($form.length) {
+          $form.on('submit', $.proxy(this.addItemFromForm, this));
+      }
+    });
+  };
+
+  cart.prototype.addForm = function($newForm) {
+    if ($newForm.length) {
+      this.$forms.push($newForm);
+      $newForm.on('submit', $.proxy(this.addItemFromForm, this));
     }
   };
 
   cart.prototype.addItemFromForm = function(evt) {
     evt.preventDefault();
 
+    var $form_temp = $(evt.target); // The button that was clicked
+    var items = [];
+
+    // Check if the clicked button is "Add Bundle"
+    if ($form_temp.hasClass('js-add-bundle')) {
+      this.$forms.forEach(($form) => {
+        if ($form.length) {
+          if ($form.hasClass('js-add-bundle')) {
+            $form.find('.bundle-item').each(function() {
+              var $bundleItem = $(this);
+              var $checkbox = $bundleItem.find('input[type="checkbox"].switch');
+  
+              if ($checkbox.is(':checked')) {
+                  var variantId = $bundleItem.find('select[name="id"]').val();
+                  var quantityInput = $bundleItem.find('input[name="quantity"]');
+                  var quantity = quantityInput.length ? quantityInput.val() : 1;
+  
+                  items.push({
+                      id: variantId,
+                      quantity: parseInt(quantity, 10)
+                  });
+              }
+            });
+          } else {
+            var variantId = $form.find('select[name="id"]').val();
+            var quantityInput = $form.find('input[name="quantity"]');
+            var quantity = quantityInput.length ? quantityInput.val() : 1;
+
+            items.push({
+                id: variantId,
+                quantity: parseInt(quantity, 10)
+            });
+          }
+        }
+      });
+
+    } else {
+        // Otherwise, just get the parent form of the button
+        if ($form_temp.length) {
+          $form_temp.find('select[name="id"]').each(function(index) {
+              var variantId = $(this).val();
+              var quantity = $(this).closest('form').find('input[name="quantity"]').eq(index).val() || 1;
+
+              items.push({
+                  id: variantId,
+                  quantity: parseInt(quantity, 10)
+              });
+          });
+        }
+    }
+
+
+    
+
+    // Construct the formData with the items array
+    var formData = {
+      items: items
+    };    
+
     var params = {
       type: 'POST',
       url: '/cart/add.js',
-      data: this.$form.serialize(),
+      data:  $.param(formData),
       dataType: 'json',
       success: $.proxy(function(lineItem) {
         this.success(lineItem);
@@ -1318,6 +1386,7 @@ window.AjaxCart = (function() {
     
     if (data.message) {
       theme.alert.new('',data.description,3000,'warning');
+      console.log("testing this?", data.description);
     }
   };
 
@@ -1486,16 +1555,12 @@ theme.Product = (function() {
       const selectedOption = $(this);
       const imageId = selectedOption.data('image-id');
     
-      console.log("Selected image ID:", imageId);  // Debugging line
     
       // Find the index of the matching image in the carousel
       let slideIndex = null;
       $('#template-product-images .product-single__thumbnail-item').each(function(index) {
-          console.log("Checking image ID in slide:", $(this).data('image-id'));  // Debugging line
-    
           if ($(this).data('image-id') == imageId) {
               slideIndex = index - 1;
-              console.log("Match found at index:", index);  // Debugging line
               return false; // Break the loop
           }
       });
@@ -1503,6 +1568,12 @@ theme.Product = (function() {
       // Go to the corresponding slide if a match was found
       if (slideIndex !== null) {
           $('#template-product-images').slick('slickGoTo', slideIndex);
+          $(document).ready(function() {
+            let currentSlide = $('#template-product-images .slick-slide[data-slick-index="' + slideIndex + '"]');
+            let imageUrl = currentSlide.find('img').attr('src');
+            $('#bundled_product').attr('srcset', imageUrl);
+          });
+
       } else {
           console.log("No matching slide found for image ID:", imageId);  // Debugging line
       }
@@ -1523,6 +1594,7 @@ theme.Product = (function() {
       productZoomImage: '#ProductZoomImg',
       addToCart: '#AddToCart-' + sectionId,
       productPrice: '#ProductPrice-' + sectionId,
+      bunProductPrice: '#BunProductPrice-' + sectionId,
       comparePrice: '#ComparePrice-' + sectionId,
       addToCartText: '#AddToCartText-' + sectionId,
       SKU: '.js-variant-sku',
@@ -1569,11 +1641,18 @@ theme.Product = (function() {
       this._productThumbSwitch();
       this._productThumbnailSlider();
       this._initQtySelector();
+      this._initBundle();
 
       if (this.settings.ajaxCart) {
         theme.AjaxCart = new window.AjaxCart(
           $('#AddToCartForm-' + this.settings.sectionId)
         );
+        // Check if the addForm method exists and call it
+        if (typeof theme.AjaxCart.addForm === 'function') {
+          theme.AjaxCart.addForm($('#AddBundelToCartForm-' + this.settings.sectionId));
+        } else {
+            console.warn('addForm method is not defined in AjaxCart.');
+        }
       }
     },
 
@@ -1773,6 +1852,10 @@ theme.Product = (function() {
 
       if (variant) {
         $(this.selectors.productPrice).html(
+          theme.Currency.formatMoney(variant.price, theme.moneyFormat)
+        );
+
+        $(this.selectors.bunProductPrice).html(
           theme.Currency.formatMoney(variant.price, theme.moneyFormat)
         );
 
@@ -2234,6 +2317,163 @@ theme.Product = (function() {
       if (this.ProductModal) {
         this.ProductModal.$modal.off(this.settings.namespace);
       }
+    },
+
+    // Bundle logic added here
+    _initBundle: function () {
+      this.bindEvents(); // Bind event listeners
+      this.checkInitialCheckboxState(); // Optionally check the initial state of checkboxes
+      this._updateBundelItem();
+    },
+
+    bindEvents: function () {
+      this.$container.on('change', '.bundle-container input[type="checkbox"]', function (event) {
+        console.log("A checkbox was toggled!");
+        console.log("What is this?", this);
+        let $checkbox = $(event.target); // jQuery object of the checkbox
+        let isChecked = $checkbox.prop('checked'); // Check if the checkbox is checked
+        let $discountElement = $checkbox.closest('.bundle-item').find('.discounted');
+        let $originalElement = $checkbox.closest('.bundle-item').find('#original');
+        console.log("thisit", $discountElement);
+        // discountElement.toggleClass('visually-hidden');
+      
+        if ($discountElement.length > 0) {  // Ensure there's a .discounted element
+          if (isChecked) {
+              console.log('The checkbox is checked!');
+              $discountElement.show();
+              $originalElement.addClass('original');
+          } else {
+              console.log('The checkbox is unchecked!');
+              $discountElement.hide();
+              $originalElement.removeClass('original');
+          }
+      } else {
+          console.log('No discounted element found!');
+      }
+        this.updateCheckedInputs();
+      }.bind(this));
+    },
+
+    updateCheckedInputs: function () {
+      let totalBundleOptions = parseInt($('.bundle-container').data('bundle-options-count'), 10);
+      let checkedCheckboxes = $('.bundle-container input[type="checkbox"]:checked')
+      .map(function () {
+        return $(this).closest('.bundle-item').find('.price');
+      }).get();
+
+        console.log(checkedCheckboxes);
+      
+      this._updatePriceDiscount(checkedCheckboxes, totalBundleOptions)
+    },
+
+
+    _updatePriceDiscount: function (checkedCheckboxes, totalBundleOptions) {
+      let productPrice = $(`#ProductPrice-${this.settings.sectionId}`);
+      let priceText = productPrice.text().trim();
+      let priceInt = Math.round(parseFloat(priceText.replace(/[^0-9.]/g, '')) * 100);
+      let totalpirce = priceInt; 
+      let originalTotal = priceInt;
+      console.log("price", totalpirce)
+      checkedCheckboxes.forEach((PriceElement) => {
+        const discountPriceElm = PriceElement.get(0).querySelector('.discounted');
+        let discount = 0;
+        if (totalBundleOptions === checkedCheckboxes.length) {
+          discount = PriceElement.data('val2');
+        } else {
+          discount = PriceElement.data('val1');
+        }
+        
+        let price =  parseInt(PriceElement.attr('data-price'));
+        let disPrice = Math.round(price * ((100 - discount)/100));
+        let disPriceFormat = theme.Currency.formatMoney(disPrice, theme.moneyFormat);
+        totalpirce += disPrice;
+        originalTotal += price;
+        discountPriceElm.textContent = disPriceFormat;
+        console.log("plus", disPrice);
+      });
+      let originalTotalFormat = theme.Currency.formatMoney(originalTotal, theme.moneyFormat);
+      let TotalFormat = theme.Currency.formatMoney(totalpirce, theme.moneyFormat);
+      let totalPriceElement = this.$container.find('#total-price-bundle');
+
+      // Set the original total price
+      totalPriceElement.find('.original-total').text(originalTotalFormat);
+
+      // Set the discounted total price
+      totalPriceElement.find('.discounted-total').text(TotalFormat);
+
+      console.log("total", TotalFormat, originalTotalFormat);
+
+    }, 
+
+    _updateBundelItem: function () {
+      this.$container[0].addEventListener("change", (event) => {
+        if (event.target.matches('select[name="id"]')) {
+            const selectedOption = event.target.options[event.target.selectedIndex];
+            const selectedValue = event.target.value; // Variant ID
+            const selectedSku = selectedOption.getAttribute("data-sku"); // SKU
+            const bundleProductId = selectedOption.getAttribute("data-bundle-product"); 
+            const selectedVariantId = parseInt(selectedValue, 10); // Convert to number
+            const bundleItem = event.target.closest('.bundle-item');
+            const PriceElement = bundleItem.querySelector('.price');
+
+            const variant = this._getSelectedBundleVariant(selectedVariantId, bundleProductId);
+            this._updateBundleItemImg(variant, bundleItem);
+            this._updateBundleItemPrice(variant, PriceElement);
+            this.updateCheckedInputs();
+            
+
+            // Trigger a custom event specifically for this container
+            const customEvent = new CustomEvent("variantChangeBundel", {
+                detail: {
+                    variantId: selectedValue,
+                    sku: selectedSku,
+                    container: this.$container // Include the specific bundle container
+                }
+            });
+
+            this.$container[0].dispatchEvent(customEvent); // Fire the event on the specific bundle container
+        }
+      });
+
+    },
+
+    _getSelectedBundleVariant: function (variantId, productId) {
+      const productJson = JSON.parse(
+        $('#BundleProductJson-' + productId).html()
+      );
+      const selectedVariant = productJson.variants.find(variant => variant.id === variantId);
+      return selectedVariant;
+    },
+
+    _updateBundleItemImg: function (variant, bundleItem) {
+      if (bundleItem) {
+        // Get the image inside the parent .bundle-item (with the .bundle-image class)
+        const bundleImage = bundleItem.querySelector('.bundle-image');
+
+        if (bundleImage) {
+          bundleImage.src = variant.featured_image.src;
+          bundleImage.srcset = variant.featured_image.src;
+        } else {
+          console.log("No image found in the bundle item.");
+        }
+      }
+    },
+
+    _updateBundleItemPrice: function (variant, PriceElement) {
+      console.log(variant);
+      const origPrice = PriceElement.querySelector('.original');
+
+      let varPrice = theme.Currency.formatMoney(variant.price, theme.moneyFormat);
+      origPrice.textContent = varPrice;
+
+      PriceElement.setAttribute('data-price', variant.price);
+      
+    },
+
+    // You can add more helper methods related to the bundle feature
+    checkInitialCheckboxState: function () {
+      // If you want to check the initial state of the checkboxes when the page loads
+      console.log("Checking initial checkbox state...");
     }
   });
 
@@ -4712,7 +4952,7 @@ theme.wishlist = (function (){
       } else {
         var textWishlist = $.inArray(productHandle,wishlistObject) !== -1 ? theme.strings.wishlistTextAdded : theme.strings.wishlistText;
       }
-      $(this).html(iconWishlist+textWishlist).attr('title',textWishlist);
+      $(this).html('<div class="wish-icon">' +iconWishlist+'</div>'+textWishlist).attr('title',textWishlist);
     });
   }
 
@@ -5480,13 +5720,18 @@ theme.crosssell = (function(){
     }
   }
   
-  function showPopupCrosssell(lineItem){
+  function showPopupCrosssell(lineItemArray){
     //generate lineitem;
     let htmlLineItem = '';
-    htmlLineItem += `<span class="alert alert-success d-inline-block mb-2">${theme.strings.addToCartSuccess}</span>`;
-    htmlLineItem += `<div><img src="${lineItem.image}" /></div>`;
-    htmlLineItem += `<h4 class="cross-item-title">${lineItem.title}</h4>`;
-    htmlLineItem += `<div class="mt-1 mb-2">${theme.strings.cartQuantity}: ${lineItem.quantity}</div>`;
+    console.log("length",lineItemArray.items.length, lineItemArray);
+    
+    if (lineItemArray.items.length === 1) {
+      let lineItem = lineItemArray.items[0];
+      htmlLineItem += `<span class="alert alert-success d-inline-block mb-2">${theme.strings.addToCartSuccess}</span>`;
+      htmlLineItem += `<div><img src="${lineItem.image}" /></div>`;
+      htmlLineItem += `<h4 class="cross-item-title">${lineItem.title}</h4>`;
+      htmlLineItem += `<div class="mt-1 mb-2">${theme.strings.cartQuantity}: ${lineItem.quantity}</div>`;
+    }
     $('.js-cross-added').hide().html(htmlLineItem).fadeIn();
 
     // show popup
