@@ -245,8 +245,10 @@
     "upsell_time": 1.5,
     "enablevideo": false,
     "free_shipping_enable": true,
-    "free_shipping_value": 100,
-    "free_shipping_text": "Your order is free delivery !",
+    "free_shipping_value": 125,
+    "free_first": "<b>$25 OFF<\/b> ANY ORDER OVER",
+    "free_end": "",
+    "free_shipping_text": "$25 OFF TOTAL ORDER",
     "shipping_button": "Delivery information",
     "page_shipping": "shipping-time",
     "enable_countdown_page": true,
@@ -3677,8 +3679,8 @@
               "width": "100%",
               "alignhorizotal": "center",
               "align": "auto",
-              "titlecount": "Spring 2025 Discount Sale",
-              "time": "01\/31\/2025",
+              "titlecount": "Valentine’s Special Sale Ending Soon",
+              "time": "02\/21\/2025",
               "button_link": "shopify:\/\/collections\/all",
               "button_text": "Shop now",
               "cover": "contain"
@@ -3695,18 +3697,29 @@
           },
           "247d6711-35d9-4278-b492-1491815fce2d": {
             "type": "html",
+            "disabled": true,
             "settings": {
               "fullhtml": false,
-              "code": "<h3 class=\"anim-loop-left white-space text-uppercase\">\n<b>Use discount Fall15<\/b> to get an extra 15% off of your order - <b>Use discount Fall15<\/b> to get an extra 15% off of your order - <b>Use discount Fall15<\/b> to get an extra 15% off of your order<\/h3>",
+              "code": "<h3 class=\"anim-loop-left white-space text-uppercase\">\n<b>Spring sale $25 OFF<\/b> any order over $125 - <b>Spring sale $25 OFF<\/b> any order over $125 -  <b>Spring sale $25 OFF<\/b> any order over $125 - <b>Spring sale $25 OFF<\/b> any order over $125 - <b>Spring sale $25 OFF<\/b> any order over $125 - <b>Spring sale $25 OFF<\/b> any order over $125 - <\/h3>",
               "width": "100%",
               "align": "center"
+            }
+          },
+          "html_3nzkXQ": {
+            "type": "html",
+            "settings": {
+              "fullhtml": false,
+              "code": "<h3 class=\"anim-loop-left white-space text-uppercase\">\n  <b>Valentine’s Special Offer<\/b> $25 OFF any order over $125 - \n  <b>Valentine’s Special Offer<\/b> $25 OFF any order over $125 -  \n  <b>Valentine’s Special Offer<\/b> $25 OFF any order over $125 - \n  <b>Valentine’s Special Offer<\/b> $25 OFF any order over $125 - \n  <b>Valentine’s Special Offer<\/b> $25 OFF any order over $125 - \n  <b>Valentine’s Special Offer<\/b> $25 OFF any order over $125 - <\/h3>",
+              "width": "100%",
+              "align": "auto"
             }
           }
         },
         "block_order": [
           "countdown_cQjPTF",
           "html_tJUK6X",
-          "247d6711-35d9-4278-b492-1491815fce2d"
+          "247d6711-35d9-4278-b492-1491815fce2d",
+          "html_3nzkXQ"
         ],
         "settings": {
           "animation": "fade-up",
@@ -3816,7 +3829,7 @@
           "1654361006e7ffcb15-0": {
             "type": "banner",
             "settings": {
-              "image": "shopify:\/\/shop_images\/OZUKO-Men-Expandable-Backpack-Multifunctional-15-6-inch-Laptop-Backpacks-Multi-layer-Male-USB-Waterproof-School_821263e6-f8ca-4ad1-aaac-c1831d60c53c.webp",
+              "image": "shopify:\/\/shop_images\/Untitleddesign-2023-11-21T101538.679.webp",
               "width": "6",
               "description": "<h2 class=\"my-2\">Light Traverl <\/h2><p>A smooth leather.<\/p>",
               "bg_color": "#fefefe",
@@ -3847,7 +3860,7 @@
               "max-width": 290,
               "button_text": "shop now",
               "button_icon": "",
-              "button_link": "shopify:\/\/collections\/loki-travel-bags",
+              "button_link": "shopify:\/\/collections\/carry-ons",
               "vertical": "mid",
               "horizontal": "center",
               "text_align": "center"
@@ -4104,7 +4117,7 @@
             "settings": {
               "bgtext": "#fefefe",
               "title": "",
-              "text": "<div class=\"pl-lg-5 ml-lg-5\">\n<span class=\"subtop\">MATCH COLORS<\/span>\n<h2 class=\"mt-2 mb-4\">Hyper wearable Fashion <\/h2>\n<p>Discover the art of style at The Origami Way, where fashion meets finesse with our curated selection of clothing and handbags, folding elegance into every outfit.<\/p>\n<a href=\"\/collections\/women\" class=\"mt-5 btn btn-theme\"> Shop now<\/a>\n<\/div>",
+              "text": "<div class=\"pl-lg-5 ml-lg-5\">\n<span class=\"subtop\">MATCH COLORS<\/span>\n<h2 class=\"mt-2 mb-4\">Hyper wearable Fashion <\/h2>\n<p>Discover the art of style at The Origami Way, where fashion meets finesse with our curated selection of clothing and handbags, folding elegance into every outfit.<\/p>\n<a href=\"\/collections\/all\" class=\"mt-5 btn btn-theme\"> Shop now<\/a>\n<\/div>",
               "align": "left"
             }
           }
@@ -4230,7 +4243,7 @@
             "type": "collection",
             "settings": {
               "title": "Spring collection",
-              "collection": "fall-collection"
+              "collection": "backpacks"
             }
           }
         },
@@ -4256,7 +4269,7 @@
           "draggable": true,
           "dots": true,
           "infinite": true,
-          "rows": "2",
+          "rows": "1",
           "limit": 10,
           "show": 5
         }

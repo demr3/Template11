@@ -5,7 +5,7 @@
         justify-content: space-between;
         width: 100%;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
         .image-text-container {
           flex-direction: column;
         }
@@ -13,6 +13,26 @@
         .image, .text {
           width: 100%; /* Make each item take full width */
           margin-bottom: 10px; /* Space between items */
+        }
+        .container-item {
+            width: 100%;
+            flex: 1;
+        }
+        .my-element {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .container-item {
+            width: 50%;
+            flex: 1;
+        }
+
+        .my-element {
+            margin-left: 1rem;
+            margin-right: 1rem;
         }
     }
     
@@ -49,7 +69,7 @@
             </div>
         {%- endif -%}
     </div>
-    <div class="container-item container-text">
+    <div class="container-item container-text mx-md-4 my-element">
         <h2 class="mb-3 font-family-1">{{ block.settings.title}}</h2>
         <div class="rte-setting">{{ block.settings.text }}</div>
     </div>

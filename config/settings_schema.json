@@ -261,6 +261,10 @@
           {
             "value": "product-6",
             "label": "Layout 6"
+          },
+          {
+            "value": "product-7",
+            "label": "Layout 7"
           }
         ]
       },
@@ -3700,11 +3704,8 @@
         "default": true
       },
       {
-        "type": "range",
+        "type": "number",
         "id": "free_shipping_value",
-        "min": 0,
-        "max": 1000,
-        "step": 10,
         "label": "Minimum order value to be free shipping",
         "default": 100
       },

@@ -219,11 +219,14 @@
         {%- include 'current-constraint' -%}
           <div class="row">
             {%- for product in collection.products -%}
-            <div class="{{gridProduct}}">
-              {%- include 'product-card', product: product -%}
-            </div>
-            {%- else -%}
-            {%- include 'collection-blank' -%}
+              {%- for variant in product.variants -%}
+              <script>console.log({{ product | json }})</script>
+              <div class="{{gridProduct}}">
+                {%- include 'product-grid-7', product: product, variant: variant -%}
+              </div>
+              {%- else -%}
+              {%- include 'collection-blank' -%}
+              {%- endfor -%}
             {%- endfor -%}
           </div>
           {%- if paginate.pages > 1 -%}

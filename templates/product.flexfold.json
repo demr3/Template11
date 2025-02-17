@@ -8,10 +8,10 @@
           "settings": {
             "align_center": true,
             "setwidthcontent": "container",
-            "image": "{{ product.metafields.custom.detailed_image.value }}",
+            "image": "{{ metaobjects.product_image_with_text[\"designed-with-origami-in-mind\"].image.value }}",
             "bgtext": "#fefefe",
-            "title": "Designed with Origami In Mind",
-            "text": "<p>Where every fold has a purpose, this bag is crafted to make every journey more organized and meaningful. With its foldable compartments and sleek design.<\/p>",
+            "title": "{{ metaobjects.product_image_with_text[\"designed-with-origami-in-mind\"].image_title.value }}",
+            "text": "<p>{{ metaobjects.product_image_with_text[\"designed-with-origami-in-mind\"].image_description | metafield_tag }}<\/p>",
             "align": "left"
           }
         },
@@ -60,8 +60,8 @@
         "variant_available_enable": false,
         "waitlist": true,
         "key_points_enable": true,
-        "key_points_title": "Never worry about expensinve baggage fees again!",
-        "key_points": "<li>Wrinkle-Free Travel<\/li>\n<li>Easy Access &amp; Quick Packing<\/li>\n<li>3-in-1 Design: Garment, Duffle and Backpack<\/li>\n<li>Fits in Every Overhead Compartments<\/li>",
+        "key_points_title": "{{ product.metafields.custom.selling_points_title.value }}",
+        "key_points": "{{ product.metafields.custom.selling_points | metafield_tag }}",
         "product_selector": "radio",
         "sizeguide_enable": true,
         "sizeguide_title": "Size Guide",
@@ -76,7 +76,7 @@
         "gtab_review_enable": false,
         "gtab_review": "Review",
         "positiontab": "right",
-        "enable_tabvertical": false,
+        "enable_tabvertical": true,
         "stab_title1": "Details",
         "stab_title2": "Shipping & Retruns",
         "stab_title3": "Specific tab 3",

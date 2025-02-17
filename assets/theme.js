@@ -499,6 +499,7 @@ slate.Variants = (function() {
         $(this.singleOptionSelector, this.$container),
         function(element) {
           var $element = $(element);
+          console.log("$element",$element)
           var type = $element.attr('type');
           var currentOption = {};
 
@@ -534,6 +535,7 @@ slate.Variants = (function() {
      */
     _getVariantFromOptions: function() {
       var selectedValues = this._getCurrentOptions();
+      console.log("selectedValues", selectedValues);
       var variants = this.product.variants;
 
       var found = _.find(variants, function(variant) {
@@ -541,7 +543,7 @@ slate.Variants = (function() {
           return _.isEqual(variant[values.index], values.value);
         });
       });
-
+      console.log("found", found)
       return found;
     },
 
@@ -1579,9 +1581,16 @@ theme.Product = (function() {
       }
     });
   $(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const variantId = urlParams.get("variant");
 
-    $('.single-option-selector__radio:first').trigger('click');
-    });
+    if (!variantId) { // Only click if no variant is in the URL
+      $('.single-option-selector__radio:first').trigger('click');
+    } else {
+      $('.single-option-selector__radio[data-variant-id="' + variantId + '"]').trigger('click');
+    }
+
+  });
 
   function Product(container) {
     var $container = (this.$container = $(container));
@@ -1858,7 +1867,6 @@ theme.Product = (function() {
         $(this.selectors.bunProductPrice).html(
           theme.Currency.formatMoney(variant.price, theme.moneyFormat)
         );
-
         // Update and show the product's compare price if necessary
         if (variant.compare_at_price > variant.price) {
           $(this.selectors.comparePrice)
@@ -1874,7 +1882,7 @@ theme.Product = (function() {
           $(this.selectors.comparePrice).addClass('hide');
           $(this.selectors.saleTag).addClass('hide');
         }
-        
+        this.updateCheckedInputs();
         theme.updateCurrencies();
       } else {
         $(this.selectors.comparePrice).addClass('hide');
@@ -2370,29 +2378,31 @@ theme.Product = (function() {
     _updatePriceDiscount: function (checkedCheckboxes, totalBundleOptions) {
       let productPrice = $(`#ProductPrice-${this.settings.sectionId}`);
       let priceText = productPrice.text().trim();
-      let priceInt = Math.round(parseFloat(priceText.replace(/[^0-9.]/g, '')) * 100);
+      let priceInt = parseFloat(priceText.replace(/[^0-9.]/g, '')) * 100;
       let totalpirce = priceInt; 
       let originalTotal = priceInt;
       console.log("price", totalpirce)
       checkedCheckboxes.forEach((PriceElement) => {
         const discountPriceElm = PriceElement.get(0).querySelector('.discounted');
         let discount = 0;
-        if (totalBundleOptions === checkedCheckboxes.length) {
+        if (checkedCheckboxes.length > 1) {
           discount = PriceElement.data('val2');
         } else {
           discount = PriceElement.data('val1');
         }
         
-        let price =  parseInt(PriceElement.attr('data-price'));
-        let disPrice = Math.round(price * ((100 - discount)/100));
+        let price =  parseFloat(PriceElement.attr('data-price'));
+        let disPrice = Math.ceil(price * ((100 - discount)/100));
+        console.log("disPrice",disPrice);
         let disPriceFormat = theme.Currency.formatMoney(disPrice, theme.moneyFormat);
         totalpirce += disPrice;
         originalTotal += price;
         discountPriceElm.textContent = disPriceFormat;
         console.log("plus", disPrice);
       });
+      let totalPriceRounded = Math.round(totalpirce);
       let originalTotalFormat = theme.Currency.formatMoney(originalTotal, theme.moneyFormat);
-      let TotalFormat = theme.Currency.formatMoney(totalpirce, theme.moneyFormat);
+      let TotalFormat = theme.Currency.formatMoney(totalPriceRounded, theme.moneyFormat);
       let totalPriceElement = this.$container.find('#total-price-bundle');
 
       // Set the original total price
@@ -2403,6 +2413,10 @@ theme.Product = (function() {
 
       console.log("total", TotalFormat, originalTotalFormat);
 
+    },
+
+    ceilToSeconDecimals: function(num) {
+      return Math.ceil(num * 100) / 100;
     }, 
 
     _updateBundelItem: function () {
@@ -5683,7 +5697,9 @@ theme.crosssell = (function(){
   $blockCrosssell = $('.block-cross-sell'),
   variantSelectClass = '.js-cross-select',
   crossImageClass = '.cross-item-image',
-  crossPriceClass = '.cross-item-money';  
+  crossPriceClass = '.cross-item-money'
+  slideIndex = 1;
+  ;  
   function generateCrosssell(){
     for (let i = 0; i < arrayHandle.length; i++) {
       let productHandle = arrayHandle[i];
@@ -5731,12 +5747,59 @@ theme.crosssell = (function(){
       htmlLineItem += `<div><img src="${lineItem.image}" /></div>`;
       htmlLineItem += `<h4 class="cross-item-title">${lineItem.title}</h4>`;
       htmlLineItem += `<div class="mt-1 mb-2">${theme.strings.cartQuantity}: ${lineItem.quantity}</div>`;
+    } else {
+      htmlLineItem += `<span class="alert alert-success d-inline-block mb-2">${theme.strings.addToCartSuccess}</span>`;
+      htmlLineItem += `<div class="slideshow-container">`; // Start slideshow container
+
+      lineItemArray.items.forEach((lineItem, index) => {
+        // Create each slide
+        htmlLineItem += `<div class="mySlides">`;
+        htmlLineItem += `<div class="numbertext">${index + 1} / ${lineItemArray.items.length}</div>`; // Numbering for slides
+        htmlLineItem += `<img src="${lineItem.image}">`;
+        // htmlLineItem += `<div class="text">${lineItem.title}</div>`;
+        htmlLineItem += `<h5 class="cross-item-title">${lineItem.title}</h5>`;
+        htmlLineItem += `<div class="mt-1 mb-2">${theme.strings.cartQuantity}: ${lineItem.quantity}</div>`;
+        htmlLineItem += `</div>`; // End slide
+      });
+
+      // Add controls for navigating the slides
+      htmlLineItem += `<a class="prev" >❮</a>`;
+      htmlLineItem += `<a class="next" >❯</a>`;
+      htmlLineItem += `</div>`; // End slideshow container
     }
     $('.js-cross-added').hide().html(htmlLineItem).fadeIn();
 
+    // Attach click events for navigation AFTER adding HTML
+    $('.js-cross-added').find('.prev').on('click', function() {
+      plusSlides(-1);
+    });
+
+    $('.js-cross-added').find('.next').on('click', function() {
+      plusSlides(1);
+    });
+    showSlides(slideIndex);
     // show popup
     let $popupCrosssell = $('#jsCrosssell');
     $popupCrosssell.modal('show');
+  }
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = $('.js-cross-added').find(".mySlides");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      $(slides[i]).css("display", "none"); // Use jQuery's css() method for setting style
+    }
+    
+    $(slides[slideIndex - 1]).css("display", "block");
   }
 
   if (handles !== '') {
@@ -6495,7 +6558,7 @@ theme.sidebar = (function(){
 })()
 
 theme.initVariant = (function(){
-  window.onload = () => $('#ProductSelect-option-0 label') && $('#ProductSelect-option-0 label').click().first().click();
+  // window.onload = () => $('#ProductSelect-option-0 label') && $('#ProductSelect-option-0 label').click().first().click();
 })()
 
 // Ajax filter in collection page

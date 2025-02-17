@@ -3,20 +3,16 @@
     "main": {
       "type": "product-template-1",
       "blocks": {
-        "71eb61e1-c84b-4162-94a4-10300de6e405": {
-          "type": "html",
+        "image_with_text_Y4bUM3": {
+          "type": "image-with-text",
           "settings": {
+            "align_center": true,
             "setwidthcontent": "container",
-            "content_html": "<div class=\"py-4\"><\/div>"
-          }
-        },
-        "5fa75617-a7f4-4729-84ef-c92ef9bd2446": {
-          "type": "style-with",
-          "settings": {
-            "setwidthcontent": "container",
-            "titlestyle": "Complete The Look",
-            "enable_center": false,
-            "enable_center_product": false
+            "image": "{{ metaobjects.product_image_with_text[\"airless-image\"].image.value }}",
+            "bgtext": "#fefefe",
+            "title": "{{ section.settings.sizeguide_page.title }}{{ metaobjects.product_image_with_text[\"airless-image\"].image_title.value }}",
+            "text": "<p>{{ metaobjects.product_image_with_text[\"airless-image\"].image_description | metafield_tag }}<\/p>",
+            "align": "left"
           }
         },
         "ae23a44a-7f0c-4258-bac5-9d1171bb3dab": {
@@ -32,8 +28,7 @@
         }
       },
       "block_order": [
-        "71eb61e1-c84b-4162-94a4-10300de6e405",
-        "5fa75617-a7f4-4729-84ef-c92ef9bd2446",
+        "image_with_text_Y4bUM3",
         "ae23a44a-7f0c-4258-bac5-9d1171bb3dab"
       ],
       "settings": {
