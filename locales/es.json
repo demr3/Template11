@@ -320,6 +320,7 @@
       "shipping_policy_html": "Los <a href=\"{{ link }}\">gastos de envío<\/a> se calculan en la pantalla de pagos.",
       "quantity": "Cantidad",
       "add_to_cart": "Agregar al carrito",
+      "add_bundle_to_cart": "Agregar al carrito",
       "full_details": "Todos los detalles",
       "quickview_text": "Quickshop",
       "wishlist_no_result": "There are no products in your wishlist!",

@@ -1531,6 +1531,27 @@ theme.HeaderSection = (function() {
     theme.NavDrawer = new window.Drawers('NavDrawer', 'left');
   }
 
+  var messages = [
+    "❤️ Valentine's Sale Ends This Week - Don't Miss Out!",
+    "💰 Get $25 Off On All Orders Over $125",
+    "🚚 Free Shipping on All Orders!",
+    "📦 30-Day Hassle-Free Returns!"
+  ];
+  
+  var index = 0;
+  function rotateMessages() {
+    $('#topbar-carousel').fadeOut(300, function() {
+      $(this).text(messages[index]).fadeIn(300);
+    });
+    index = (index + 1) % messages.length; // Loop back to first message
+  }
+
+  // Initial message load
+  $('#topbar-carousel').text(messages[0]);
+
+  // Change message every 3 seconds
+  setInterval(rotateMessages, 3000);
+
   return Header;
 })();
 
@@ -2336,28 +2357,22 @@ theme.Product = (function() {
 
     bindEvents: function () {
       this.$container.on('change', '.bundle-container input[type="checkbox"]', function (event) {
-        console.log("A checkbox was toggled!");
-        console.log("What is this?", this);
         let $checkbox = $(event.target); // jQuery object of the checkbox
         let isChecked = $checkbox.prop('checked'); // Check if the checkbox is checked
         let $discountElement = $checkbox.closest('.bundle-item').find('.discounted');
         let $originalElement = $checkbox.closest('.bundle-item').find('#original');
-        console.log("thisit", $discountElement);
-        // discountElement.toggleClass('visually-hidden');
       
         if ($discountElement.length > 0) {  // Ensure there's a .discounted element
           if (isChecked) {
-              console.log('The checkbox is checked!');
               $discountElement.show();
               $originalElement.addClass('original');
           } else {
-              console.log('The checkbox is unchecked!');
               $discountElement.hide();
               $originalElement.removeClass('original');
           }
-      } else {
+        } else {
           console.log('No discounted element found!');
-      }
+        }
         this.updateCheckedInputs();
       }.bind(this));
     },
@@ -2369,8 +2384,6 @@ theme.Product = (function() {
         return $(this).closest('.bundle-item').find('.price');
       }).get();
 
-        console.log(checkedCheckboxes);
-      
       this._updatePriceDiscount(checkedCheckboxes, totalBundleOptions)
     },
 
@@ -2381,7 +2394,6 @@ theme.Product = (function() {
       let priceInt = parseFloat(priceText.replace(/[^0-9.]/g, '')) * 100;
       let totalpirce = priceInt; 
       let originalTotal = priceInt;
-      console.log("price", totalpirce)
       checkedCheckboxes.forEach((PriceElement) => {
         const discountPriceElm = PriceElement.get(0).querySelector('.discounted');
         let discount = 0;
@@ -2393,23 +2405,40 @@ theme.Product = (function() {
         
         let price =  parseFloat(PriceElement.attr('data-price'));
         let disPrice = Math.ceil(price * ((100 - discount)/100));
-        console.log("disPrice",disPrice);
         let disPriceFormat = theme.Currency.formatMoney(disPrice, theme.moneyFormat);
         totalpirce += disPrice;
         originalTotal += price;
-        discountPriceElm.textContent = disPriceFormat;
-        console.log("plus", disPrice);
+        if (disPrice == 0) {
+          discountPriceElm.textContent = "FREE";
+        } else {
+          discountPriceElm.textContent = disPriceFormat;
+        }
       });
       let totalPriceRounded = Math.round(totalpirce);
       let originalTotalFormat = theme.Currency.formatMoney(originalTotal, theme.moneyFormat);
       let TotalFormat = theme.Currency.formatMoney(totalPriceRounded, theme.moneyFormat);
       let totalPriceElement = this.$container.find('#total-price-bundle');
+      let totalSavings = originalTotal - totalPriceRounded;
+      let totalSavingsFormat = theme.Currency.formatMoney(totalSavings, theme.moneyFormat);
+      let $discountElement = totalPriceElement.find('.discounted-total');
+      let $originalElement = totalPriceElement.find('.original-total');
+
+      if (checkedCheckboxes.length === 0) {
+        $discountElement.hide();
+        $originalElement.removeClass('original');
+      } else {
+        $discountElement.show();
+        $originalElement.addClass('original');
+      }
+      
+      // Set total savings
+      $('#total-savings').text(totalSavingsFormat);
 
       // Set the original total price
-      totalPriceElement.find('.original-total').text(originalTotalFormat);
+      $originalElement.text(originalTotalFormat);
 
       // Set the discounted total price
-      totalPriceElement.find('.discounted-total').text(TotalFormat);
+      $discountElement.text(TotalFormat);
 
       console.log("total", TotalFormat, originalTotalFormat);
 
@@ -4791,11 +4820,15 @@ theme.freeShipping = (function(){
     if (priceCart >= minOrderValue){
       $percentClass.css('width','100%').removeClass('progress-bar-striped bg-primary');
       $freeShippingTextClass.text(theme.strings.freeShipping)
-    }else{
+    } else if (priceCart == 0) {
+      let left = Shopify.formatMoney(minOrderValue,theme.moneyFormat);
+      $percentClass.css('width',`0%`).addClass('progress-bar-striped primary');
+      $freeShippingTextClass.html($free_fisrt +' '+left);
+    } else{
       let percent = priceCart / minOrderValue * 100;
       let left = Shopify.formatMoney((minOrderValue - priceCart),theme.moneyFormat);
       $percentClass.css('width',`${percent}%`).addClass('progress-bar-striped primary');
-      $freeShippingTextClass.html($free_fisrt +' '+ left +' '+ $free_end);
+      $freeShippingTextClass.html(left +' '+ $free_end);
       theme.updateCurrencies();
     }
   }

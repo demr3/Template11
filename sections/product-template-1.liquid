@@ -271,7 +271,7 @@
 
   @supports (-webkit-appearance: none) or (-moz-appearance: none) {
     .checkbox-wrapper-14 input[type=checkbox] {
-      --active:rgb(254, 39, 39);
+      {% comment %} --active:rgb(254, 39, 39); {% endcomment %}
       --active-inner: #fff;
       --focus: 2px rgba(254, 39, 39, 0.3);
       --border:rgb(225, 187, 187);
@@ -469,6 +469,117 @@
     flex-direction: column;
     padding-right: 5px;
   }
+
+  .bundle-item {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .bundle-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .bundle-check {
+    margin-right: 10px;
+  }
+  
+  .bundle-image {
+    width: 75px;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .item-details {
+    flex: 1;
+    margin-left: 10px;
+  }
+  
+  .bundle-name-price h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .price {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .discounted {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e63946;
+  }
+  
+  .original {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: #777;
+  }
+  
+  select {
+    padding: 5px 25px 5px 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .checkbox-wrapper-14 input[type="checkbox"] {
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    background: #ddd;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .checkbox-wrapper-14 input[type="checkbox"]:checked {
+    background: #4caf50;
+  }
+  
+  .checkbox-wrapper-14 input[type="checkbox"]::after {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    transition: transform 0.3s;
+  }
+  
+  .checkbox-wrapper-14 input[type="checkbox"]:checked::after {
+    transform: translateX(20px);
+  }
+
+  .bundle-container {
+    position: relative;
+  }
+  
+  .total-savings {
+    position: absolute;
+    top: 50px;
+    right: 15px;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: red;  /* Optional: color of the savings text */
+    z-index: 10;  /* Ensure it's on top */
+    {% comment %} transform: rotate(10deg); /* Rotate the element by 30 degrees */
+    transform-origin: top right; /* Ensures the rotation happens from the top right corner */ {% endcomment %}
+  }
+
+  .urgency-flex-text {
+    {% comment %} display: flex; {% endcomment %}
+  }
+  
 </style>
 {% assign product_image_size = '480x480' %}
 <div class="container js-recently-view" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" data-ajax="true" data-stock="{{ section.settings.stock_enable }}" data-handle="{{product.handle}}">
@@ -512,14 +623,12 @@
           </div>
           {% endif %}
 
+          {% for block in section.blocks %}
+            {% if block.type == 'urgency-message' %}
+              {%- include 'urgency-message' -%}
+            {% endif %}
+          {% endfor %}
           <ul class="pb-3 product-single__meta-list list--inline{% if shop.taxes_included or shop.shipping_policy.body != blank %} product-single__price-container{% endif %}">
-            {% for block in section.blocks %}
-              {% if block.type == 'urgency-message' %}
-                <li>
-                {%- include 'urgency-message' -%}
-                </li>
-              {% endif %}
-            {% endfor %}
             <li>
               {%- unless product.compare_at_price_max > product.price -%}
               <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
@@ -528,7 +637,7 @@
                 {{ current_variant.price | money }}
               </span>
             </li>
-            {% if product.compare_at_price_max > product.price %}
+          {% if product.compare_at_price_max > product.price %}
               <script>console.log({{ product | json }});</script>
             <li>
               <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
@@ -546,11 +655,11 @@
           {% endif %}
           <script>console.log({{ current_variant | json }})</script>
           
-            {%- if section.settings.stock_enable -%}
+          {%- if section.settings.stock_enable -%}
             <li>{%- include 'productStock' -%}</li>
-            {%- endif -%}
+          {%- endif -%}
           </ul>
-          {% if section.settings.key_points_enable %}
+        {% if section.settings.key_points_enable %}
           <div class="product-hook">
             {{ section.settings.key_points_title }}
           </div>
@@ -572,21 +681,21 @@
           {% capture "form_id" %}AddToCartForm-{{ section.id }}{%- endcapture %}
           {% form 'product', product, class:form_class, id:form_id %}
           {% unless product.has_only_default_variant %}
-          {% for option in product.options_with_values %}
+            {% for option in product.options_with_values %}
 
-          {% if option.name == "Size" and product.metafields.custom.sizeguide.value %}
-            {% continue %}
-          {% endif %}
-          <div class="selector-wrapper js product-form__item">
-            <div class="d-flex justify-content-between">
-              <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
-              {% if option.name == "Size" %}
-                {%- include 'productSizeGuide' -%}
+              {% if option.name == "Size" and product.metafields.custom.sizeguide.value %}
+                {% continue %}
               {% endif %}
-            </div>
-            {% include 'productOption' %}
-          </div>
-          {% endfor %}
+              <div class="selector-wrapper js product-form__item">
+                <div class="d-flex justify-content-between">
+                  <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+                  {% if option.name == "Size" %}
+                    {%- include 'productSizeGuide' -%}
+                  {% endif %}
+                </div>
+                {% include 'productOption' %}
+              </div>
+            {% endfor %}
           {% endunless %}
           <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
             {% for variant in product.variants %}
@@ -683,8 +792,12 @@
                         <h5>{{ obj.product.value.title }}</h5>
                         {% assign total_price = total_price | plus: curr_var.price %}
                         {% assign discount_price = 100.00 | minus: obj.discount_2 | divided_by: 100.0 | times: curr_var.price | ceil %}
+                        {% assign discount_value = discount_price | money %}
+                        {% if discount_price == 0 %}
+                          {% assign discount_value = "FREE" %}
+                        {% endif %}
                         {% assign discounted_total = discounted_total | plus: discount_price %}
-                        <p class="price" data-price="{{ curr_var.price}}" data-val1="{{obj.discount_1}}" data-val2="{{obj.discount_2}}"><span class="discounted">{{ discount_price | money }}</span> <span id="original" class="original">{{ curr_var.price | money }}</span></p>
+                        <p class="price" data-price="{{ curr_var.price}}" data-val1="{{obj.discount_1}}" data-val2="{{obj.discount_2}}"><span class="discounted">{{ discount_value }}</span> <span id="original" class="original">{{ curr_var.price | money }}</span></p>
                       </div>
                       <select name="id">
                         {% for variant in obj.product.value.variants %}
@@ -721,13 +834,20 @@
                           {% unless current_variant.available %}
                           {{ 'products.product.sold_out' | t }}
                           {% else %}
-                          {{ 'products.product.add_to_cart' | t }}
+                          {{ 'products.product.add_bundle_to_cart' | t }}
                           {% endunless %}
                         </span>
                     </button>
                 </div>
               </form>
-            </div>
+              {% assign total_savings = total_price | minus: discounted_total %}
+              <div class="total-savings">
+                <div class="bg-color-animation">
+                  <div class="card-urgency-text">
+                    {%  render "icon-price-tag" %} SAVE <span id="total-savings">{{ total_savings | money }}</span>
+                  </div>
+                </div>
+              </div>
             {% endif %}
             
             <div class="mobile-only">
@@ -778,73 +898,80 @@
         {% endif %}
 
 
-        <div class="row text-left pt-2">
-          <div class="product-single__information col text-uppercase">
-            {% if section.settings.product_vendor_enable %}
-            <p class="product-single__vendor"><small class="text-body">{{'products.product.vendor' | t }}: </small><small>{{ product.vendor }}</small></p>
-            {% endif %}
-            {% if section.settings.product_type_enable %}
-            <p class="product-single__type"><small class="text-body">{{'products.product.type' | t }}: </small><small>{{ product.type }}</small></p>
-            {% endif %}
-            {% if section.settings.variant_sku_enable %}
-            <p class="product-single__sku "><small class="text-body">{{'products.product.sku' | t }}: </small><small class="js-variant-sku">{{ current_variant.sku | default:'N/A' }}</small></p>
-            {% endif %}
-            {% if section.settings.variant_available_enable %}
-            <p class="product-single__availability "><small class="text-body">{{'products.product.available' | t }}: </small><small>{% if current_variant.available %}{{ 'products.product.available' | t }}{% else %}{{'products.product.sold_out' | t }}{% endif %}</small></p>
-            {% endif %}
-          </div>
-          {% if settings.safe_checkout_detail != blank %}
-          <div class="safe-checkout-detail col">
-            <img class="lazyload img-fluid w-100" data-src="{{ settings.safe_checkout_detail | img_url: '600x' }}"/>
-          </div>
-          {% endif %}
-        </div>
-        {% include 'fake-viewer' %}
-        {% include 'shipping-time' %}
-        {% if settings.enable_countdown_page %}
-        {% include 'product-countdown' %}
-        {% endif %}
       </div>
     </div>
   </div>
-  {% if section.settings.positiontab == "bottom" %}
-    <div class="container px-0">
-        <div class="row justify-content-md-center">
-            <div class="col-lg-9 col-12">
-            {% if section.settings.enable_tabvertical %}
-              {%- include 'product-information-vertical' -%}
-            {% else %}
-            {%- include 'product-information' -%}
-            {% endif %}
-          </div>
-      </div>
-    </div>
+</div>
+{% for block in section.blocks %}
+  {% if block.type == 'product-highlights' %}
+    {%- include 'product-highlights' -%}
   {% endif %}
-    <div class="row">
-      {% for block in section.blocks %}
-        {% if block.type == 'html' %}
-          {%- include 'html-product' -%}
-        {% elsif block.type == 'video' %}
-          {%- include 'video-product'-%}
-        {% elsif block.type == 'related-product' %}
-          {%- include 'related-products' -%}
-        {% elsif block.type == 'style-with' %}
-          {%- include 'style-with' -%}
-        {% elsif block.type == 'service' %}
-          {%- include 'service-pro' -%}
-        {% elsif block.type == 'image-with-text' %}
-          <div class="non-mobile">
-            {%- include 'image-with-text' -%}
-          </div>
-        {% endif %}
-      {% endfor %}
+{% endfor %}
+<div class="container-fluid pt-5">
+<div class="row text-left pt-2">
+  <div class="product-single__information col text-uppercase">
+    {% if section.settings.product_vendor_enable %}
+    <p class="product-single__vendor"><small class="text-body">{{'products.product.vendor' | t }}: </small><small>{{ product.vendor }}</small></p>
+    {% endif %}
+    {% if section.settings.product_type_enable %}
+    <p class="product-single__type"><small class="text-body">{{'products.product.type' | t }}: </small><small>{{ product.type }}</small></p>
+    {% endif %}
+    {% if section.settings.variant_sku_enable %}
+    <p class="product-single__sku "><small class="text-body">{{'products.product.sku' | t }}: </small><small class="js-variant-sku">{{ current_variant.sku | default:'N/A' }}</small></p>
+    {% endif %}
+    {% if section.settings.variant_available_enable %}
+    <p class="product-single__availability "><small class="text-body">{{'products.product.available' | t }}: </small><small>{% if current_variant.available %}{{ 'products.product.available' | t }}{% else %}{{'products.product.sold_out' | t }}{% endif %}</small></p>
+    {% endif %}
+  </div>
+  {% if settings.safe_checkout_detail != blank %}
+  <div class="safe-checkout-detail col">
+    <img class="lazyload img-fluid w-100" data-src="{{ settings.safe_checkout_detail | img_url: '600x' }}"/>
+  </div>
+  {% endif %}
+</div>
+{% include 'fake-viewer' %}
+{% include 'shipping-time' %}
+{% if settings.enable_countdown_page %}
+{% include 'product-countdown' %}
+{% endif %}
+{% if section.settings.positiontab == "bottom" %}
+  <div class="container px-0">
+      <div class="row justify-content-md-center">
+          <div class="col-lg-9 col-12">
+          {% if section.settings.enable_tabvertical %}
+            {%- include 'product-information-vertical' -%}
+          {% else %}
+          {%- include 'product-information' -%}
+          {% endif %}
+        </div>
     </div>
-  {%- include 'cross-sell' -%}
-  {%- include 'upsell' -%}
-  {%- include 'next-prev-product' -%}
-  {%- include 'photoswipe' -%}
-  {%- include 'sticky-cart' -%}
-  <!-- Start of Judge.me code --><div style='clear:both'></div><div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-auto-install='false'>{{ product.metafields.judgeme.widget }}</div><!-- End of Judge.me code -->
+  </div>
+{% endif %}
+  <div class="row">
+    {% for block in section.blocks %}
+      {% if block.type == 'html' %}
+        {%- include 'html-product' -%}
+      {% elsif block.type == 'video' %}
+        {%- include 'video-product'-%}
+      {% elsif block.type == 'related-product' %}
+        {%- include 'related-products' -%}
+      {% elsif block.type == 'style-with' %}
+        {%- include 'style-with' -%}
+      {% elsif block.type == 'service' %}
+        {%- include 'service-pro' -%}
+      {% elsif block.type == 'image-with-text' %}
+        <div class="non-mobile">
+          {%- include 'image-with-text' -%}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{%- include 'cross-sell' -%}
+{%- include 'upsell' -%}
+{%- include 'next-prev-product' -%}
+{%- include 'photoswipe' -%}
+{%- include 'sticky-cart' -%}
+<!-- Start of Judge.me code --><div style='clear:both'></div><div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-auto-install='false'>{{ product.metafields.judgeme.widget }}</div><!-- End of Judge.me code -->
 </div>
 {% schema %}
 {
@@ -1398,7 +1525,7 @@
           }
         ]
       },
-            {
+      {
         "type": "image-with-text",
         "name": "Image with Text",
         "limit": 1,
@@ -1433,6 +1560,67 @@
             "type": "image_picker",
             "id": "image",
             "label": "Image"
+          },
+          {
+            "type": "color",
+            "id": "bgtext",
+              "label": "Background Text Block",
+              "default": "#fefefe"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Image with text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "HTML / Description",
+            "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          },
+          {
+            "type": "select",
+            "id": "align",
+            "label": "Text alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "left"
+          }
+        ]
+      },
+      {
+        "type": "product-highlights",
+        "name": "Product Highlights",
+        "limit": 1,
+        "settings": [
+
+          {
+            "type": "image_picker",
+            "id": "image1",
+            "label": "Image 1"
+          },
+          {
+            "type": "image_picker",
+            "id": "image2",
+            "label": "Image 2"
+          },
+          {
+            "type": "image_picker",
+            "id": "image3",
+            "label": "Image 3"
           },
           {
             "type": "color",

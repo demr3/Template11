@@ -310,6 +310,7 @@
       "shipping_policy_html": "<a href=\"{{ link }}\">Frete<\/a> calculado no checkout.",
       "quantity": "Quantidade",
       "add_to_cart": "Adicionar ao carrinho",
+      "add_bundle_to_cart": "Adicionar ao carrinho",
       "full_details": "Informações completas",
       "quickview_text": "Quickshop",
       "wishlist_no_result": "There are no products in your wishlist!",

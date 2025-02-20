@@ -3,8 +3,33 @@
     "main": {
       "type": "product-template-1",
       "blocks": {
+        "urgency_message_UgTEhp": {
+          "type": "urgency-message",
+          "settings": {
+            "urgency_title": "Related product",
+            "urgency_text": "Valentine's Sale Ending Soon",
+            "font_weight": "400",
+            "font_size": 15,
+            "background_color": "#fb1e1e",
+            "color": "#ffffff",
+            "justify_content": "flex-start"
+          }
+        },
+        "product_highlights_qNVmHx": {
+          "type": "product-highlights",
+          "settings": {
+            "image1": "shopify:\/\/shop_images\/airlessimg1_8b99ae2c-46d5-4a81-b930-2085c89e858e.jpg",
+            "image2": "shopify:\/\/shop_images\/981942-679c3d42c8b12378771e9510-c7cb8ece-57c8-4c06-bf4b-0beb5ad8fe59_6718b354-0ce4-4ee9-a334-a2f8eb95deb9.jpg",
+            "image3": "shopify:\/\/shop_images\/image4airless.jpg",
+            "bgtext": "#fefefe",
+            "title": "Product Highlights",
+            "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "align": "left"
+          }
+        },
         "image_with_text_Y4bUM3": {
           "type": "image-with-text",
+          "disabled": true,
           "settings": {
             "align_center": true,
             "setwidthcontent": "container",
@@ -18,7 +43,7 @@
         "ae23a44a-7f0c-4258-bac5-9d1171bb3dab": {
           "type": "related-product",
           "settings": {
-            "setwidthcontent": "container",
+            "setwidthcontent": "container-fluid",
             "relate_products_title": "Related product",
             "show": 4,
             "arrows": false,
@@ -28,6 +53,8 @@
         }
       },
       "block_order": [
+        "urgency_message_UgTEhp",
+        "product_highlights_qNVmHx",
         "image_with_text_Y4bUM3",
         "ae23a44a-7f0c-4258-bac5-9d1171bb3dab"
       ],
@@ -62,8 +89,8 @@
         "gtab_des": "Design",
         "gtab_review_enable": false,
         "gtab_review": "Review",
-        "positiontab": "right",
-        "enable_tabvertical": true,
+        "positiontab": "bottom",
+        "enable_tabvertical": false,
         "stab_title1": "Details",
         "stab_title2": "Shipping & Retruns",
         "stab_title3": "Specific tab 3",

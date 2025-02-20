@@ -60,7 +60,7 @@
     "type_menu": "uppercase",
     "menu_label_text": "#fff",
     "menu_label_new": "#ff7143",
-    "menu_label_hot": "#eb4d55",
+    "menu_label_hot": "#fb1e1e",
     "menu_label_sale": "#eb4d55",
     "menu_label_other": "#50d890",
     "apmenuitem_title_1": "layout",
@@ -178,14 +178,14 @@
     "layout_bread": "container",
     "img_breadcrumb": "",
     "share_image": "",
-    "social_facebook_link": "https:\/\/www.facebook.com\/shopify",
-    "social_twitter_link": "https:\/\/twitter.com\/shopify",
-    "social_pinterest_link": "https:\/\/www.pinterest.com\/shopify",
-    "social_instagram_link": "https:\/\/instagram.com\/shopify",
+    "social_facebook_link": "https:\/\/www.facebook.com",
+    "social_twitter_link": "https:\/\/twitter.com",
+    "social_pinterest_link": "https:\/\/www.pinterest.com",
+    "social_instagram_link": "https:\/\/instagram.com",
     "social_tumblr_link": "",
-    "social_tiktok_link": "https:\/\/tiktok.com\/shopify",
+    "social_tiktok_link": "https:\/\/tiktok.com",
     "social_snapchat_link": "",
-    "social_youtube_link": "https:\/\/www.youtube.com\/user\/shopify",
+    "social_youtube_link": "https:\/\/www.youtube.com",
     "social_vimeo_link": "",
     "share_facebook": true,
     "share_twitter": true,
@@ -246,8 +246,8 @@
     "enablevideo": false,
     "free_shipping_enable": true,
     "free_shipping_value": 125,
-    "free_first": "<b>$25 OFF<\/b> ANY ORDER OVER",
-    "free_end": "",
+    "free_first": "$25 OFF ANY ORDER OVER",
+    "free_end": "MORE TO GET $25 OFF",
     "free_shipping_text": "$25 OFF TOTAL ORDER",
     "shipping_button": "Delivery information",
     "page_shipping": "shipping-time",
@@ -2837,8 +2837,7 @@
           "paddingsection": "0px 0px 0px 0px",
           "marginsection": "0px 0px 0px 0px",
           "bgsection": "#fefefe",
-          "setwidth": "full",
-          "image": "shopify:\/\/shop_images\/h1_s10.jpg"
+          "setwidth": "full"
         }
       },
       "service-v3": {
@@ -2993,37 +2992,19 @@
           "1598176349095": {
             "type": "html",
             "settings": {
-              "code": "<div class=\"py-3 py-md-5 mt-5 pr-md-5\">\n<div class=\"subtop mb-3\">Easy and simple<\/div>\n<h2 class=\"mb-3\">Take a Look \nat Our Profile<\/h2>\n<div class=\"mb-5\">Apparently we had reached a great height in the atmosphere, for the sky was \na dead black and there a stars.<\/div>\n<a href=\"#\" class=\"btn btn-theme\">Get a Quote<\/a>\n<\/div>",
-              "width": "33%",
-              "align": "center"
-            }
-          },
-          "1598192409949": {
-            "type": "image",
-            "settings": {
-              "width": "33%",
-              "align": "auto",
-              "image": "shopify:\/\/shop_images\/c1.jpg"
-            }
-          },
-          "1598192428049": {
-            "type": "html",
-            "settings": {
-              "code": "<div class=\"pl-md-5 py-5\">\n<h4 class=\"mb-4\">Minimal Letta Theme for Fashion<\/h4>\n<p>With all his cruel ferocity and coldness there was an \nunder of something in Tars Tarkas which he seemed \never battling to subdue. Could it be a of some human \ninstinct come back<\/p>\n<h4 class=\"mb-4 mt-5\">Classical & Easy Customize<\/h4>\n<p>With all his cruel ferocity and coldness there was an \nunder of something in Tars Tarkas which he seemed \never battling to subdue. Could it be a of some human \ninstinct come back.<\/p>\n<\/div>",
-              "width": "33%",
+              "code": "<div class=\" py-md-5 mt-5 pr-md-5\">\n<div class=\"subtop mb-3\">About Us<\/div>\n<h2 class=\"mb-3\">Get to Know The Origami Way<\/h2>\n<div class=\"mb-5\">At The Origami Way, we believe that travel should be effortless, organized, and stylish. Our mission is to design innovative travel products that simplify your journey, giving you more freedom to focus on the adventure ahead. From expandable backpacks to multifunctional gear, every product is thoughtfully crafted to maximize convenience without compromising on quality or design.\n\nWe understand the challenges of packing efficiently and navigating the unexpected while on the go. That’s why we create smart solutions—versatile, durable, and travel-ready essentials that adapt to your lifestyle. Whether you're a frequent flyer, a weekend explorer, or someone who simply values efficiency, The Origami Way is here to make your travels smoother and your experiences more enjoyable.\n\nWherever life takes you, travel smarter with The Origami Way.<\/div>\n\n<\/div>",
+              "width": "100%",
               "align": "center"
             }
           }
         },
         "block_order": [
-          "1598176349095",
-          "1598192409949",
-          "1598192428049"
+          "1598176349095"
         ],
         "settings": {
           "enablesection": true,
           "animation": "fade-up",
-          "paddingsection": "50px 0px 130px 0px",
+          "paddingsection": "30px 0px 0px 0px",
           "paddingmobile": "0px 0px 60px 0px",
           "marginsection": "0px 0px 0px 0px",
           "marginmobile": "0px 0px 0px 0px",
@@ -3069,7 +3050,7 @@
           "1598193144586"
         ],
         "settings": {
-          "enablesection": true,
+          "enablesection": false,
           "animation": "fade-up",
           "paddingsection": "130px 0px 130px 0px",
           "paddingmobile": "60px 0px 60px 0px",
@@ -3091,13 +3072,14 @@
             "settings": {
               "width": "50%",
               "align": "center",
-              "image": "shopify:\/\/shop_images\/x8.jpg"
+              "image": "shopify:\/\/shop_images\/traveller-in-nyc-with-backpack-under-bridge.jpg",
+              "image_link": ""
             }
           },
           "1598193585286": {
             "type": "html",
             "settings": {
-              "code": "<div class=\"ml-md-4 py-5 mt-5 px-md-5\">\n<div class=\"subtop mb-3\">PURPOSE<\/div>\n<h2 class=\"mb-3\">Our mission<\/h2>\n<div class=\"mb-5\">Most journeys start with a series of questions. For us they were: why are \nwe paying so much for razors? Why are so many of us (a third of women \nto be exact) using men’s razors? Why can’t we find razors without animal \ningredients in them? We were confused. The campaigns showing girls in \nwhite bikinis shaving already hairless legs didn’t have the answers were \nlooking for. Our interviews with hundreds of women on their shaving and \nhabits made it clear we weren’t alone. That was all needed to start going \nto the bottom with overlooked shaving glitch. All of that led to the birth of \nEstrid — a fierce and female-focused.<\/div>\n<a href=\"#\" class=\"btn btn-theme\">\nExplore our products                                <\/a>\n<\/div>",
+              "code": "<div class=\"ml-md-4 py-5 mt-5 px-md-5\">\n<div class=\"subtop mb-3\">PURPOSE<\/div>\n<h2 class=\"mb-3\">Our mission<\/h2>\n<div class=\"mb-5\">At The Origami Way, our mission is to redefine the way you travel by creating innovative, functional, and stylish products that simplify your journey. We believe that great design can make travel easier, more organized, and stress-free. That’s why we focus on smart solutions—versatile gear that adapts to your needs, saves space, and enhances convenience without compromising on quality.\n\nWhether you're heading on a weekend getaway or a global adventure, our goal is to equip you with thoughtfully designed essentials that make packing effortless and traveling smoother. With The Origami Way, every trip is an opportunity to explore with ease and confidence.<\/div>\n<a href=\"#\" class=\"btn btn-theme\">\nExplore our products                                <\/a>\n<\/div>",
               "width": "50%",
               "align": "center"
             }
@@ -3110,8 +3092,8 @@
         "settings": {
           "enablesection": true,
           "animation": "fade-up",
-          "paddingsection": "130px 0px 130px 0px",
-          "paddingmobile": "60px 0px 60px 0px",
+          "paddingsection": "30px 0px 30px 0px",
+          "paddingmobile": "30px 0px 30px 0px",
           "marginsection": "0px 0px 0px 0px",
           "marginmobile": "0px 0px 0px 0px",
           "bgsection": "#fefefe",
@@ -3156,7 +3138,7 @@
           "1598194200197"
         ],
         "settings": {
-          "enablesection": true,
+          "enablesection": false,
           "animation": "fade-up",
           "paddingsection": "130px 0px 130px 0px",
           "paddingmobile": "60px 0px 60px 0px",
@@ -3209,7 +3191,7 @@
             "settings": {
               "width": "66%",
               "align": "auto",
-              "image": "shopify:\/\/shop_images\/x9.jpg"
+              "image_link": ""
             }
           }
         },
@@ -3238,7 +3220,6 @@
           "1598539906483": {
             "type": "banner",
             "settings": {
-              "image": "shopify:\/\/shop_images\/b1.jpg",
               "width": "4",
               "description": "",
               "bg_color": "#fefefe",
@@ -3248,6 +3229,7 @@
               "max-width": 290,
               "button_text": "",
               "button_icon": "",
+              "button_link": "",
               "vertical": "bottom",
               "horizontal": "center",
               "text_align": "center"
@@ -3256,7 +3238,6 @@
           "1598539932413": {
             "type": "banner",
             "settings": {
-              "image": "shopify:\/\/shop_images\/b2.jpg",
               "width": "4",
               "description": "",
               "bg_color": "#fefefe",
@@ -3266,6 +3247,7 @@
               "max-width": 290,
               "button_text": "",
               "button_icon": "",
+              "button_link": "",
               "vertical": "bottom",
               "horizontal": "center",
               "text_align": "center"
@@ -3274,7 +3256,6 @@
           "1598539949790": {
             "type": "banner",
             "settings": {
-              "image": "shopify:\/\/shop_images\/b3.jpg",
               "width": "4",
               "description": "",
               "bg_color": "#fefefe",
@@ -3284,6 +3265,7 @@
               "max-width": 290,
               "button_text": "",
               "button_icon": "",
+              "button_link": "",
               "vertical": "bottom",
               "horizontal": "center",
               "text_align": "center"
@@ -3371,7 +3353,6 @@
           "setwidth": "container",
           "button_label": "",
           "video_url": "https:\/\/vimeo.com\/404581696",
-          "cover_image": "shopify:\/\/shop_images\/h1_s6.jpg",
           "show_overlay": true,
           "overlay_color": "#000000",
           "overlay_opacity": 10
@@ -3383,31 +3364,31 @@
           "1598541049849": {
             "type": "logo",
             "settings": {
-              "image": "shopify:\/\/shop_images\/br2.png"
+              "link": ""
             }
           },
           "1598541081260": {
             "type": "logo",
             "settings": {
-              "image": "shopify:\/\/shop_images\/br5.png"
+              "link": ""
             }
           },
           "1598541082281": {
             "type": "logo",
             "settings": {
-              "image": "shopify:\/\/shop_images\/br3.png"
+              "link": ""
             }
           },
           "1598541083246": {
             "type": "logo",
             "settings": {
-              "image": "shopify:\/\/shop_images\/br6.png"
+              "link": ""
             }
           },
           "1598541084671": {
             "type": "logo",
             "settings": {
-              "image": "shopify:\/\/shop_images\/br4.png"
+              "link": ""
             }
           }
         },
@@ -3939,7 +3920,7 @@
             "type": "html",
             "settings": {
               "fullhtml": false,
-              "code": "<div class=\" pr-md-5 mr-md-5 pt-5\">\n<span class=\"subtop\"> limited edition<\/span>\n<h2 class=\"mt-3 mb-5\">New ! Supper<br> Spring Sale<\/h2>\n<a href=\"\/collections\/all\" class=\"btn btn-theme\">Shop now<\/a>\n<div class=\"mt-lg-5 pt-5 pl-lg-5 text-right\">\n<\/div>\n<\/div>",
+              "code": "<div class=\" pr-md-5 mr-md-5 pt-5\">\n<span class=\"subtop\"> limited edition<\/span>\n<h2 class=\"mt-3 mb-5\">New ! Super<br> Spring Sale<\/h2>\n<a href=\"\/collections\/all\" class=\"btn btn-theme\">Shop now<\/a>\n<div class=\"mt-lg-5 pt-5 pl-lg-5 text-right\">\n<\/div>\n<\/div>",
               "width": "50%",
               "align": "auto"
             }

@@ -310,6 +310,7 @@
       "shipping_policy_html": "zzgl. <a href=\"{{ link }}\">Versandkosten<\/a>",
       "quantity": "Menge",
       "add_to_cart": "In den Einkaufswagen legen",
+      "add_bundle_to_cart": "In den Einkaufswagen legen",
       "full_details": "Alle Einzelheiten",
       "quickview_text": "Quickshop",
       "wishlist_no_result": "There are no products in your wishlist!",

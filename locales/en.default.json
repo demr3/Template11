@@ -322,6 +322,7 @@
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
       "quantity": "Quantity",
       "add_to_cart": "Add to Cart",
+      "add_bundle_to_cart": "Add Bundle to Cart",
       "full_details": "Full details",
       "quickview_text": "Quickshop",
       "wishlist_no_result": "There are no products in your wishlist!",

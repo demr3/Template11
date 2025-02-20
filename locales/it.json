@@ -310,6 +310,7 @@
       "shipping_policy_html": "<a href=\"{{ link }}\">Spese di spedizione<\/a> calcolate al momento del pagamento.",
       "quantity": "Quantità",
       "add_to_cart": "Aggiungi al carrello",
+      "add_bundle_to_cart": "Aggiungi al carrello",
       "full_details": "Dettagli completi",
       "quickview_text": "Quickshop",
       "wishlist_no_result": "There are no products in your wishlist!",

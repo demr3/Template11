@@ -5,6 +5,7 @@
       "blocks": {
         "image_with_text_JNeDTY": {
           "type": "image-with-text",
+          "disabled": true,
           "settings": {
             "align_center": true,
             "setwidthcontent": "container",
@@ -18,7 +19,7 @@
         "ae23a44a-7f0c-4258-bac5-9d1171bb3dab": {
           "type": "related-product",
           "settings": {
-            "setwidthcontent": "container",
+            "setwidthcontent": "container-fluid",
             "relate_products_title": "Related product",
             "show": 4,
             "arrows": false,
@@ -56,7 +57,7 @@
         "next_prev_enable": true,
         "product_vendor_enable": false,
         "product_type_enable": false,
-        "variant_sku_enable": true,
+        "variant_sku_enable": false,
         "variant_available_enable": false,
         "waitlist": true,
         "key_points_enable": true,
@@ -66,7 +67,7 @@
         "sizeguide_enable": true,
         "sizeguide_title": "Size Guide",
         "sizeguide_page": "sizeguide",
-        "fake_view_enable": true,
+        "fake_view_enable": false,
         "fake_view_min": 12,
         "fake_view_max": 30,
         "fake_view_duration": 3,
@@ -75,8 +76,8 @@
         "gtab_des": "Design",
         "gtab_review_enable": false,
         "gtab_review": "Review",
-        "positiontab": "right",
-        "enable_tabvertical": true,
+        "positiontab": "bottom",
+        "enable_tabvertical": false,
         "stab_title1": "Details",
         "stab_title2": "Shipping & Retruns",
         "stab_title3": "Specific tab 3",

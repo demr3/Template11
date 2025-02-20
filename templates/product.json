@@ -22,7 +22,7 @@
         "ae23a44a-7f0c-4258-bac5-9d1171bb3dab": {
           "type": "related-product",
           "settings": {
-            "setwidthcontent": "container",
+            "setwidthcontent": "container-fluid",
             "relate_products_title": "Related product",
             "show": 4,
             "arrows": false,
@@ -67,8 +67,8 @@
         "gtab_des": "Design",
         "gtab_review_enable": false,
         "gtab_review": "Review",
-        "positiontab": "right",
-        "enable_tabvertical": true,
+        "positiontab": "bottom",
+        "enable_tabvertical": false,
         "stab_title1": "Details",
         "stab_title2": "Shipping & Retruns",
         "stab_title3": "Specific tab 3",

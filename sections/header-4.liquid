@@ -373,7 +373,7 @@ input[type=search]::-webkit-search-cancel-button {
   right: auto;
   min-width: 280px;
   color: var(--header-menudroptext);
-  font-family: var(--g-font-2);
+  font-family: var(--g-font-4);
 }
 
 .site-nav__item .meganav li a {
@@ -726,7 +726,7 @@ input[type=search]::-webkit-search-cancel-button {
   color: var(--header-text);
   font-weight: 500;
   font-size: 16px;
-  font-family: var(--g-font-1);
+  font-family: var(--g-font-4);
   text-transform: uppercase;
 }
 
@@ -1664,7 +1664,8 @@ p#left-cart-subtotal {
       <div class="row">
         {%- if section.settings.topbartext != blank -%}
         <div class="col col-left justify-content-center justify-content-lg-start">
-          {{section.settings.topbartext}}
+          {% comment %} {{section.settings.topbartext}} {% endcomment %}
+          <span id="topbar-carousel"></span>
         </div>
         {%- endif -%}
         <div class="col-8 col-right text-right d-none d-lg-flex">
@@ -1781,6 +1782,30 @@ p#left-cart-subtotal {
     </div>
   </div>
 </header>
+
+<script>
+    var messages = [
+      "🚚 Free Shipping on Orders Over $50!",
+      "📦 30-Day Hassle-Free Returns!",
+      "🔥 Limited Time Offers - Shop Now!",
+      "✨ New Arrivals Just Landed!"
+    ];
+    
+    var index = 0;
+    function rotateMessages() {
+      $('#topbar-carousel').fadeOut(300, function() {
+        $(this).text(messages[index]).fadeIn(300);
+      });
+      index = (index + 1) % messages.length; // Loop back to first message
+    }
+  
+    // Initial message load
+    $('#topbar-carousel').text(messages[0]);
+  
+    // Change message every 3 seconds
+    setInterval(rotateMessages, 3000);
+</script>
+
 {%- if template != 'customers/login' -%}
 {% include 'popup-login' %}
 {%- endif -%}
